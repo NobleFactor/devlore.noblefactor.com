@@ -1,0 +1,15 @@
+# Build output
+dist/
+
+# Node
+node_modules/
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Astro
+.astro/

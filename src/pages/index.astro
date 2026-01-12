@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="DevLore - Reproducible Developer Infrastructure">
+  <!-- Hero Section -->
+  <section class="container mx-auto px-6 py-24 text-center">
+    <h1 class="text-5xl font-bold mb-6">
+      Point lore at your wiki.<br />
+      <span class="text-lore-accent">Get a working environment.</span>
+    </h1>
+    <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+      New machine to productive developer in minutes, not days.
+      Cross-platform. Proven working.
+    </p>
+    <div class="bg-gray-900 rounded-lg p-4 max-w-2xl mx-auto text-left font-mono text-sm">
+      <code class="text-gray-400">$</code>
+      <code class="text-lore-accent"> curl -sSL https://devlore.noblefactor.com/install | sh</code>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="bg-gray-900/50 py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">The Problem</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-800 rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-3 text-red-400">Onboarding Takes Days</h3>
+          <p class="text-gray-400">
+            "I started Monday. It's Thursday. I still can't build the app."
+          </p>
+        </div>
+        <div class="bg-gray-800 rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-3 text-red-400">Docs Are Always Stale</h3>
+          <p class="text-gray-400">
+            47-step wiki page. Last updated by someone who left two years ago.
+          </p>
+        </div>
+        <div class="bg-gray-800 rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-3 text-red-400">Tribal Knowledge Walks Out</h3>
+          <p class="text-gray-400">
+            The engineer who knows everything is leaving next month. Her knowledge leaves too.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">The Solution</h2>
+      <div class="bg-gray-900 rounded-lg p-6 max-w-3xl mx-auto font-mono text-sm">
+        <div class="mb-4">
+          <span class="text-gray-500"># Point lore at your team's onboarding wiki</span>
+        </div>
+        <div class="mb-4">
+          <span class="text-gray-400">$</span>
+          <span class="text-white"> lore onboard --from https://wiki.acme.com/backend-setup</span>
+        </div>
+        <div class="mt-6 space-y-2">
+          <div><span class="text-lore-accent">✓</span> Found 12 packages in lore registry</div>
+          <div><span class="text-yellow-400">⚠</span> Found 3 org-specific items (LOW confidence)</div>
+          <div><span class="text-lore-accent">✓</span> Generated: acme-backend.manifest</div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-700">
+          <span class="text-gray-400">$</span>
+          <span class="text-white"> lore deploy @acme-backend.manifest --known-only</span>
+        </div>
+        <div class="mt-4 space-y-1">
+          <div><span class="text-lore-accent">✓</span> docker installed, verified</div>
+          <div><span class="text-lore-accent">✓</span> kubectl installed, verified</div>
+          <div><span class="text-lore-accent">✓</span> bazel installed, verified</div>
+          <div class="text-gray-500">...</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="bg-gray-900/50 py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Why DevLore</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">🌐</div>
+          <h3 class="font-semibold mb-2">Cross-Platform</h3>
+          <p class="text-gray-400 text-sm">Same manifest works on macOS, Linux, Windows</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">🤖</div>
+          <h3 class="font-semibold mb-2">AI Reads Your Wiki</h3>
+          <p class="text-gray-400 text-sm">Parses messy docs, produces structured manifests</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">✅</div>
+          <h3 class="font-semibold mb-2">Proven Working</h3>
+          <p class="text-gray-400 text-sm">Verify phase confirms tools actually work</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">📚</div>
+          <h3 class="font-semibold mb-2">Tribal Knowledge</h3>
+          <p class="text-gray-400 text-sm">Community captures what took hours to figure out</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two Products Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">The DevLore Suite</h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-gray-800 rounded-lg p-8">
+          <h3 class="text-2xl font-bold mb-2">lore</h3>
+          <p class="text-lore-accent mb-4">Package deployer</p>
+          <p class="text-gray-400">
+            Tribal knowledge about installing software.
+            The wisdom.
+          </p>
+          <a href="https://github.com/NobleFactor/lore"
+             class="inline-block mt-6 text-lore-accent hover:underline">
+            View on GitHub →
+          </a>
+        </div>
+        <div class="bg-gray-800 rounded-lg p-8">
+          <h3 class="text-2xl font-bold mb-2">writ</h3>
+          <p class="text-lore-accent mb-4">Dotfiles manager</p>
+          <p class="text-gray-400">
+            Your configuration, inscribed.
+            The written form.
+          </p>
+          <a href="https://github.com/NobleFactor/writ"
+             class="inline-block mt-6 text-lore-accent hover:underline">
+            View on GitHub →
+          </a>
+        </div>
+      </div>
+      <p class="text-center text-gray-500 mt-8">
+        Together: Feel at home anywhere, ready to work from the first login.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-lore-primary">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-6">Ready to try it?</h2>
+      <p class="text-xl text-blue-100 mb-8">
+        We're looking for early adopters who have felt onboarding pain.
+      </p>
+      <a href="https://github.com/NobleFactor/lore"
+         class="inline-block bg-white text-lore-primary font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition">
+        Get Started on GitHub
+      </a>
+    </div>
+  </section>
+</BaseLayout>
