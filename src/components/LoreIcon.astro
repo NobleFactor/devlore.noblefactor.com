@@ -1,0 +1,74 @@
+---
+interface Props {
+  class?: string;
+  size?: number;
+}
+const { class: className = "", size = 120 } = Astro.props;
+---
+
+<!-- Lore: Package deployer - depicted as a package box with verification checkmark -->
+<svg
+  viewBox="0 0 120 120"
+  width={size}
+  height={size}
+  class={className}
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Package box (3D isometric style) -->
+  <!-- Top face -->
+  <path
+    d="M60 20 L95 40 L60 60 L25 40 Z"
+    stroke="currentColor"
+    stroke-width="2"
+    class="text-gray-400"
+    fill="currentColor"
+    fill-opacity="0.05"
+  />
+  <!-- Front face -->
+  <path
+    d="M25 40 L60 60 L60 95 L25 75 Z"
+    stroke="currentColor"
+    stroke-width="2"
+    class="text-gray-400"
+    fill="currentColor"
+    fill-opacity="0.1"
+  />
+  <!-- Side face -->
+  <path
+    d="M95 40 L60 60 L60 95 L95 75 Z"
+    stroke="currentColor"
+    stroke-width="2"
+    class="text-gray-400"
+    fill="currentColor"
+    fill-opacity="0.15"
+  />
+
+  <!-- Center vertical line on top -->
+  <line x1="60" y1="60" x2="60" y2="95" stroke="currentColor" stroke-width="1.5" class="text-gray-500" />
+
+  <!-- Ribbon/band across top -->
+  <line x1="42" y1="30" x2="60" y2="40" stroke="currentColor" stroke-width="2" class="text-lore-accent" />
+  <line x1="60" y1="40" x2="78" y2="30" stroke="currentColor" stroke-width="2" class="text-lore-accent" />
+
+  <!-- Verification checkmark (floating above) -->
+  <circle cx="88" cy="28" r="12" stroke="currentColor" stroke-width="1.5" class="text-lore-accent" fill="currentColor" fill-opacity="0.1" />
+  <path
+    d="M82 28 L86 32 L94 24"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="text-lore-accent"
+  />
+
+  <!-- Deploy arrow (pointing down into position) -->
+  <path
+    d="M45 15 L45 8 M42 12 L45 15 L48 12"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="text-gray-500"
+  />
+</svg>

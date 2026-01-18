@@ -1,0 +1,110 @@
+---
+/**
+ * Documentation links component for stakeholder access to PRDs and RFCs.
+ *
+ * Props:
+ * - scope: 'devlore' | 'lore' | 'writ' | 'registry' - determines which docs to show
+ * - compact: boolean - if true, shows inline style; if false, shows card style
+ */
+interface Props {
+  scope: 'devlore' | 'lore' | 'writ' | 'registry';
+  compact?: boolean;
+}
+
+const { scope, compact = false } = Astro.props;
+
+// GitHub base URL for documentation
+const GITHUB_BASE = 'https://github.com/NobleFactor/devlore/blob/main/design';
+
+// Documentation links by scope
+const docs = {
+  devlore: {
+    prd: { url: `${GITHUB_BASE}/01-devlore-prd.md`, label: 'DevLore PRD' },
+    rfc: { url: `${GITHUB_BASE}/02-devlore-rfc.md`, label: 'DevLore RFC' },
+    strategy: { url: 'https://github.com/NobleFactor/devlore/blob/main/business/01-strategy.md', label: 'Strategy' },
+    roadmap: { url: 'https://github.com/NobleFactor/devlore/blob/main/business/02-roadmap.md', label: 'Roadmap' },
+  },
+  lore: {
+    prd: { url: `${GITHUB_BASE}/lore/02-lore-prd.md`, label: 'Lore PRD' },
+    rfc: { url: `${GITHUB_BASE}/02-devlore-rfc.md`, label: 'DevLore RFC (Lore sections)' },
+  },
+  writ: {
+    prd: { url: `${GITHUB_BASE}/writ/02-writ-prd.md`, label: 'Writ PRD' },
+    rfc: { url: `${GITHUB_BASE}/writ/03-writ-rfc.md`, label: 'Writ RFC' },
+  },
+  registry: {
+    prd: { url: `${GITHUB_BASE}/01-devlore-prd.md`, label: 'DevLore PRD (Registry sections)' },
+    rfc: { url: `${GITHUB_BASE}/registry-client/design/03-registry-client-rfc.md`, label: 'Registry Client RFC' },
+  },
+};
+
+const currentDocs = docs[scope];
+---
+
+{compact ? (
+  <div class="flex flex-wrap gap-4 text-sm">
+    <span class="text-gray-500">Stakeholder Docs:</span>
+    {Object.entries(currentDocs).map(([key, doc]) => (
+      <a
+        href={doc.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-lore-accent hover:underline flex items-center gap-1"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        {doc.label}
+      </a>
+    ))}
+  </div>
+) : (
+  <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
+    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+      <svg class="w-5 h-5 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      Stakeholder Documentation
+    </h3>
+    <div class="grid sm:grid-cols-2 gap-4">
+      {Object.entries(currentDocs).map(([key, doc]) => (
+        <a
+          href={doc.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 p-3 bg-gray-900/50 rounded-lg hover:bg-gray-900 transition group"
+        >
+          <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-lore-accent/20 transition">
+            {key === 'prd' && (
+              <svg class="w-5 h-5 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+            )}
+            {key === 'rfc' && (
+              <svg class="w-5 h-5 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            )}
+            {key === 'strategy' && (
+              <svg class="w-5 h-5 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            )}
+            {key === 'roadmap' && (
+              <svg class="w-5 h-5 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+            )}
+          </div>
+          <div>
+            <div class="font-medium text-gray-200 group-hover:text-lore-accent transition">{doc.label}</div>
+            <div class="text-xs text-gray-500 uppercase tracking-wider">{key.toUpperCase()}</div>
+          </div>
+          <svg class="w-4 h-4 text-gray-500 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      ))}
+    </div>
+  </div>
+)}

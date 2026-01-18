@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RegistryIcon from '../components/RegistryIcon.astro';
+import DocsLinks from '../components/DocsLinks.astro';
+---
+
+<BaseLayout title="Registry - Community Knowledge Repository | DevLore" description="A crowdsourced repository of Package Manifest Modules encoding hard-won developer wisdom.">
+
+  <!-- Hero Section -->
+  <section class="container mx-auto px-6 py-20">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+        <RegistryIcon size={160} class="flex-shrink-0" />
+        <div>
+          <p class="text-lore-accent font-mono text-sm mb-2 tracking-wider">THE FOUNDATION</p>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Registry</h1>
+          <p class="text-xl text-gray-400">
+            Where tribal knowledge becomes permanent. A community-curated repository of Package
+            Manifest Modules (PMMs) that encode everything you need to know about installing
+            and configuring developer tools.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is it -->
+  <section class="bg-gray-900/50 py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">What is a Package Manifest Module?</h2>
+        <p class="text-gray-400 mb-6 text-lg">
+          A PMM is more than installation instructions. It's the complete story of how to get
+          a tool working: the gotchas, the post-install configuration, the verification steps,
+          and all the platform-specific quirks that took someone hours to figure out.
+        </p>
+
+        <div class="bg-gray-800 rounded-lg p-6 font-mono text-sm border border-gray-700">
+          <div class="text-gray-500 mb-4"># Example: pandoc PMM structure</div>
+          <pre class="text-gray-300">
+pandoc/
+├── README.md           <span class="text-gray-500"># Tribal knowledge docs</span>
+├── lifecycle.yaml      <span class="text-gray-500"># Metadata + features</span>
+├── prepare.star        <span class="text-gray-500"># Check prerequisites</span>
+├── install.star        <span class="text-gray-500"># Acquire the software</span>
+├── provision.star      <span class="text-gray-500"># Post-install setup</span>
+└── verify.star         <span class="text-gray-500"># Confirm it works</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Hidden Knowledge -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">The Knowledge That Gets Lost</h2>
+        <p class="text-gray-400 mb-8 text-lg">
+          Package managers handle installation. PMMs handle everything else.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 class="text-xl font-semibold mb-3 text-lore-accent">Invisible Dependencies</h3>
+            <p class="text-gray-400">
+              "Pandoc installed successfully!" But wait—you want PDFs? That requires TeX.
+              And TeX has its own package manager (tlmgr). PMMs capture this.
+            </p>
+          </div>
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 class="text-xl font-semibold mb-3 text-lore-accent">Shell Configuration</h3>
+            <p class="text-gray-400">
+              Homebrew installed your tool, but did it add shell completions? Set up
+              aliases? Add to PATH? PMMs remember what you'd forget.
+            </p>
+          </div>
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 class="text-xl font-semibold mb-3 text-lore-accent">Platform Quirks</h3>
+            <p class="text-gray-400">
+              Docker on macOS needs Docker Desktop or Colima. Docker on Linux needs
+              user groups. Docker on Windows needs WSL2. One PMM, three platforms.
+            </p>
+          </div>
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 class="text-xl font-semibold mb-3 text-lore-accent">Verification Steps</h3>
+            <p class="text-gray-400">
+              <code class="text-lore-accent">docker --version</code> says Docker is installed.
+              <code class="text-lore-accent">docker run hello-world</code> proves it works.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Model -->
+  <section class="bg-gray-900/50 py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">Community-Driven</h2>
+        <p class="text-gray-400 mb-8 text-lg">
+          Like MusicBrainz for developer tools. One person's hard-won knowledge benefits
+          everyone who comes after.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div class="p-6">
+            <div class="text-4xl font-bold text-lore-accent mb-2">Contribute</div>
+            <p class="text-gray-400">Spent hours getting a tool working? Encode it as a PMM.</p>
+          </div>
+          <div class="p-6">
+            <div class="text-4xl font-bold text-lore-accent mb-2">Review</div>
+            <p class="text-gray-400">PRs are tested on macOS, Linux, and Windows automatically.</p>
+          </div>
+          <div class="p-6">
+            <div class="text-4xl font-bold text-lore-accent mb-2">Benefit</div>
+            <p class="text-gray-400">Your next onboarding takes minutes instead of days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture Diagram -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">How Registry Feeds Lore</h2>
+
+        <div class="bg-gray-800 rounded-lg p-8 border border-gray-700">
+          <svg viewBox="0 0 600 180" class="w-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Registry box -->
+            <rect x="20" y="40" width="140" height="100" rx="8" stroke="currentColor" stroke-width="2" class="text-gray-600" fill="currentColor" fill-opacity="0.05" />
+            <text x="90" y="70" text-anchor="middle" class="text-gray-300" fill="currentColor" font-size="14" font-weight="600">Registry</text>
+            <text x="90" y="90" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">docker.pmm</text>
+            <text x="90" y="105" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">kubectl.pmm</text>
+            <text x="90" y="120" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">neovim.pmm</text>
+
+            <!-- Arrow -->
+            <path d="M170 90 L230 90" stroke="currentColor" stroke-width="2" class="text-lore-accent" />
+            <path d="M225 85 L235 90 L225 95" stroke="currentColor" stroke-width="2" class="text-lore-accent" fill="none" />
+            <text x="200" y="80" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">sync</text>
+
+            <!-- Lore CLI box -->
+            <rect x="240" y="40" width="140" height="100" rx="8" stroke="currentColor" stroke-width="2" class="text-lore-accent" fill="currentColor" fill-opacity="0.05" />
+            <text x="310" y="70" text-anchor="middle" class="text-gray-300" fill="currentColor" font-size="14" font-weight="600">lore update</text>
+            <text x="310" y="95" text-anchor="middle" class="text-gray-400" fill="currentColor" font-size="11">Local cache</text>
+            <text x="310" y="115" text-anchor="middle" class="text-gray-400" fill="currentColor" font-size="11">~/.cache/lore/</text>
+
+            <!-- Arrow -->
+            <path d="M390 90 L450 90" stroke="currentColor" stroke-width="2" class="text-gray-500" />
+            <path d="M445 85 L455 90 L445 95" stroke="currentColor" stroke-width="2" class="text-gray-500" fill="none" />
+            <text x="420" y="80" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">deploy</text>
+
+            <!-- Your machine -->
+            <rect x="460" y="40" width="120" height="100" rx="8" stroke="currentColor" stroke-width="2" class="text-gray-600" fill="currentColor" fill-opacity="0.05" />
+            <text x="520" y="70" text-anchor="middle" class="text-gray-300" fill="currentColor" font-size="14" font-weight="600">Your Machine</text>
+            <text x="520" y="95" text-anchor="middle" class="text-lore-accent" fill="currentColor" font-size="11">docker &#10003;</text>
+            <text x="520" y="110" text-anchor="middle" class="text-lore-accent" fill="currentColor" font-size="11">kubectl &#10003;</text>
+            <text x="520" y="125" text-anchor="middle" class="text-lore-accent" fill="currentColor" font-size="11">neovim &#10003;</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stakeholder Documentation -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <DocsLinks scope="registry" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gradient-to-br from-lore-primary to-blue-900">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-6">Browse the Registry</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-xl mx-auto">
+        See what packages are available and contribute your own.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://github.com/NobleFactor/devlore-registry"
+           class="inline-block bg-white text-lore-primary font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition">
+          View on GitHub
+        </a>
+        <a href="/lore"
+           class="inline-block border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/10 transition">
+          Learn about Lore &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
