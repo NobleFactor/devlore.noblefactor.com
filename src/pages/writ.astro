@@ -1,0 +1,298 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WritIcon from '../components/WritIcon.astro';
+import DocsLinks from '../components/DocsLinks.astro';
+---
+
+<BaseLayout title="Writ - Dotfiles Manager | DevLore" description="Your configuration, inscribed. Platform-aware dotfiles with symlinks and lore integration.">
+
+  <!-- Hero Section -->
+  <section class="container mx-auto px-6 py-20">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+        <WritIcon size={160} class="flex-shrink-0" />
+        <div>
+          <p class="text-lore-accent font-mono text-sm mb-2 tracking-wider">THE CONFIGURATOR</p>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Writ</h1>
+          <p class="text-xl text-gray-400">
+            Your configuration, inscribed. Writ manages your dotfiles with platform-aware
+            symlinks and orchestrates lore to install dependencies. What's writ is what runs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Philosophy -->
+  <section class="bg-gray-900/50 py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">Simple by Design</h2>
+        <p class="text-gray-400 mb-8 text-lg">
+          Writ uses symlinks—the simplest, most transparent approach. No file transformation,
+          no magic. Your dotfiles repo is the source of truth.
+        </p>
+
+        <div class="bg-gray-800 rounded-lg p-6 font-mono text-sm border border-gray-700">
+          <div class="text-gray-500 mb-4"># How it works</div>
+          <pre class="text-gray-300">
+dotfiles/
+├── packages.manifest     <span class="text-gray-500"># Global tool dependencies</span>
+├── vim/
+│   ├── packages.manifest <span class="text-gray-500"># "neovim --with lsp"</span>
+│   └── .config/
+│       └── nvim/
+│           └── init.lua
+├── zsh/
+│   └── .zshrc
+└── git/
+    └── .gitconfig</pre>
+          <div class="mt-4 pt-4 border-t border-gray-700 text-gray-400">
+            <span class="text-lore-accent">writ add vim</span> →
+            <span>symlinks ~/.config/nvim/init.lua to dotfiles/vim/.config/nvim/init.lua</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lore Integration -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">Orchestrates Lore</h2>
+        <p class="text-gray-400 mb-8 text-lg">
+          Configuration without tools is useless. Writ detects <code class="text-lore-accent">packages.manifest</code>
+          files in each package and calls lore to install dependencies first.
+        </p>
+
+        <div class="bg-gray-800 rounded-lg p-6 font-mono text-sm border border-gray-700 mb-8">
+          <div class="mb-2">
+            <span class="text-gray-500">$</span>
+            <span class="text-white"> writ add vim</span>
+          </div>
+          <div class="mt-4 space-y-1">
+            <div class="text-gray-400">Found packages.manifest in vim/</div>
+            <div><span class="text-lore-accent">&#10003;</span> lore deploy neovim --with lsp --with treesitter</div>
+            <div><span class="text-lore-accent">&#10003;</span> Symlinked .config/nvim/init.lua</div>
+            <div><span class="text-lore-accent">&#10003;</span> Symlinked .config/nvim/lua/</div>
+          </div>
+        </div>
+
+        <p class="text-gray-400">
+          The <code class="text-lore-accent">writ receipt show --unified</code> command displays
+          both your software (from lore) and configuration (from writ) in one view.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Awareness -->
+  <section class="bg-gray-900/50 py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">Platform-Aware</h2>
+        <p class="text-gray-400 mb-8 text-lg">
+          Different machines need different configurations. Writ handles it automatically.
+        </p>
+
+        <div class="bg-gray-800 rounded-lg p-6 font-mono text-sm border border-gray-700">
+          <pre class="text-gray-300">
+dotfiles/
+├── shell/                <span class="text-gray-500"># Default</span>
+│   └── .zshrc
+├── shell-darwin/         <span class="text-gray-500"># macOS override</span>
+│   └── .zshrc
+└── shell-linux/          <span class="text-gray-500"># Linux override</span>
+    └── .zshrc</pre>
+          <div class="mt-4 pt-4 border-t border-gray-700 text-gray-400">
+            On macOS: <span class="text-lore-accent">writ add shell</span> → uses shell-darwin/
+          </div>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700 text-center">
+            <div class="text-2xl mb-2">macOS</div>
+            <div class="text-gray-500 font-mono text-sm">*-darwin</div>
+          </div>
+          <div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700 text-center">
+            <div class="text-2xl mb-2">Linux</div>
+            <div class="text-gray-500 font-mono text-sm">*-linux</div>
+          </div>
+          <div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700 text-center">
+            <div class="text-2xl mb-2">Windows</div>
+            <div class="text-gray-500 font-mono text-sm">*-windows</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLI Commands -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">Key Commands</h2>
+
+        <div class="space-y-6">
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <code class="text-lore-accent font-mono">writ add &lt;package&gt;...</code>
+            <p class="text-gray-400 mt-2">
+              Deploy packages by creating symlinks. Calls lore first if packages.manifest exists.
+            </p>
+            <div class="mt-3 font-mono text-sm text-gray-500">
+              writ add vim zsh git
+            </div>
+          </div>
+
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <code class="text-lore-accent font-mono">writ status [package...]</code>
+            <p class="text-gray-400 mt-2">
+              Show symlink status. See what's linked, what's missing, and what has conflicts.
+            </p>
+            <div class="mt-3 font-mono text-sm">
+              <span class="text-lore-accent">&#10003;</span> Linked &nbsp;
+              <span class="text-yellow-400">!</span> Conflict &nbsp;
+              <span class="text-red-400">&#10007;</span> Missing
+            </div>
+          </div>
+
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <code class="text-lore-accent font-mono">writ adopt &lt;package&gt; &lt;file&gt;</code>
+            <p class="text-gray-400 mt-2">
+              Move a file from your home directory into a package and create the symlink.
+              Bring existing configs under version control.
+            </p>
+            <div class="mt-3 font-mono text-sm text-gray-500">
+              writ adopt shell ~/.zshrc
+            </div>
+          </div>
+
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <code class="text-lore-accent font-mono">writ configure</code>
+            <p class="text-gray-400 mt-2">
+              Discover system info and configure template variables. Auto-detects platform,
+              user, editor, and other environment details.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Start -->
+  <section class="bg-gray-900/50 py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">Quick Start</h2>
+
+        <div class="bg-gray-800 rounded-lg p-6 font-mono text-sm border border-gray-700">
+          <div class="space-y-4">
+            <div>
+              <span class="text-gray-500"># Clone your dotfiles</span><br>
+              <span class="text-gray-400">$</span>
+              <span class="text-white"> git clone https://github.com/you/dotfiles ~/.local/share/dotfiles</span>
+            </div>
+            <div>
+              <span class="text-gray-500"># Configure for this machine</span><br>
+              <span class="text-gray-400">$</span>
+              <span class="text-white"> cd ~/.local/share/dotfiles && writ configure</span>
+            </div>
+            <div>
+              <span class="text-gray-500"># Deploy everything</span><br>
+              <span class="text-gray-400">$</span>
+              <span class="text-white"> writ add all</span>
+            </div>
+            <div>
+              <span class="text-gray-500"># Check status</span><br>
+              <span class="text-gray-400">$</span>
+              <span class="text-white"> writ status</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Full Picture -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">The Complete Picture</h2>
+        <p class="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">
+          Together, Registry, Lore, and Writ solve the complete developer environment problem.
+        </p>
+
+        <div class="bg-gray-800 rounded-lg p-8 border border-gray-700">
+          <svg viewBox="0 0 600 100" class="w-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Registry -->
+            <circle cx="100" cy="50" r="35" stroke="currentColor" stroke-width="2" class="text-gray-600" fill="currentColor" fill-opacity="0.05" />
+            <text x="100" y="45" text-anchor="middle" class="text-gray-300" fill="currentColor" font-size="12" font-weight="600">Registry</text>
+            <text x="100" y="60" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="9">Knowledge</text>
+
+            <!-- Arrow 1 -->
+            <path d="M145 50 L195 50" stroke="currentColor" stroke-width="2" class="text-gray-500" />
+            <path d="M190 45 L200 50 L190 55" stroke="currentColor" stroke-width="2" class="text-gray-500" fill="none" />
+
+            <!-- Lore -->
+            <circle cx="250" cy="50" r="35" stroke="currentColor" stroke-width="2" class="text-gray-600" fill="currentColor" fill-opacity="0.05" />
+            <text x="250" y="45" text-anchor="middle" class="text-gray-300" fill="currentColor" font-size="12" font-weight="600">Lore</text>
+            <text x="250" y="60" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="9">Software</text>
+
+            <!-- Arrow 2 -->
+            <path d="M295 50 L345 50" stroke="currentColor" stroke-width="2" class="text-gray-500" />
+            <path d="M340 45 L350 50 L340 55" stroke="currentColor" stroke-width="2" class="text-gray-500" fill="none" />
+
+            <!-- Writ -->
+            <circle cx="400" cy="50" r="35" stroke="currentColor" stroke-width="2" class="text-lore-accent" fill="currentColor" fill-opacity="0.1" />
+            <text x="400" y="45" text-anchor="middle" class="text-gray-300" fill="currentColor" font-size="12" font-weight="600">Writ</text>
+            <text x="400" y="60" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="9">Config</text>
+
+            <!-- Arrow 3 -->
+            <path d="M445 50 L495 50" stroke="currentColor" stroke-width="2" class="text-lore-accent" />
+            <path d="M490 45 L500 50 L490 55" stroke="currentColor" stroke-width="2" class="text-lore-accent" fill="none" />
+
+            <!-- You -->
+            <circle cx="550" cy="50" r="35" stroke="currentColor" stroke-width="2" class="text-lore-accent" fill="currentColor" fill-opacity="0.15" />
+            <text x="550" y="45" text-anchor="middle" class="text-lore-accent" fill="currentColor" font-size="12" font-weight="600">You</text>
+            <text x="550" y="60" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="9">Productive</text>
+          </svg>
+        </div>
+
+        <p class="text-gray-500 mt-8 italic">
+          Feel at home anywhere, ready to work from the first login.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stakeholder Documentation -->
+  <section class="bg-gray-900/50 py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <DocsLinks scope="writ" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gradient-to-br from-lore-primary to-blue-900">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-6">Try Writ</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-xl mx-auto">
+        Set up your dotfiles with confidence.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://github.com/NobleFactor/writ"
+           class="inline-block bg-white text-lore-primary font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition">
+          View on GitHub
+        </a>
+        <a href="/"
+           class="inline-block border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/10 transition">
+          &larr; Back to DevLore
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
