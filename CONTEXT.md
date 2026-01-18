@@ -14,34 +14,48 @@ https://delightful-grass-0ac0a4c1e.6.azurestaticapps.net
 | Tenant | thenobles.us | `c31c4b20-38b6-4355-96d8-9ccde7e1ca71` |
 | Resource Group | `rg-devlore-site` | West US 2 |
 | Static Web App | `devlore-noblefactor-com` | Standard tier |
-| Entra ID App | DevLore Site | `4b23d94b-33f1-4934-ac08-4f9b219ff55b` |
-| Service Principal | DevLore Site | `32609d04-4dc2-4e04-9ffd-ac4f6dbf31b6` |
 
-## App Settings on Static Web App
+## Authentication
 
-- `AAD_CLIENT_ID` = `4b23d94b-33f1-4934-ac08-4f9b219ff55b`
-- `AAD_CLIENT_SECRET` = (stored in Azure, regenerate if needed)
+Uses **built-in Azure AD authentication** (not custom Entra ID app registration).
 
-## Entra ID App Configuration
+Users must be explicitly invited via the Static Web App invitation system. The `staticwebapp.config.json` requires the `authenticated` role for all routes.
 
-- **Sign-in audience:** AzureADMyOrg (single tenant)
-- **Redirect URI:** `https://delightful-grass-0ac0a4c1e.6.azurestaticapps.net/.auth/login/aad/callback`
-- **API Permissions:** User.Read, openid, profile (admin consent granted)
+**Key insight:** Custom Entra ID app registration caused redirect loops. The built-in auth with user invitations works correctly.
 
 ## Authorized Users
 
-All users in thenobles.us tenant can sign in:
-
 | User | Email | Status |
 |------|-------|--------|
-| David Noble | David@thenobles.us | Existing |
-| Patricia Noble | Patricia@thenobles.us | Existing |
-| Sarah Noble | Sarah@thenobles.us | Password reset |
-| Julia Noble | Julia@thenobles.us | Password reset |
-| Mario Noble | Mario@thenobles.us | Created 2026-01-18 |
-| Jimmy Noble | Jimmy@thenobles.us | Created 2026-01-18 |
+| David Noble | David@thenobles.us | ✓ Invited & Active |
+| Patricia Noble | Patricia@thenobles.us | Invited (pending acceptance) |
+| Sarah Noble | Sarah@thenobles.us | Invited (pending acceptance) |
+| Julia Noble | Julia@thenobles.us | Invited (pending acceptance) |
+| Mario Noble | Mario@thenobles.us | Invited (pending acceptance) |
+| Jimmy Noble | Jimmy@thenobles.us | Invited (pending acceptance) |
 
-Temporary password for new/reset users: `DevLore2026!` (must change on first login)
+Invitations expire 2026-01-25. Users click invitation link once to activate access.
+
+## Invite New Users
+
+```bash
+az staticwebapp users invite \
+  --name devlore-noblefactor-com \
+  --resource-group rg-devlore-site \
+  --authentication-provider aad \
+  --user-details "email@thenobles.us" \
+  --role "authenticated" \
+  --domain "delightful-grass-0ac0a4c1e.6.azurestaticapps.net" \
+  --invitation-expiration-in-hours 168
+```
+
+## List Current Users
+
+```bash
+az staticwebapp users list \
+  --name devlore-noblefactor-com \
+  --resource-group rg-devlore-site
+```
 
 ## GitHub Repository
 
@@ -49,28 +63,21 @@ Temporary password for new/reset users: `DevLore2026!` (must change on first log
 - **Branch:** develop (default, deploys automatically)
 - **Secret:** `AZURE_STATIC_WEB_APPS_API_TOKEN` (set)
 
-## Current Issue Being Debugged
+## Custom Domain (Pending)
 
-Login loop - user authenticates but bounces back to signin prompt.
+To add `devlore.noblefactor.com`:
 
-**Fix attempted:** Added `/.auth/*` route to allow anonymous access for auth callbacks.
+1. Add DNS CNAME record at names.com:
+   - **Type:** CNAME
+   - **Host:** `devlore`
+   - **Value:** `delightful-grass-0ac0a4c1e.6.azurestaticapps.net`
 
-**If still failing, try:**
-
-1. Clear browser cookies / use incognito window
-2. Check browser console for errors
-3. Regenerate client secret:
+2. Then run:
    ```bash
-   az ad app credential reset --id 4b23d94b-33f1-4934-ac08-4f9b219ff55b --display-name "DevLore Site Secret"
-   ```
-   Then update the app setting:
-   ```bash
-   az staticwebapp appsettings set --name devlore-noblefactor-com --resource-group rg-devlore-site --setting-names "AAD_CLIENT_SECRET=<new-secret>"
-   ```
-
-4. Verify redirect URI matches exactly:
-   ```bash
-   az ad app show --id 4b23d94b-33f1-4934-ac08-4f9b219ff55b --query "web.redirectUris"
+   az staticwebapp hostname set \
+     --name devlore-noblefactor-com \
+     --resource-group rg-devlore-site \
+     --hostname devlore.noblefactor.com
    ```
 
 ## Quick Commands
@@ -85,12 +92,13 @@ az account show
 # Login to Azure
 az login
 
-# View app settings
-az staticwebapp appsettings list --name devlore-noblefactor-com --resource-group rg-devlore-site
-
-# View deployment token
-az staticwebapp secrets list -n devlore-noblefactor-com -g rg-devlore-site --query "properties.apiKey" -o tsv
-
 # Check recent deployments
 cd ~/Workspace/NobleFactor/devlore.noblefactor.com && gh run list --limit 5
+
+# View invited users
+az staticwebapp users list --name devlore-noblefactor-com --resource-group rg-devlore-site -o table
 ```
+
+## Troubleshooting
+
+If users get 401 Unauthorized after signing in, they need to accept an invitation first. Generate a new invitation link for them using the invite command above.
