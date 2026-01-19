@@ -36,15 +36,15 @@ import DocsLinks from '../components/DocsLinks.astro';
         </p>
 
         <div class="bg-gray-800 rounded-lg p-6 font-mono text-sm border border-gray-700">
-          <div class="text-gray-500 mb-4"># Example: pandoc PMM structure</div>
+          <div class="text-gray-500 mb-4"># Example: kubectl PMM structure</div>
           <pre class="text-gray-300">
-pandoc/
+kubectl/
 ├── README.md           <span class="text-gray-500"># Tribal knowledge docs</span>
-├── lifecycle.yaml      <span class="text-gray-500"># Metadata + features</span>
+├── lifecycle.yaml      <span class="text-gray-500"># Metadata + features (eks-auth, gke-auth)</span>
 ├── prepare.star        <span class="text-gray-500"># Check prerequisites</span>
 ├── install.star        <span class="text-gray-500"># Acquire the software</span>
-├── provision.star      <span class="text-gray-500"># Post-install setup</span>
-└── verify.star         <span class="text-gray-500"># Confirm it works</span></pre>
+├── provision.star      <span class="text-gray-500"># Post-install: cloud auth, completions</span>
+└── verify.star         <span class="text-gray-500"># Confirm cluster connection works</span></pre>
         </div>
       </div>
     </div>
@@ -63,8 +63,9 @@ pandoc/
           <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h3 class="text-xl font-semibold mb-3 text-lore-accent">Invisible Dependencies</h3>
             <p class="text-gray-400">
-              "Pandoc installed successfully!" But wait—you want PDFs? That requires TeX.
-              And TeX has its own package manager (tlmgr). PMMs capture this.
+              "kubectl installed successfully!" But wait—you need to connect to EKS?
+              That requires aws-iam-authenticator. And AWS credentials. And kubeconfig updates.
+              PMMs capture this.
             </p>
           </div>
           <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">

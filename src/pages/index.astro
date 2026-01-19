@@ -128,32 +128,54 @@ import DocsLinks from '../components/DocsLinks.astro';
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold text-center mb-4">See It In Action</h2>
       <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-        Point lore at your team's wiki. Get a working manifest. Deploy with confidence.
+        Day one. Point lore at your team's wiki. Get a working manifest. Deploy with confidence.
       </p>
       <div class="bg-gray-900 rounded-lg p-6 max-w-3xl mx-auto font-mono text-sm border border-gray-800">
         <div class="mb-4">
-          <span class="text-gray-500"># Point lore at your team's onboarding wiki</span>
+          <span class="text-gray-500"># New hire, Day 1: point lore at the team wiki</span>
         </div>
         <div class="mb-4">
           <span class="text-gray-400">$</span>
           <span class="text-white"> lore onboard --from https://wiki.acme.com/backend-setup</span>
         </div>
         <div class="mt-6 space-y-2">
-          <div><span class="text-lore-accent">&#10003;</span> Found 12 packages in lore registry</div>
-          <div><span class="text-yellow-400">!</span> Found 3 org-specific items (LOW confidence)</div>
-          <div><span class="text-red-400">&#10007;</span> 2 items could not be parsed</div>
-          <div><span class="text-gray-500">&rarr;</span> <span class="text-gray-400">Assumed: node "18 LTS" &rarr; node@18</span></div>
-          <div><span class="text-lore-accent">&#10003;</span> Generated: acme-backend.manifest</div>
+          <div class="text-gray-400">Found 15 items:</div>
+          <div class="ml-4"><span class="text-lore-accent">HIGH confidence:</span> <span class="text-gray-400">6 (docker, kubectl, go, node, helm, bazel)</span></div>
+          <div class="ml-4"><span class="text-yellow-400">MEDIUM confidence:</span> <span class="text-gray-400">2 (aws-cli, terraform)</span></div>
+          <div class="ml-4"><span class="text-red-400">LOW confidence:</span> <span class="text-gray-400">5 (acme-cli, acme-secrets, internal-proxy...)</span></div>
+          <div class="ml-4"><span class="text-gray-500">UNPARSEABLE:</span> <span class="text-gray-500">2</span></div>
         </div>
+
+        <!-- Team conversion prompt -->
+        <div class="mt-6 bg-blue-900/30 border border-blue-700/50 rounded-lg p-4">
+          <div class="flex items-start gap-2">
+            <span class="text-blue-400">&#128161;</span>
+            <div>
+              <p class="text-blue-200">We detected 5 org-specific packages not in the public registry.</p>
+              <p class="text-gray-400 mt-2">Want your whole team to get 95% automation instead of 40%?</p>
+              <div class="mt-3 space-y-1 text-sm">
+                <div><span class="text-blue-300">&rarr;</span> <a href="#" class="text-blue-300 hover:underline">Start a free Team trial (14 days, up to 10 seats)</a></div>
+                <div><span class="text-blue-300">&rarr;</span> <span class="text-gray-500">Learn more: devlore.noblefactor.com/teams</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="mt-6 pt-4 border-t border-gray-700">
+          <span class="text-gray-500"># Deploy the known packages now</span>
+        </div>
+        <div class="mt-2">
           <span class="text-gray-400">$</span>
           <span class="text-white"> lore deploy @acme-backend.manifest --known-only</span>
         </div>
         <div class="mt-4 space-y-1">
           <div><span class="text-lore-accent">&#10003;</span> docker installed, verified</div>
           <div><span class="text-lore-accent">&#10003;</span> kubectl installed, verified</div>
-          <div><span class="text-lore-accent">&#10003;</span> bazel installed, verified</div>
+          <div><span class="text-lore-accent">&#10003;</span> go installed, verified</div>
           <div class="text-gray-500">...</div>
+        </div>
+        <div class="mt-4 text-gray-400 italic">
+          By lunch, pushing your first PR. Now everyone on the team wants it.
         </div>
       </div>
     </div>
