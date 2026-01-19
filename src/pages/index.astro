@@ -94,9 +94,9 @@ import DocsLinks from '../components/DocsLinks.astro';
             <LoreIcon size={100} class="group-hover:scale-110 transition-transform" />
           </div>
           <h3 class="text-2xl font-bold mb-2 text-center">Lore</h3>
-          <p class="text-lore-accent text-sm mb-4 text-center font-mono">Deploy & Verify</p>
+          <p class="text-lore-accent text-sm mb-4 text-center font-mono">The Wisdom</p>
           <p class="text-gray-400 text-center">
-            The tribal knowledge package deployer. Installs software, configures it,
+            Tribal knowledge about installing software. Installs, configures,
             and <em>proves it works</em>. Four phases: prepare, install, provision, verify.
           </p>
           <p class="text-center mt-6 text-lore-accent group-hover:underline">
@@ -110,10 +110,10 @@ import DocsLinks from '../components/DocsLinks.astro';
             <WritIcon size={100} class="group-hover:scale-110 transition-transform" />
           </div>
           <h3 class="text-2xl font-bold mb-2 text-center">Writ</h3>
-          <p class="text-lore-accent text-sm mb-4 text-center font-mono">Configure & Manage</p>
+          <p class="text-lore-accent text-sm mb-4 text-center font-mono">The Written Form</p>
           <p class="text-gray-400 text-center">
-            Dotfiles manager with platform-aware symlinks. Orchestrates lore to install
-            dependencies, then deploys your configuration. What's writ is what runs.
+            Your configuration, inscribed. Dotfiles manager with platform-aware symlinks.
+            Orchestrates lore—what's writ is what runs.
           </p>
           <p class="text-center mt-6 text-lore-accent group-hover:underline">
             Learn more &rarr;
@@ -141,6 +141,8 @@ import DocsLinks from '../components/DocsLinks.astro';
         <div class="mt-6 space-y-2">
           <div><span class="text-lore-accent">&#10003;</span> Found 12 packages in lore registry</div>
           <div><span class="text-yellow-400">!</span> Found 3 org-specific items (LOW confidence)</div>
+          <div><span class="text-red-400">&#10007;</span> 2 items could not be parsed</div>
+          <div><span class="text-gray-500">&rarr;</span> <span class="text-gray-400">Assumed: node "18 LTS" &rarr; node@18</span></div>
           <div><span class="text-lore-accent">&#10003;</span> Generated: acme-backend.manifest</div>
         </div>
         <div class="mt-6 pt-4 border-t border-gray-700">
@@ -205,8 +207,56 @@ import DocsLinks from '../components/DocsLinks.astro';
     </div>
   </section>
 
-  <!-- Value Props -->
+  <!-- Honest by Design Section -->
   <section class="bg-gray-900/50 py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">Honest by Design</h2>
+      <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        Wikis rot. We know. DevLore doesn't pretend to be magic.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-800 flex items-center justify-center">
+            <svg class="w-8 h-8 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Confidence Levels</h3>
+          <p class="text-gray-400 text-sm">HIGH, MEDIUM, LOW. We tell you what we know and what we're guessing.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-800 flex items-center justify-center">
+            <svg class="w-8 h-8 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Assumptions Reported</h3>
+          <p class="text-gray-400 text-sm">"go 1.21+" → go@1.21. We show our work. You can override.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-800 flex items-center justify-center">
+            <svg class="w-8 h-8 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Errors Surfaced</h3>
+          <p class="text-gray-400 text-sm">"Ask Sarah" isn't automatable. We tell you what we couldn't parse.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-800 flex items-center justify-center">
+            <svg class="w-8 h-8 text-lore-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Iterate Together</h3>
+          <p class="text-gray-400 text-sm">AI assistant fills gaps. Each fix improves it for the next person.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Props -->
+  <section class="py-20">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto text-center">
         <div>
