@@ -140,7 +140,7 @@ import DocsLinks from '../components/DocsLinks.astro';
         </div>
         <div class="mt-6 space-y-2">
           <div class="text-gray-400">Found 15 items:</div>
-          <div class="ml-4"><span class="text-lore-accent">HIGH confidence:</span> <span class="text-gray-400">6 (docker, kubectl, go, node, helm, bazel)</span></div>
+          <div class="ml-4"><span class="text-lore-accent">HIGH confidence:</span> <span class="text-gray-400">6 (docker, kubectl --with eks-auth, go, node, helm, bazel)</span></div>
           <div class="ml-4"><span class="text-yellow-400">MEDIUM confidence:</span> <span class="text-gray-400">2 (aws-cli, terraform)</span></div>
           <div class="ml-4"><span class="text-red-400">LOW confidence:</span> <span class="text-gray-400">5 (acme-cli, acme-secrets, internal-proxy...)</span></div>
           <div class="ml-4"><span class="text-gray-500">UNPARSEABLE:</span> <span class="text-gray-500">2</span></div>
@@ -170,7 +170,8 @@ import DocsLinks from '../components/DocsLinks.astro';
         </div>
         <div class="mt-4 space-y-1">
           <div><span class="text-lore-accent">&#10003;</span> docker installed, verified</div>
-          <div><span class="text-lore-accent">&#10003;</span> kubectl installed, verified</div>
+          <div><span class="text-lore-accent">&#10003;</span> kubectl --with eks-auth</div>
+          <div class="ml-6 text-gray-500 text-xs">aws-iam-authenticator installed, kubeconfig updated, cluster connected</div>
           <div><span class="text-lore-accent">&#10003;</span> go installed, verified</div>
           <div class="text-gray-500">...</div>
         </div>
