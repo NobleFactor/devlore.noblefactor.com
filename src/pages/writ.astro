@@ -87,6 +87,54 @@ dotfiles/
     </div>
   </section>
 
+  <!-- Team Onboarding Workflow -->
+  <section class="bg-gray-900/50 py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">Capture Tribal Knowledge</h2>
+        <p class="text-gray-400 mb-8 text-lg">
+          Lore gets you 60% there. You tweak config to get things working. Writ captures
+          those tweaks so the next person gets 95%.
+        </p>
+
+        <div class="bg-gray-800 rounded-lg p-6 font-mono text-sm border border-gray-700 mb-8">
+          <div class="space-y-4">
+            <div>
+              <span class="text-gray-500"># Lore deploys the baseline</span><br>
+              <span class="text-gray-400">$</span>
+              <span class="text-white"> lore deploy @acme-backend.manifest</span>
+            </div>
+            <div>
+              <span class="text-gray-500"># You tweak config to get EKS working</span><br>
+              <span class="text-gray-400">$</span>
+              <span class="text-white"> vim ~/.kube/config ~/.aws/config</span>
+            </div>
+            <div>
+              <span class="text-gray-500"># Capture the working state</span><br>
+              <span class="text-gray-400">$</span>
+              <span class="text-white"> writ adopt acme-backend</span>
+            </div>
+            <div class="mt-4 space-y-1 border-t border-gray-700 pt-4">
+              <div class="text-gray-400">Reading receipt: ~/.local/state/lore/receipts/...</div>
+              <div><span class="text-lore-accent">&#10003;</span> packages.manifest captured</div>
+              <div><span class="text-lore-accent">&#10003;</span> ~/.kube/config adopted</div>
+              <div><span class="text-lore-accent">&#10003;</span> ~/.aws/config adopted</div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-gray-700">
+              <span class="text-gray-500"># Next person gets your working config</span><br>
+              <span class="text-gray-400">$</span>
+              <span class="text-white"> writ add acme-backend</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-gray-400">
+          Every tweak you make benefits everyone who comes after. Tribal knowledge preserved.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Platform Awareness -->
   <section class="bg-gray-900/50 py-16">
     <div class="container mx-auto px-6">
@@ -158,13 +206,13 @@ dotfiles/
           </div>
 
           <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <code class="text-lore-accent font-mono">writ adopt &lt;package&gt; &lt;file&gt;</code>
+            <code class="text-lore-accent font-mono">writ adopt &lt;project&gt;</code>
             <p class="text-gray-400 mt-2">
-              Move a file from your home directory into a package and create the symlink.
-              Bring existing configs under version control.
+              Capture your working configuration after a lore deploy. Reads the lore receipt,
+              creates a project with the packages.manifest and adopted config files.
             </p>
             <div class="mt-3 font-mono text-sm text-gray-500">
-              writ adopt shell ~/.zshrc
+              writ adopt acme-backend
             </div>
           </div>
 
