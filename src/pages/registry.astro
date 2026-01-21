@@ -4,7 +4,7 @@ import RegistryIcon from '../components/RegistryIcon.astro';
 import DocsLinks from '../components/DocsLinks.astro';
 ---
 
-<BaseLayout title="Registry - Community Knowledge Repository | DevLore" description="A crowdsourced repository of Package Manifest Modules encoding hard-won developer wisdom.">
+<BaseLayout title="Registry - Community Knowledge Repository | DevLore" description="A crowdsourced repository of lore packages encoding hard-won developer wisdom.">
 
   <!-- Hero Section -->
   <section class="container mx-auto px-6 py-20">
@@ -15,9 +15,9 @@ import DocsLinks from '../components/DocsLinks.astro';
           <p class="text-lore-accent font-mono text-sm mb-2 tracking-wider">THE FOUNDATION</p>
           <h1 class="text-4xl md:text-5xl font-bold mb-4">Registry</h1>
           <p class="text-xl text-gray-400">
-            Where tribal knowledge becomes permanent. A community-curated repository of Package
-            Manifest Modules (PMMs) that encode everything you need to know about installing
-            and configuring developer tools.
+            Where tribal knowledge becomes permanent. A community-curated repository of lore
+            packages that encode everything you need to know about installing and configuring
+            developer tools.
           </p>
         </div>
       </div>
@@ -28,15 +28,16 @@ import DocsLinks from '../components/DocsLinks.astro';
   <section class="bg-gray-900/50 py-16">
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8">What is a Package Manifest Module?</h2>
+        <h2 class="text-3xl font-bold mb-8">What is a Lore Package?</h2>
         <p class="text-gray-400 mb-6 text-lg">
-          A PMM is more than installation instructions. It's the complete story of how to get
-          a tool working: the gotchas, the post-install configuration, the verification steps,
-          and all the platform-specific quirks that took someone hours to figure out.
+          A lore package is more than installation instructions. It's the complete story
+          of how to get a tool working: the gotchas, the post-install configuration, the
+          verification steps, and all the platform-specific quirks that took someone hours to
+          figure out.
         </p>
 
         <div class="bg-gray-800 rounded-lg p-6 font-mono text-sm border border-gray-700">
-          <div class="text-gray-500 mb-4"># Example: kubectl PMM structure</div>
+          <div class="text-gray-500 mb-4"># Example: kubectl lore package</div>
           <pre class="text-gray-300">
 kubectl/
 ├── README.md           <span class="text-gray-500"># Tribal knowledge docs</span>
@@ -56,7 +57,7 @@ kubectl/
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold mb-8">The Knowledge That Gets Lost</h2>
         <p class="text-gray-400 mb-8 text-lg">
-          Package managers handle installation. PMMs handle everything else.
+          Package managers handle installation. Lore packages handle everything else.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -65,21 +66,21 @@ kubectl/
             <p class="text-gray-400">
               "kubectl installed successfully!" But wait—you need to connect to EKS?
               That requires aws-iam-authenticator. And AWS credentials. And kubeconfig updates.
-              PMMs capture this.
+              Lore packages capture this.
             </p>
           </div>
           <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h3 class="text-xl font-semibold mb-3 text-lore-accent">Shell Configuration</h3>
             <p class="text-gray-400">
               Homebrew installed your tool, but did it add shell completions? Set up
-              aliases? Add to PATH? PMMs remember what you'd forget.
+              aliases? Add to PATH? Lore packages remember what you'd forget.
             </p>
           </div>
           <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h3 class="text-xl font-semibold mb-3 text-lore-accent">Platform Quirks</h3>
             <p class="text-gray-400">
               Docker on macOS needs Docker Desktop or Colima. Docker on Linux needs
-              user groups. Docker on Windows needs WSL2. One PMM, three platforms.
+              user groups. Docker on Windows needs WSL2. One lore package, three platforms.
             </p>
           </div>
           <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
@@ -107,7 +108,7 @@ kubectl/
         <div class="grid md:grid-cols-3 gap-6 text-center">
           <div class="p-6">
             <div class="text-4xl font-bold text-lore-accent mb-2">Contribute</div>
-            <p class="text-gray-400">Spent hours getting a tool working? Encode it as a PMM.</p>
+            <p class="text-gray-400">Spent hours getting a tool working? Encode it as a lore package.</p>
           </div>
           <div class="p-6">
             <div class="text-4xl font-bold text-lore-accent mb-2">Review</div>
@@ -133,9 +134,9 @@ kubectl/
             <!-- Registry box -->
             <rect x="20" y="40" width="140" height="100" rx="8" stroke="currentColor" stroke-width="2" class="text-gray-600" fill="currentColor" fill-opacity="0.05" />
             <text x="90" y="70" text-anchor="middle" class="text-gray-300" fill="currentColor" font-size="14" font-weight="600">Registry</text>
-            <text x="90" y="90" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">docker.pmm</text>
-            <text x="90" y="105" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">kubectl.pmm</text>
-            <text x="90" y="120" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">neovim.pmm</text>
+            <text x="90" y="90" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">docker/</text>
+            <text x="90" y="105" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">kubectl/</text>
+            <text x="90" y="120" text-anchor="middle" class="text-gray-500" fill="currentColor" font-size="10">neovim/</text>
 
             <!-- Arrow -->
             <path d="M170 90 L230 90" stroke="currentColor" stroke-width="2" class="text-lore-accent" />
