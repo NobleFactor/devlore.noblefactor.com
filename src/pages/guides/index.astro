@@ -1,0 +1,110 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const allGuides = await getCollection("guides");
+
+const gettingStarted = allGuides
+  .filter((g) => g.data.tool === "devlore")
+  .sort((a, b) => a.data.order - b.data.order);
+const writGuides = allGuides
+  .filter((g) => g.data.tool === "writ")
+  .sort((a, b) => a.data.order - b.data.order);
+const loreGuides = allGuides
+  .filter((g) => g.data.tool === "lore")
+  .sort((a, b) => a.data.order - b.data.order);
+
+function categoryLabel(cat: string) {
+  switch (cat) {
+    case "tutorial": return "Tutorial";
+    case "concept": return "Concept";
+    case "overview": return "Overview";
+    default: return cat;
+  }
+}
+
+function categoryColor(cat: string) {
+  switch (cat) {
+    case "tutorial": return "text-blue-400";
+    case "concept": return "text-purple-400";
+    case "overview": return "text-green-400";
+    default: return "text-gray-400";
+  }
+}
+---
+
+<BaseLayout title="Guides | DevLore">
+  <div class="container mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold mb-2">Guides</h1>
+    <p class="text-gray-400 mb-10">
+      Learn how to use DevLore with step-by-step tutorials and conceptual overviews.
+    </p>
+
+    {gettingStarted.length > 0 && (
+      <div class="mb-10">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {gettingStarted.map((guide) => (
+            <a
+              href={`/guides/${guide.slug}/`}
+              class="block bg-gray-800/50 border border-gray-700 rounded-lg p-5 hover:border-lore-accent transition"
+            >
+              <span class={`text-xs font-medium ${categoryColor(guide.data.category)}`}>
+                {categoryLabel(guide.data.category)}
+              </span>
+              <h3 class="text-white font-semibold mt-1">{guide.data.title}</h3>
+              <p class="text-gray-400 text-sm mt-1">{guide.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Writ guides -->
+      {writGuides.length > 0 && (
+        <div>
+          <h2 class="text-xl font-bold mb-4">Writ</h2>
+          <div class="space-y-3">
+            {writGuides.map((guide) => (
+              <a
+                href={`/guides/${guide.slug}/`}
+                class="block bg-gray-800/50 border border-gray-700 rounded-lg p-4 hover:border-lore-accent transition"
+              >
+                <div class="flex items-center gap-2">
+                  <h3 class="text-white font-medium text-sm">{guide.data.title}</h3>
+                  <span class={`text-xs ${categoryColor(guide.data.category)}`}>
+                    {categoryLabel(guide.data.category)}
+                  </span>
+                </div>
+                <p class="text-gray-400 text-xs mt-1">{guide.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Lore guides -->
+      {loreGuides.length > 0 && (
+        <div>
+          <h2 class="text-xl font-bold mb-4">Lore</h2>
+          <div class="space-y-3">
+            {loreGuides.map((guide) => (
+              <a
+                href={`/guides/${guide.slug}/`}
+                class="block bg-gray-800/50 border border-gray-700 rounded-lg p-4 hover:border-lore-accent transition"
+              >
+                <div class="flex items-center gap-2">
+                  <h3 class="text-white font-medium text-sm">{guide.data.title}</h3>
+                  <span class={`text-xs ${categoryColor(guide.data.category)}`}>
+                    {categoryLabel(guide.data.category)}
+                  </span>
+                </div>
+                <p class="text-gray-400 text-xs mt-1">{guide.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>

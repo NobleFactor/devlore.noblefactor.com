@@ -1,0 +1,143 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+interface Props {
+  title: string;
+  description?: string;
+  tool?: string;
+  currentSlug?: string;
+}
+
+const { title, description, tool, currentSlug } = Astro.props;
+
+const allDocs = await getCollection("cli");
+
+// Group docs by tool
+const writDocs = allDocs
+  .filter((d) => d.data.tool === "writ")
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+const loreDocs = allDocs
+  .filter((d) => d.data.tool === "lore")
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+
+// Build breadcrumbs from current slug
+function buildBreadcrumbs(slug: string | undefined) {
+  if (!slug) return [];
+  const parts = slug.split("/");
+  const crumbs = [];
+  for (let i = 0; i < parts.length; i++) {
+    const path = parts.slice(0, i + 1).join("/");
+    const doc = allDocs.find((d) => d.slug === path);
+    crumbs.push({
+      label: parts[i],
+      href: `/cli/${path}/`,
+      active: i === parts.length - 1,
+    });
+  }
+  return crumbs;
+}
+
+const breadcrumbs = buildBreadcrumbs(currentSlug);
+
+// Determine depth for indentation
+function getDepth(slug: string) {
+  return slug.split("/").length - 1;
+}
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container mx-auto px-6 py-8 flex flex-col lg:flex-row gap-8">
+    <!-- Sidebar -->
+    <aside class="lg:w-64 shrink-0">
+      <nav class="sticky top-8">
+        <a href="/cli/" class="block text-sm font-semibold text-lore-accent mb-4 hover:underline">
+          &larr; CLI Reference
+        </a>
+
+        {writDocs.length > 0 && (
+          <div class="mb-6">
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">writ</h3>
+            <ul class="space-y-1">
+              {writDocs.map((doc) => (
+                <li style={`padding-left: ${getDepth(doc.slug) * 0.75}rem`}>
+                  <a
+                    href={`/cli/${doc.slug}/`}
+                    class={`block text-sm py-0.5 transition ${
+                      currentSlug === doc.slug
+                        ? "text-lore-accent font-medium"
+                        : "text-gray-300 hover:text-white"
+                    }`}
+                  >
+                    {doc.data.command}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {loreDocs.length > 0 && (
+          <div class="mb-6">
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">lore</h3>
+            <ul class="space-y-1">
+              {loreDocs.map((doc) => (
+                <li style={`padding-left: ${getDepth(doc.slug) * 0.75}rem`}>
+                  <a
+                    href={`/cli/${doc.slug}/`}
+                    class={`block text-sm py-0.5 transition ${
+                      currentSlug === doc.slug
+                        ? "text-lore-accent font-medium"
+                        : "text-gray-300 hover:text-white"
+                    }`}
+                  >
+                    {doc.data.command}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <article class="flex-1 min-w-0">
+      {breadcrumbs.length > 0 && (
+        <nav class="mb-6 text-sm text-gray-400">
+          <ol class="flex flex-wrap gap-1 items-center">
+            <li><a href="/cli/" class="hover:text-white transition">cli</a></li>
+            {breadcrumbs.map((crumb) => (
+              <>
+                <li class="text-gray-600">/</li>
+                <li>
+                  {crumb.active ? (
+                    <span class="text-white">{crumb.label}</span>
+                  ) : (
+                    <a href={crumb.href} class="hover:text-white transition">{crumb.label}</a>
+                  )}
+                </li>
+              </>
+            ))}
+          </ol>
+        </nav>
+      )}
+
+      <div class="prose prose-invert prose-sm max-w-none
+        prose-headings:text-white
+        prose-h1:text-2xl prose-h1:mb-4
+        prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-3 prose-h2:border-b prose-h2:border-gray-700 prose-h2:pb-2
+        prose-code:text-lore-accent prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+        prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-700
+        prose-table:text-sm
+        prose-th:text-left prose-th:text-gray-300 prose-th:border-gray-700
+        prose-td:border-gray-700
+        prose-a:text-lore-accent prose-a:no-underline hover:prose-a:underline
+        prose-strong:text-white
+        prose-p:text-gray-300
+        prose-li:text-gray-300">
+        <slot />
+      </div>
+    </article>
+  </div>
+</BaseLayout>
