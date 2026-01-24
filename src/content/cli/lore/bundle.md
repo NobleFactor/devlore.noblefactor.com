@@ -1,0 +1,45 @@
+---
+title: "lore bundle"
+description: "Create self-extracting deployment bundles for air-gapped environments"
+tool: "lore"
+command: "bundle"
+parent: "lore"
+generated: "2026-01-24T04:27:42Z"
+version: "621aacf"
+---
+
+# lore bundle
+
+Create self-extracting deployment bundles for air-gapped environments
+
+## Usage
+
+```
+lore bundle @<manifest> -o <output> [flags]
+```
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--include-repo` | `[]` | Include repository in bundle |
+| `--output, -o` | `""` | Output bundle path |
+| `--platform` | `""` | Target platform (e.g., linux/fedora) |
+
+## Global Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
+| `--dry-run` | `false` | Show what would be done without making changes |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
+| `--registry` | `""` | Registry path |
+| `--silent` | `false` | Suppress all status messages (stderr) |
+| `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
+| `--verbose, -v` | `false` | Verbose output |
+
+## Parent Command
+
+| Command | Description |
+|---------|-------------|
+| [lore](/cli/lore/) | The tribal knowledge package deployer |
