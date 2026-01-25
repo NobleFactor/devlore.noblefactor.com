@@ -4,8 +4,8 @@ description: "Unregister a repository"
 tool: "writ"
 command: "remove"
 parent: "writ repo"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-25T19:17:28Z"
+version: "ca292a4"
 ---
 
 # writ repo remove

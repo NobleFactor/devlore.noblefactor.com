@@ -4,8 +4,8 @@ description: "Discover system info and configure template variables"
 tool: "writ"
 command: "configure"
 parent: "writ"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-25T19:17:28Z"
+version: "ca292a4"
 ---
 
 # writ configure
