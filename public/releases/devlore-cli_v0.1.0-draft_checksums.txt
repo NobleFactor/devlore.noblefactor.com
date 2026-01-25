@@ -1,0 +1,6 @@
+a765535235772baf35ab74ee2128d515f9aa108775e8d64640cefca40fee9799  devlore-cli_v0.1.0-draft_darwin_amd64.tar.gz
+9cb4b27e167e6ed1b5bbb203de285557516cb786754d26c493f4869d373dee03  devlore-cli_v0.1.0-draft_darwin_arm64.tar.gz
+b88d453f005a88d5a85d749bee2e0e108e9d627488f795aa1247ac8b136332c6  devlore-cli_v0.1.0-draft_linux_amd64.tar.gz
+89bf8dcf26130980b32fbfc9ba6334c22d847ed04a8e4320ce01f650da60ca3a  devlore-cli_v0.1.0-draft_linux_arm64.tar.gz
+7f652007fbd904f6037d80dd4ea1d58f5acd47672a9b0900ecf21eefc8c8b940  devlore-cli_v0.1.0-draft_windows_amd64.zip
+cdce1fa0331653c0bd2c871a86c57f27ac17516c6853b97daf166a45678aa636  devlore-cli_v0.1.0-draft_windows_arm64.zip
