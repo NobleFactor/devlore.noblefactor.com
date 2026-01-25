@@ -4,8 +4,8 @@ description: "Initialize a new dotfiles repository in the current directory"
 tool: "writ"
 command: "init"
 parent: "writ"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-25T02:21:49Z"
+version: "47323ab"
 ---
 
 # writ init

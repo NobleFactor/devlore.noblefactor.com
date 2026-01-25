@@ -4,8 +4,8 @@ description: "List all configuration settings"
 tool: "lore"
 command: "list"
 parent: "lore config"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-25T02:21:49Z"
+version: "47323ab"
 ---
 
 # lore config list
