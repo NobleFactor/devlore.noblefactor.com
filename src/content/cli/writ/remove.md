@@ -4,8 +4,8 @@ description: "Remove deployed files for the specified projects"
 tool: "writ"
 command: "remove"
 parent: "writ"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-25T19:10:05Z"
+version: "1464a54"
 ---
 
 # writ remove
