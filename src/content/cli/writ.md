@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-25T19:03:43Z"
+version: "2be36de"
 ---
 
 # writ
@@ -54,6 +54,7 @@ Declare your environment once — writ deploys it everywhere you work.
 | [writ init](/cli/writ/init/) | Initialize a new dotfiles repository in the current directory |
 | [writ inspect](/cli/writ/inspect/) | Show detailed information about a project or deployed file |
 | [writ list](/cli/writ/list/) | List available projects for the current target |
+| [writ migrate](/cli/writ/migrate/) | Analyze and migrate an existing environment repository to writ conventions |
 | [writ receipt](/cli/writ/receipt/) | View and manage deployment receipts |
 | [writ remove](/cli/writ/remove/) | Remove deployed files for the specified projects |
 | [writ repo](/cli/writ/repo/) | Manage environment repositories |

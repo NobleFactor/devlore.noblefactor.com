@@ -4,8 +4,8 @@ description: "Parse wiki or script and generate packages.manifest and config"
 tool: "lore"
 command: "onboard"
 parent: "lore"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-25T19:03:43Z"
+version: "2be36de"
 ---
 
 # lore onboard
