@@ -5,7 +5,11 @@
 # DevLore CLI Installer
 # Usage: curl -sSL https://devlore.noblefactor.com/install.sh | bash
 #
+# For private repo (requires GitHub token):
+#   curl -sSL https://devlore.noblefactor.com/install.sh | GITHUB_TOKEN=<token> bash
+#
 # Options (via environment variables):
+#   GITHUB_TOKEN         - GitHub token for private repo access (or GH_TOKEN)
 #   DEVLORE_INSTALL_DIR  - Installation directory (default: ~/.local/bin)
 #   DEVLORE_VERSION      - Specific version to install (default: latest)
 #   DEVLORE_TOOLS        - Tools to install: "all", "writ", "lore" (default: all)
@@ -13,10 +17,19 @@
 set -euo pipefail
 
 # Configuration
-DOWNLOAD_BASE="${DEVLORE_DOWNLOAD_BASE:-https://devlore.noblefactor.com/releases}"
+GITHUB_REPO="NobleFactor/devlore-cli"
+GITHUB_API="https://api.github.com/repos/${GITHUB_REPO}"
 INSTALL_DIR="${DEVLORE_INSTALL_DIR:-$HOME/.local/bin}"
 VERSION="${DEVLORE_VERSION:-latest}"
 TOOLS="${DEVLORE_TOOLS:-all}"
+
+# GitHub authentication (required for private repo)
+AUTH_HEADER=""
+if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+    AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
+elif [[ -n "${GH_TOKEN:-}" ]]; then
+    AUTH_HEADER="Authorization: token ${GH_TOKEN}"
+fi
 
 # Colors (disabled if not a terminal)
 if [[ -t 1 ]]; then
@@ -58,30 +71,46 @@ detect_arch() {
     esac
 }
 
-# Get latest version from the website
+# Get latest version from GitHub releases
 get_latest_version() {
-    local url="${DOWNLOAD_BASE}/latest.txt"
-    local version
+    local url="${GITHUB_API}/releases/latest"
+    local response
     if command -v curl &>/dev/null; then
-        version=$(curl -sSL "$url" 2>/dev/null)
+        if [[ -n "$AUTH_HEADER" ]]; then
+            response=$(curl -sSL -H "$AUTH_HEADER" "$url" 2>/dev/null)
+        else
+            response=$(curl -sSL "$url" 2>/dev/null)
+        fi
     elif command -v wget &>/dev/null; then
-        version=$(wget -qO- "$url" 2>/dev/null)
+        if [[ -n "$AUTH_HEADER" ]]; then
+            response=$(wget -qO- --header="$AUTH_HEADER" "$url" 2>/dev/null)
+        else
+            response=$(wget -qO- "$url" 2>/dev/null)
+        fi
     else
         error "Neither curl nor wget found. Please install one of them."
     fi
-    # Trim whitespace
-    echo "$version" | tr -d '[:space:]'
+    # Extract tag_name from JSON response
+    echo "$response" | grep -o '"tag_name"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/.*"tag_name"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/'
 }
 
-# Download file
+# Download file (with GitHub auth if available)
 download() {
     local url="$1"
     local dest="$2"
 
     if command -v curl &>/dev/null; then
-        curl -sSL "$url" -o "$dest"
+        if [[ -n "$AUTH_HEADER" ]]; then
+            curl -sSL -H "$AUTH_HEADER" -H "Accept: application/octet-stream" "$url" -o "$dest"
+        else
+            curl -sSL "$url" -o "$dest"
+        fi
     elif command -v wget &>/dev/null; then
-        wget -q "$url" -O "$dest"
+        if [[ -n "$AUTH_HEADER" ]]; then
+            wget -q --header="$AUTH_HEADER" --header="Accept: application/octet-stream" "$url" -O "$dest"
+        else
+            wget -q "$url" -O "$dest"
+        fi
     else
         error "Neither curl nor wget found. Please install one of them."
     fi
@@ -133,11 +162,11 @@ main() {
         ext="zip"
     fi
 
-    # Build download URL (version includes 'v' prefix)
+    # Build download URL from GitHub releases
     local archive_name="devlore-cli_${VERSION}_${os}_${arch}.${ext}"
     local checksums_name="devlore-cli_${VERSION}_checksums.txt"
-    local archive_url="${DOWNLOAD_BASE}/${archive_name}"
-    local checksums_url="${DOWNLOAD_BASE}/${checksums_name}"
+    local archive_url="https://github.com/${GITHUB_REPO}/releases/download/${VERSION}/${archive_name}"
+    local checksums_url="https://github.com/${GITHUB_REPO}/releases/download/${VERSION}/${checksums_name}"
 
     # Create temp directory
     local tmp_dir
