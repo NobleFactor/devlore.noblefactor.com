@@ -1,16 +1,16 @@
 ---
 title: "writ init"
-description: "Initialize a new dotfiles repository in the current directory"
+description: "Initialize a new environment with AI-assisted recommendations"
 tool: "writ"
 command: "init"
 parent: "writ"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-27T06:28:08Z"
+version: "dbe26bf"
 ---
 
 # writ init
 
-Initialize a new dotfiles repository in the current directory
+Initialize a new environment with AI-assisted recommendations
 
 ## Usage
 
@@ -20,17 +20,28 @@ writ init [flags]
 
 ## Description
 
-Initialize a new dotfiles repository in the current directory.
+Initialize a new writ environment with platform detection and AI-assisted recommendations.
 
-DEPRECATED: Use 'writ repo init' instead. This command is provided for
-backward compatibility and will be removed in a future release.
+Writ detects your platform, shell, and available package managers, then provides
+personalized recommendations for:
+  - Repository structure and layer selection
+  - Essential and recommended packages
+  - Initial project organization
+
+If an existing dotfile manager is detected (chezmoi, yadm, stow, etc.),
+writ recommends using 'writ migrate' instead to preserve your configuration.
+
+By default, AI-assisted analysis provides detailed recommendations. Use --no-ai
+for basic structural suggestions only.
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--force` | `false` | Overwrite existing structure |
-| `--layer` | `personal` | Layer for the repository: personal or team |
+| `--focus` | `""` | Development focus: web, backend, devops, data, mobile |
+| `--format` | `text` | Output format: text, yaml, json |
+| `--layer` | `""` | Repository layer preference: personal, team, or base |
+| `--no-ai` | `false` | Skip AI-assisted analysis (basic mode) |
 
 ## Global Options
 
@@ -43,6 +54,16 @@ backward compatibility and will be removed in a future release.
 | `--target` | `Home` | Target to operate on |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
 | `--verbose, -v` | `false` | Verbose output |
+
+## Examples
+
+```bash
+writ init
+writ init --layer=personal
+writ init --focus=devops
+writ init --format yaml
+writ init --no-ai
+```
 
 ## Parent Command
 

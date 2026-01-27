@@ -4,8 +4,8 @@ description: "Remove deployed files for the specified projects"
 tool: "writ"
 command: "remove"
 parent: "writ"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-27T06:28:08Z"
+version: "dbe26bf"
 ---
 
 # writ remove
@@ -31,7 +31,7 @@ Safety behavior depends on state file:
   No state        → Error: cannot safely remove without state
 
 With --decommission, delegates to lore to remove orphaned software packages
-that were installed via packages-manifest.yaml files in the removed projects.
+that were installed via packages.manifest files in the removed projects.
 
 ## Options
 
