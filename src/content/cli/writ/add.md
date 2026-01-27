@@ -4,8 +4,8 @@ description: "Deploy projects by creating symlinks in the target location"
 tool: "writ"
 command: "add"
 parent: "writ"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-27T06:49:05Z"
+version: "27d01bb"
 ---
 
 # writ add
@@ -24,7 +24,7 @@ Deploy projects by creating symlinks in the target location.
 
 Files inside each project directory are symlinked to the target (default: ~).
 Platform-specific variants (e.g., project.Darwin) are selected automatically.
-If a project contains packages-manifest.yaml, writ delegates to lore for software installation.
+If a project contains packages.manifest, writ delegates to lore for software installation.
 
 Conflict handling (--conflict):
   stop      Stop on first conflict (default)
