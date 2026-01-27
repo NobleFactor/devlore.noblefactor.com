@@ -8,7 +8,7 @@ import DocsLinks from '../components/DocsLinks.astro';
 import CopyableCode from '../components/CopyableCode.astro';
 
 const installUrl = import.meta.env.PUBLIC_INSTALL_URL || 'https://devlore.noblefactor.com/install.sh';
-const installCommand = `curl -sSL ${installUrl} | GH_TOKEN=$(gh auth token) bash`;
+const installCommand = `curl -sSL ${installUrl} | GH_TOKEN=$(unset GITHUB_TOKEN GH_TOKEN; gh auth token) bash`;
 ---
 
 <BaseLayout title="DevLore - Tribal Knowledge, Automated">
