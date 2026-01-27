@@ -109,7 +109,8 @@ packages:
   - gh
   - jq
   - ripgrep
-  - neovim
+  - neovim:
+      with: [lsp]
 ```
 
 ```bash
@@ -117,6 +118,8 @@ writ add noblefactor
 # → symlinks configuration files
 # → calls lore to install gh, jq, ripgrep, neovim
 ```
+
+See [Packages Manifest](/guides/writ/packages-manifest/) for the full format reference.
 
 Or install packages directly with lore:
 
