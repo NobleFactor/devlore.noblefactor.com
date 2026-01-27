@@ -21,7 +21,7 @@ import CopyableCode from '../components/CopyableCode.astro';
       experienced developers and transforms it into one-command deployments that actually work.
       Cross-platform. Verified. Ready in minutes.
     </p>
-    <CopyableCode code="curl -sSL https://devlore.noblefactor.com/install.sh | bash" />
+    <CopyableCode code="curl -sSL https://devlore.noblefactor.com/install.sh | GITHUB_TOKEN=$(gh auth token) bash" />
   </section>
 
   <!-- Hero Diagram: The Flow -->
