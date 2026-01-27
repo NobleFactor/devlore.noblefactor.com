@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-27T07:08:16Z"
+version: "82fa200"
 ---
 
 # writ
@@ -51,12 +51,12 @@ Declare your environment once — writ deploys it everywhere you work.
 | [writ adopt](/cli/writ/adopt/) | Move files from target location into a project and create symlinks |
 | [writ config](/cli/writ/config/) | Get and set configuration options |
 | [writ configure](/cli/writ/configure/) | Discover system info and configure template variables |
-| [writ init](/cli/writ/init/) | Initialize a new dotfiles repository in the current directory |
+| [writ init](/cli/writ/init/) | Initialize a new environment with AI-assisted recommendations |
 | [writ inspect](/cli/writ/inspect/) | Show detailed information about a project or deployed file |
 | [writ list](/cli/writ/list/) | List available projects for the current target |
+| [writ migrate](/cli/writ/migrate/) | Analyze and migrate an existing environment repository to writ conventions |
 | [writ receipt](/cli/writ/receipt/) | View and manage deployment receipts |
 | [writ remove](/cli/writ/remove/) | Remove deployed files for the specified projects |
-| [writ repo](/cli/writ/repo/) | Manage environment repositories |
 | [writ secrets](/cli/writ/secrets/) | Manage age-encrypted secrets |
 | [writ self-install](/cli/writ/self-install/) | Complete installation to specified directory |
 | [writ status](/cli/writ/status/) | Show symlink status for projects |
