@@ -175,7 +175,7 @@ writ remove --decommission noblefactor
 ```
 
 This delegates to `lore decommission --orphans-only` to remove packages
-that were installed via the project's `packages.manifest` and are no longer
+that were installed via the project's `packages-manifest.yaml` and are no longer
 referenced by any other project.
 
 ## Inspect details

@@ -31,7 +31,7 @@ Safety behavior depends on state file:
   No state        → Error: cannot safely remove without state
 
 With --decommission, delegates to lore to remove orphaned software packages
-that were installed via packages.manifest files in the removed projects.
+that were installed via packages-manifest.yaml files in the removed projects.
 
 ## Options
 

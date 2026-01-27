@@ -38,7 +38,7 @@ features are listed in its manifest.
 Use `@` to deploy from a manifest file:
 
 ```bash
-lore deploy @packages.manifest
+lore deploy @packages-manifest.yaml
 ```
 
 Deploy from multiple manifests:
@@ -141,13 +141,13 @@ lore decommission --orphans-only
 
 ## Integration with writ
 
-When writ deploys a project containing `packages.manifest`, it automatically
+When writ deploys a project containing `packages-manifest.yaml`, it automatically
 calls lore:
 
 ```bash
 writ add noblefactor
 # → Symlinks config files
-# → Calls: lore deploy @packages.manifest
+# → Calls: lore deploy @packages-manifest.yaml
 ```
 
 When writ removes a project:

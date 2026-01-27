@@ -29,14 +29,14 @@ then symlinked back to the original location.
 Directories are adopted recursively—all files within are moved and symlinked.
 Existing symlinks within directories are skipped.
 
-With --from-receipt, reads a lore receipt and adopts packages.manifest and
+With --from-receipt, reads a lore receipt and adopts packages-manifest.yaml and
 config files into the environment repository.
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--from-receipt` | `false` | Adopt packages.manifest and config from lore receipt |
+| `--from-receipt` | `false` | Adopt packages-manifest.yaml and config from lore receipt |
 | `--layer` | `personal` | Layer to adopt into: personal, team, or base |
 | `--source` | `Home` | Source directory within the repo (e.g., Home, System) |
 

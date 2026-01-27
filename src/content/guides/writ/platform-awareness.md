@@ -100,14 +100,14 @@ If no variant matches and no base file exists, the file is skipped.
 
 ## Platform-specific packages
 
-The same mechanism works for `packages.manifest` files, allowing
+The same mechanism works for `packages-manifest.yaml` files, allowing
 platform-specific software lists:
 
 ```
 noblefactor/
-├── packages.manifest           # Common packages (jq, gh, ripgrep)
-├── packages.manifest.Darwin    # macOS packages (brew-only tools)
-└── packages.manifest.Linux     # Linux packages (apt/dnf-only tools)
+├── packages-manifest.yaml           # Common packages (jq, gh, ripgrep)
+├── packages-manifest.yaml.Darwin    # macOS packages (brew-only tools)
+└── packages-manifest.yaml.Linux     # Linux packages (apt/dnf-only tools)
 ```
 
 Writ merges the base manifest with the platform-specific one before

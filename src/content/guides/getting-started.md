@@ -100,11 +100,11 @@ noblefactor (personal)
 
 ## Add software with lore
 
-If your project includes a `packages.manifest` file, writ automatically
+If your project includes a `packages-manifest.yaml` file, writ automatically
 delegates to lore for software installation:
 
 ```yaml
-# noblefactor/packages.manifest
+# noblefactor/packages-manifest.yaml
 packages:
   - gh
   - jq
