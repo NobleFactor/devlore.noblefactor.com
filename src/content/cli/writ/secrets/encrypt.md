@@ -4,8 +4,8 @@ description: "Encrypt a file with age"
 tool: "writ"
 command: "encrypt"
 parent: "writ secrets"
-generated: "2026-01-27T20:19:27Z"
-version: "bcc658c"
+generated: "2026-01-27T20:32:19Z"
+version: "d8575e7"
 ---
 
 # writ secrets encrypt

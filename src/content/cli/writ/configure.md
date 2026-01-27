@@ -4,8 +4,8 @@ description: "Discover system info and configure template variables"
 tool: "writ"
 command: "configure"
 parent: "writ"
-generated: "2026-01-27T20:19:27Z"
-version: "bcc658c"
+generated: "2026-01-27T20:32:19Z"
+version: "d8575e7"
 ---
 
 # writ configure
