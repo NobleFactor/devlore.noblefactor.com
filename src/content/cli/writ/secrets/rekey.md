@@ -4,8 +4,8 @@ description: "Re-encrypt all .age files to current .age-recipients"
 tool: "writ"
 command: "rekey"
 parent: "writ secrets"
-generated: "2026-01-27T20:32:19Z"
-version: "d8575e7"
+generated: "2026-01-27T21:01:20Z"
+version: "048c184"
 ---
 
 # writ secrets rekey
