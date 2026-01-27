@@ -37,6 +37,19 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
+      - name: Determine deployment environment
+        id: env
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "name=" >> $GITHUB_OUTPUT
+            echo "hostname=devlore.noblefactor.com" >> $GITHUB_OUTPUT
+          else
+            # Convert branch name to valid environment name (e.g., release/1.0 -> release-1-0)
+            ENV_NAME=$(echo "${{ github.ref_name }}" | sed 's/[^a-zA-Z0-9]/-/g')
+            echo "name=$ENV_NAME" >> $GITHUB_OUTPUT
+            echo "hostname=${ENV_NAME}.devlore.noblefactor.com" >> $GITHUB_OUTPUT
+          fi
+
       - name: Deploy to Azure Static Web Apps
         id: deploy
         uses: Azure/static-web-apps-deploy@v1
@@ -47,6 +60,19 @@ jobs:
           app_location: "/dist"
           skip_app_build: true
           production_branch: "main"
+          deployment_environment: ${{ steps.env.outputs.name }}
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Configure custom domain
+        run: |
+          az staticwebapp hostname set \
+            --name devlore-noblefactor-com \
+            --hostname ${{ steps.env.outputs.hostname }} \
+            --no-wait || true
 
   close_pull_request:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

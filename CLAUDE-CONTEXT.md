@@ -63,6 +63,8 @@ az staticwebapp users list \
 - **Branch:** develop (default, deploys automatically)
 - **Secret:** `AZURE_STATIC_WEB_APPS_API_TOKEN` (set)
 
+For GitHub secrets documentation, see [DEPLOYMENT.md#github-secrets](DEPLOYMENT.md#github-secrets).
+
 ## Custom Domain (Pending)
 
 To add `devlore.noblefactor.com`:
