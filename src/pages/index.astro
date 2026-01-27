@@ -6,6 +6,9 @@ import LoreIcon from '../components/LoreIcon.astro';
 import WritIcon from '../components/WritIcon.astro';
 import DocsLinks from '../components/DocsLinks.astro';
 import CopyableCode from '../components/CopyableCode.astro';
+
+const installUrl = import.meta.env.PUBLIC_INSTALL_URL || 'https://devlore.noblefactor.com/install.sh';
+const installCommand = `curl -sSL ${installUrl} | GITHUB_TOKEN=$(gh auth token) bash`;
 ---
 
 <BaseLayout title="DevLore - Tribal Knowledge, Automated">
@@ -21,7 +24,7 @@ import CopyableCode from '../components/CopyableCode.astro';
       experienced developers and transforms it into one-command deployments that actually work.
       Cross-platform. Verified. Ready in minutes.
     </p>
-    <CopyableCode code="curl -sSL https://delightful-grass-0ac0a4c1e-develop.westus2.6.azurestaticapps.net/install.sh | GITHUB_TOKEN=$(gh auth token) bash" />
+    <CopyableCode code={installCommand} />
   </section>
 
   <!-- Hero Diagram: The Flow -->

@@ -34,21 +34,26 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Astro site
-        run: npm run build
-
       - name: Determine deployment environment
         id: env
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
             echo "name=" >> $GITHUB_OUTPUT
             echo "hostname=devlore.noblefactor.com" >> $GITHUB_OUTPUT
+            echo "install_url=https://devlore.noblefactor.com/install.sh" >> $GITHUB_OUTPUT
           else
             # Convert branch name to valid environment name (e.g., release/1.0 -> release-1-0)
             ENV_NAME=$(echo "${{ github.ref_name }}" | sed 's/[^a-zA-Z0-9]/-/g')
             echo "name=$ENV_NAME" >> $GITHUB_OUTPUT
             echo "hostname=${ENV_NAME}.devlore.noblefactor.com" >> $GITHUB_OUTPUT
+            # Use Azure SWA environment URL for non-production
+            echo "install_url=https://delightful-grass-0ac0a4c1e-${ENV_NAME}.westus2.6.azurestaticapps.net/install.sh" >> $GITHUB_OUTPUT
           fi
+
+      - name: Build Astro site
+        run: npm run build
+        env:
+          PUBLIC_INSTALL_URL: ${{ steps.env.outputs.install_url }}
 
       - name: Deploy to Azure Static Web Apps
         id: deploy
