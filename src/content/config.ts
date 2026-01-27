@@ -19,7 +19,7 @@ const guides = defineCollection({
     title: z.string(),
     description: z.string(),
     tool: z.enum(["devlore", "writ", "lore"]),
-    category: z.enum(["overview", "tutorial", "concept"]),
+    category: z.enum(["overview", "tutorial", "concept", "reference"]),
     order: z.number(),
   }),
 });
