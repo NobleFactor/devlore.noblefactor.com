@@ -4,8 +4,8 @@ description: "List available receipts"
 tool: "writ"
 command: "list"
 parent: "writ receipt"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-27T02:14:21Z"
+version: "d67154f"
 ---
 
 # writ receipt list
