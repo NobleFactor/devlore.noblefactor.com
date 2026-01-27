@@ -5,6 +5,7 @@ import RegistryIcon from '../components/RegistryIcon.astro';
 import LoreIcon from '../components/LoreIcon.astro';
 import WritIcon from '../components/WritIcon.astro';
 import DocsLinks from '../components/DocsLinks.astro';
+import CopyableCode from '../components/CopyableCode.astro';
 ---
 
 <BaseLayout title="DevLore - Tribal Knowledge, Automated">
@@ -20,10 +21,7 @@ import DocsLinks from '../components/DocsLinks.astro';
       experienced developers and transforms it into one-command deployments that actually work.
       Cross-platform. Verified. Ready in minutes.
     </p>
-    <div class="bg-gray-900 rounded-lg p-4 max-w-xl mx-auto text-left font-mono text-sm border border-gray-800">
-      <code class="text-gray-500">$</code>
-      <code class="text-lore-accent"> curl -sSL https://devlore.noblefactor.com/install.sh | bash</code>
-    </div>
+    <CopyableCode code="curl -sSL https://devlore.noblefactor.com/install.sh | bash" />
   </section>
 
   <!-- Hero Diagram: The Flow -->
