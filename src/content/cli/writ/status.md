@@ -4,8 +4,8 @@ description: "Show symlink status for projects"
 tool: "writ"
 command: "status"
 parent: "writ"
-generated: "2026-01-27T07:08:16Z"
-version: "82fa200"
+generated: "2026-01-27T19:36:50Z"
+version: "6b019e8"
 ---
 
 # writ status
