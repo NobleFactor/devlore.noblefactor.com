@@ -4,8 +4,8 @@ description: "Register an existing local repository"
 tool: "writ"
 command: "add"
 parent: "writ repo"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-27T01:55:56Z"
+version: "283c27e"
 ---
 
 # writ repo add
