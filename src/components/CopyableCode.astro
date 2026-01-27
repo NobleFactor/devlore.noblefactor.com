@@ -7,15 +7,20 @@ interface Props {
 const { code, prompt = '$' } = Astro.props;
 ---
 
-<div class="copyable-code bg-gray-900 rounded-lg p-4 max-w-xl mx-auto text-left font-mono text-sm border border-gray-800 relative group">
+<div class="copyable-code bg-gray-900 rounded-lg p-4 pr-10 max-w-xl mx-auto text-left font-mono text-sm border border-gray-800 relative">
   <code class="text-gray-500">{prompt}</code>
   <code class="text-lore-accent"> {code}</code>
   <button
-    class="copy-btn absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+    class="copy-btn absolute right-3 bottom-3 text-gray-500 hover:text-gray-300 transition-colors"
     data-code={code}
     aria-label="Copy to clipboard"
   >
-    Copy
+    <svg class="clipboard-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+    </svg>
+    <svg class="checkmark-icon w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
   </button>
 </div>
 
@@ -25,11 +30,16 @@ const { code, prompt = '$' } = Astro.props;
       const code = btn.getAttribute('data-code');
       if (code) {
         await navigator.clipboard.writeText(code);
-        const originalText = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(() => {
-          btn.textContent = originalText;
-        }, 2000);
+        const clipboardIcon = btn.querySelector('.clipboard-icon');
+        const checkmarkIcon = btn.querySelector('.checkmark-icon');
+        if (clipboardIcon && checkmarkIcon) {
+          clipboardIcon.classList.add('hidden');
+          checkmarkIcon.classList.remove('hidden');
+          setTimeout(() => {
+            checkmarkIcon.classList.add('hidden');
+            clipboardIcon.classList.remove('hidden');
+          }, 1500);
+        }
       }
     });
   });
