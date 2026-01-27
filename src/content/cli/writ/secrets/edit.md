@@ -4,8 +4,8 @@ description: "Edit an encrypted file in place"
 tool: "writ"
 command: "edit"
 parent: "writ secrets"
-generated: "2026-01-27T07:08:16Z"
-version: "82fa200"
+generated: "2026-01-27T19:29:57Z"
+version: "3f704f3"
 ---
 
 # writ secrets edit
