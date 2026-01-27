@@ -1,0 +1,36 @@
+---
+interface Props {
+  code: string;
+  prompt?: string;
+}
+
+const { code, prompt = '$' } = Astro.props;
+---
+
+<div class="copyable-code bg-gray-900 rounded-lg p-4 max-w-xl mx-auto text-left font-mono text-sm border border-gray-800 relative group">
+  <code class="text-gray-500">{prompt}</code>
+  <code class="text-lore-accent"> {code}</code>
+  <button
+    class="copy-btn absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+    data-code={code}
+    aria-label="Copy to clipboard"
+  >
+    Copy
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll('.copyable-code .copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const code = btn.getAttribute('data-code');
+      if (code) {
+        await navigator.clipboard.writeText(code);
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
+      }
+    });
+  });
+</script>

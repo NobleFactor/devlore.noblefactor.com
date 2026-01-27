@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LoreIcon from '../components/LoreIcon.astro';
 import DocsLinks from '../components/DocsLinks.astro';
+import CopyableCode from '../components/CopyableCode.astro';
 ---
 
 <BaseLayout title="Lore - Tribal Knowledge Package Deployer | DevLore" description="Install software with confidence. Four phases: prepare, install, provision, verify.">
@@ -275,9 +276,8 @@ import DocsLinks from '../components/DocsLinks.astro';
       <p class="text-xl text-blue-100 mb-8 max-w-xl mx-auto">
         Install it and deploy your first package in under a minute.
       </p>
-      <div class="bg-gray-900/50 rounded-lg p-4 max-w-xl mx-auto text-left font-mono text-sm mb-8">
-        <code class="text-gray-400">$</code>
-        <code class="text-white"> curl -sSL https://devlore.noblefactor.com/install.sh | bash</code>
+      <div class="mb-8">
+        <CopyableCode code="curl -sSL https://devlore.noblefactor.com/install.sh | bash" />
       </div>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="https://github.com/NobleFactor/lore"
