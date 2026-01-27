@@ -2,7 +2,7 @@
 title: "Packages Manifest"
 description: "Declare software dependencies for writ projects"
 tool: "writ"
-category: "reference"
+category: "concept"
 order: 4
 ---
 
