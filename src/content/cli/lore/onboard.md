@@ -1,6 +1,6 @@
 ---
 title: "lore onboard"
-description: "Parse wiki or script and generate packages.manifest and config"
+description: "Parse wiki or script and generate packages-manifest.yaml and config"
 tool: "lore"
 command: "onboard"
 parent: "lore"
@@ -10,7 +10,7 @@ version: "621aacf"
 
 # lore onboard
 
-Parse wiki or script and generate packages.manifest and config
+Parse wiki or script and generate packages-manifest.yaml and config
 
 ## Usage
 
@@ -21,12 +21,12 @@ lore onboard --from <source> [flags]
 ## Description
 
 Parse an onboarding wiki page or setup script and generate both a
-packages.manifest file and a config/ directory with configuration files.
+packages-manifest.yaml file and a config/ directory with configuration files.
 
 Lore uses AI to extract installation steps, map them to known registry packages,
 and flag org-specific items for human review.
 
-After onboarding, use 'lore deploy @packages.manifest' to install software,
+After onboarding, use 'lore deploy @packages-manifest.yaml' to install software,
 then 'writ adopt --from-receipt' to bring the generated config into your
 environment repository.
 
@@ -59,7 +59,7 @@ lore onboard --from ~/scripts/setup.sh
 
 # Full workflow:
 lore onboard --from https://wiki.acme.com/setup
-lore deploy @packages.manifest
+lore deploy @packages-manifest.yaml
 writ adopt --from-receipt
 ```
 

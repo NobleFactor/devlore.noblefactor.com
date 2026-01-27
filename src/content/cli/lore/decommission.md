@@ -23,7 +23,7 @@ lore decommission [@<receipt>] [<package>...] [flags]
 Remove packages and clean up their resources.
 
 With --orphans-only, only removes packages that are no longer referenced
-by any packages.manifest in the environment repository. This is used by
+by any packages-manifest.yaml in the environment repository. This is used by
 writ when removing a project to clean up software that's no longer needed.
 
 ## Options
