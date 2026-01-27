@@ -30,6 +30,27 @@ This guide covers deploying the DevLore marketing site to Azure with restricted 
 - GitHub repository for this website
 - Custom domain: `devlore.noblefactor.com` (optional)
 
+## GitHub Secrets
+
+Secrets are configured across two repositories to enable automated deployments.
+
+### devlore.noblefactor.com
+
+| Secret | Purpose | Created |
+|--------|---------|---------|
+| `AZURE_STATIC_WEB_APPS_API_TOKEN` | Authenticate deployments to Azure Static Web Apps | 2026-01-18 |
+| `AZURE_CREDENTIALS` | Azure CLI login for custom domain configuration | 2026-01-27 |
+
+**AZURE_CREDENTIALS** uses service principal `github-devlore-site-deploy` with Contributor role scoped to `rg-devlore-site`.
+
+### devlore-cli
+
+| Secret | Purpose | Created |
+|--------|---------|---------|
+| `SITE_DEPLOY_TOKEN` | Push release artifacts to devlore.noblefactor.com repo | 2026-01-24 |
+
+To regenerate these secrets, see the Azure CLI commands in the sections below.
+
 ## Option A: Azure Static Web Apps (Recommended)
 
 Best for: Simple deployment, built-in auth, free tier available.
