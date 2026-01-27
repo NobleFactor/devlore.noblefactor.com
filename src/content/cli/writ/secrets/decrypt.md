@@ -4,8 +4,8 @@ description: "Decrypt an age-encrypted file"
 tool: "writ"
 command: "decrypt"
 parent: "writ secrets"
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-27T04:44:22Z"
+version: "16820dd"
 ---
 
 # writ secrets decrypt

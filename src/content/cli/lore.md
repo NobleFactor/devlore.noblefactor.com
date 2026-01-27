@@ -4,8 +4,8 @@ description: "The tribal knowledge package deployer"
 tool: "lore"
 command: "lore"
 parent: ""
-generated: "2026-01-24T04:27:42Z"
-version: "621aacf"
+generated: "2026-01-27T04:44:22Z"
+version: "16820dd"
 ---
 
 # lore
@@ -59,7 +59,7 @@ What took someone hours to figure out, you get in minutes.
 | [lore inspect](/cli/lore/inspect/) | Show detailed information about a package |
 | [lore list](/cli/lore/list/) | List deployed packages from pipeline receipts |
 | [lore manifest](/cli/lore/manifest/) | Create and manage package lifecycle manifests |
-| [lore onboard](/cli/lore/onboard/) | Parse wiki or script and generate packages-manifest.yaml and config |
+| [lore onboard](/cli/lore/onboard/) | Parse wiki or script and generate packages.manifest and config |
 | [lore publish](/cli/lore/publish/) | Submit a package manifest to the registry |
 | [lore reconcile](/cli/lore/reconcile/) | Compare deployment receipts against actual system state |
 | [lore resolve](/cli/lore/resolve/) | Show how a package would be installed on this platform |

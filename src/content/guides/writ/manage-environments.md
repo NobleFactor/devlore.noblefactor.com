@@ -48,12 +48,8 @@ writ add --conflict=skip noblefactor
 
 ### Custom segments
 
-Override platform detection with custom segment values:
-
-```bash
-writ add -s ROLE=desktop noblefactor
-writ add -s ROLE=server -s DISPLAY=headless noblefactor
-```
+Override platform detection with custom segment values (e.g., `-s ROLE=desktop`).
+See [Platform Awareness](/guides/writ/platform-awareness/#custom-segments) for details.
 
 ### Dry run
 
