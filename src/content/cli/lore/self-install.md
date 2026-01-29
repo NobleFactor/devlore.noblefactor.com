@@ -4,8 +4,8 @@ description: "Complete installation to specified directory"
 tool: "lore"
 command: "self-install"
 parent: "lore"
-generated: "2026-01-29T02:01:36Z"
-version: "68f3b7b"
+generated: "2026-01-29T02:19:43Z"
+version: "f7a9b5c"
 ---
 
 # lore self-install
