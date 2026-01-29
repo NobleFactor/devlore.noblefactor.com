@@ -1,44 +1,52 @@
 ---
 title: "writ migrate"
-description: "Analyze and migrate an existing environment repository to writ conventions"
+description: "Migrate an existing environment to a writ layer"
 tool: "writ"
 command: "migrate"
 parent: "writ"
-generated: "2026-01-28T05:58:44Z"
-version: "3295520"
+generated: "2026-01-29T00:59:55Z"
+version: "fcf5957"
 ---
 
 # writ migrate
 
-Analyze and migrate an existing environment repository to writ conventions
+Migrate an existing environment to a writ layer
 
 ## Usage
 
 ```
-writ migrate [flags] <source-root>
+writ migrate [flags] <source-directory>
 ```
 
 ## Description
 
-Analyze an existing environment repository and produce a migration plan.
+Migrate an existing environment repository to a writ layer.
 
 Writ auto-detects the source system (Tuckr, Stow, chezmoi, yadm, bare git,
-or script-based setups using <project>-<Platform> directories) and generates
-a plan showing what would change.
+or script-based setups) and uses AI to analyze and restructure content to
+writ conventions (Home/, System/, projects).
 
-By default, AI-assisted analysis provides file classification, secret detection,
-and contextual recommendations. Use --no-ai for basic structural analysis only.
+AI-assisted migration provides:
+  - Intelligent file classification (configs, scripts, secrets)
+  - Content-aware secret detection (unencrypted credentials, API keys)
+  - Package manifest generation from setup scripts
+  - Recommendations (e.g., migrating from git-crypt to SOPS)
+  - Structure validation for already writ-compatible layouts
 
-Use --execute to perform the migration (directory renames from dash to dot
-convention). Supported output formats: text (default), yaml, json.
+After analysis and any restructuring, the source is registered as a layer:
+  --link (default): Layer directory becomes a symlink to source location
+  --move: Content is moved into the layer directory, source is deleted
+
+Use --dry-run to preview without making changes.
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--execute` | `false` | Perform the migration (rename directories) |
-| `--format` | `text` | Output format: text, yaml, json |
-| `--no-ai` | `false` | Skip AI-assisted analysis (basic mode) |
+| `--format` | `text` | Output format: text, yaml, json (for --dry-run) |
+| `--layer` | `personal` | Target layer: personal, team, or base |
+| `--link` | `true` | Create symlink from layer to source (default) |
+| `--move` | `false` | Move content to layer directory, delete source |
 | `--system` | `""` | Override auto-detection with a specific source system |
 
 ## Global Options
@@ -48,6 +56,10 @@ convention). Supported output formats: text (default), yaml, json.
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
 | `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
+| `--model-api-key` | `""` | Model provider API key |
+| `--model-endpoint` | `""` | Model provider endpoint URL |
+| `--model-provider` | `""` | Model provider: anthropic, openai, azure-openai, ollama, github |
 | `--silent` | `false` | Suppress all status messages (stderr) |
 | `--target` | `Home` | Target to operate on |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
@@ -56,10 +68,17 @@ convention). Supported output formats: text (default), yaml, json.
 ## Examples
 
 ```bash
-writ migrate ~/my-env/Configs
-writ migrate ~/my-env/Configs --format yaml
-writ migrate ~/my-env/Configs --no-ai
-writ migrate ~/my-env/Configs --execute
+# Migrate and link to source location (default)
+writ migrate ~/my-environment
+
+# Preview without making changes
+writ migrate --dry-run ~/my-environment
+
+# Move content to layer directory instead of linking
+writ migrate --move ~/my-environment
+
+# Migrate as team layer instead of personal
+writ migrate --layer team ~/team-environment
 ```
 
 ## Parent Command

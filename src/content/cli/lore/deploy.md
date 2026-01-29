@@ -4,8 +4,8 @@ description: "Deploy packages to the local system"
 tool: "lore"
 command: "deploy"
 parent: "lore"
-generated: "2026-01-28T05:58:44Z"
-version: "3295520"
+generated: "2026-01-29T00:59:55Z"
+version: "fcf5957"
 ---
 
 # lore deploy
@@ -35,7 +35,6 @@ Packages can be specified directly or via manifest files (prefixed with @).
 | `--force` | `false` | Proceed with LOW CONFIDENCE items without prompting |
 | `--known-only` | `false` | Skip LOW CONFIDENCE items |
 | `--parallel` | `1` | Install n packages concurrently |
-| `--receipt` | `""` | Save receipt to specific path |
 | `--with` | `[]` | Enable feature (can be repeated) |
 
 ## Global Options
@@ -45,6 +44,10 @@ Packages can be specified directly or via manifest files (prefixed with @).
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
 | `--interactive` | `false` | Force interactive mode (prompts, rich output) |
+| `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
+| `--model-api-key` | `""` | Model provider API key |
+| `--model-endpoint` | `""` | Model provider endpoint URL |
+| `--model-provider` | `""` | Model provider: anthropic, openai, azure-openai, ollama, github |
 | `--registry` | `""` | Registry path |
 | `--silent` | `false` | Suppress all status messages (stderr) |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
