@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-01-28T05:58:44Z"
-version: "3295520"
+generated: "2026-01-29T00:59:55Z"
+version: "fcf5957"
 ---
 
 # writ
@@ -38,6 +38,10 @@ Declare your environment once — writ deploys it everywhere you work.
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
 | `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
+| `--model-api-key` | `""` | Model provider API key |
+| `--model-endpoint` | `""` | Model provider endpoint URL |
+| `--model-provider` | `""` | Model provider: anthropic, openai, azure-openai, ollama, github |
 | `--silent` | `false` | Suppress all status messages (stderr) |
 | `--target` | `Home` | Target to operate on |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
@@ -51,10 +55,9 @@ Declare your environment once — writ deploys it everywhere you work.
 | [writ adopt](/cli/writ/adopt/) | Move files from target location into a project and create symlinks |
 | [writ config](/cli/writ/config/) | Get and set configuration options |
 | [writ configure](/cli/writ/configure/) | Discover system info and configure template variables |
-| [writ init](/cli/writ/init/) | Initialize a new environment with AI-assisted recommendations |
 | [writ inspect](/cli/writ/inspect/) | Show detailed information about a project or deployed file |
 | [writ list](/cli/writ/list/) | List available projects for the current target |
-| [writ migrate](/cli/writ/migrate/) | Analyze and migrate an existing environment repository to writ conventions |
+| [writ migrate](/cli/writ/migrate/) | Migrate an existing environment to a writ layer |
 | [writ receipt](/cli/writ/receipt/) | View and manage deployment receipts |
 | [writ remove](/cli/writ/remove/) | Remove deployed files for the specified projects |
 | [writ secrets](/cli/writ/secrets/) | Manage age-encrypted secrets |

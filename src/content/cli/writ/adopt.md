@@ -4,8 +4,8 @@ description: "Move files from target location into a project and create symlinks
 tool: "writ"
 command: "adopt"
 parent: "writ"
-generated: "2026-01-28T05:58:44Z"
-version: "3295520"
+generated: "2026-01-29T00:59:55Z"
+version: "fcf5957"
 ---
 
 # writ adopt
@@ -15,7 +15,7 @@ Move files from target location into a project and create symlinks
 ## Usage
 
 ```
-writ adopt [flags] <project> <file|dir>...
+writ adopt [flags] <item>...
 ```
 
 ## Description
@@ -23,8 +23,12 @@ writ adopt [flags] <project> <file|dir>...
 Move files from target location into a project and create symlinks.
 
 Use this to bring existing configuration files under version control.
-Files are moved to <repo>/<source>/<project>/ preserving their relative path,
+Files are moved to <layer>/<scope>/<project>/ preserving their relative path,
 then symlinked back to the original location.
+
+Scope (Home or System) is inferred from the item's location:
+  - Items under $HOME are adopted into Home/
+  - Items under / (Unix) or %SystemRoot% (Windows) are adopted into System/
 
 Directories are adopted recursively—all files within are moved and symlinked.
 Existing symlinks within directories are skipped.
@@ -38,7 +42,7 @@ config files into the environment repository.
 |--------|---------|-------------|
 | `--from-receipt` | `false` | Adopt packages.manifest and config from lore receipt |
 | `--layer` | `personal` | Layer to adopt into: personal, team, or base |
-| `--source` | `Home` | Source directory within the repo (e.g., Home, System) |
+| `--project` | `""` | Project name within the layer (required) |
 
 ## Global Options
 
@@ -47,6 +51,10 @@ config files into the environment repository.
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
 | `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
+| `--model-api-key` | `""` | Model provider API key |
+| `--model-endpoint` | `""` | Model provider endpoint URL |
+| `--model-provider` | `""` | Model provider: anthropic, openai, azure-openai, ollama, github |
 | `--silent` | `false` | Suppress all status messages (stderr) |
 | `--target` | `Home` | Target to operate on |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
@@ -56,16 +64,19 @@ config files into the environment repository.
 
 ```bash
 # Adopt a single file into personal layer
-writ adopt noblefactor .zshrc
+writ adopt --project noblefactor ~/.zshrc
 
 # Adopt multiple files
-writ adopt noblefactor .zshrc .bashrc .config/nvim/init.lua
+writ adopt --project noblefactor ~/.zshrc ~/.bashrc ~/.config/nvim/init.lua
 
 # Adopt an entire directory recursively
-writ adopt noblefactor .config/nvim
+writ adopt --project noblefactor ~/.config/nvim
 
 # Adopt into team layer
-writ adopt --layer=team shared .editorconfig
+writ adopt --layer team --project shared ~/.editorconfig
+
+# Adopt system file (inferred as System scope)
+writ adopt --project noblefactor /etc/myapp/config.yaml
 
 # Adopt from lore receipt
 writ adopt --from-receipt

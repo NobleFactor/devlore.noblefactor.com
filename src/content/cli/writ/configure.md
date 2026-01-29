@@ -4,8 +4,8 @@ description: "Discover system info and configure template variables"
 tool: "writ"
 command: "configure"
 parent: "writ"
-generated: "2026-01-28T05:58:44Z"
-version: "3295520"
+generated: "2026-01-29T00:59:55Z"
+version: "fcf5957"
 ---
 
 # writ configure
@@ -34,6 +34,10 @@ Use --unattended (global flag) to auto-detect only and fail on missing values.
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
 | `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
+| `--model-api-key` | `""` | Model provider API key |
+| `--model-endpoint` | `""` | Model provider endpoint URL |
+| `--model-provider` | `""` | Model provider: anthropic, openai, azure-openai, ollama, github |
 | `--silent` | `false` | Suppress all status messages (stderr) |
 | `--target` | `Home` | Target to operate on |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
