@@ -1,21 +1,21 @@
 ---
-title: "writ add"
+title: "writ deploy"
 description: "Deploy projects by creating symlinks in the target location"
 tool: "writ"
-command: "add"
+command: "deploy"
 parent: "writ"
-generated: "2026-01-29T00:59:55Z"
-version: "fcf5957"
+generated: "2026-01-29T02:01:36Z"
+version: "68f3b7b"
 ---
 
-# writ add
+# writ deploy
 
 Deploy projects by creating symlinks in the target location
 
 ## Usage
 
 ```
-writ add [flags] <project>...
+writ deploy [flags] <project>...
 ```
 
 ## Description
@@ -58,11 +58,11 @@ Conflict handling (--conflict):
 ## Examples
 
 ```bash
-writ add noblefactor
-writ add all noblefactor thenobles
-writ add --conflict=backup noblefactor
-writ add --conflict=overwrite noblefactor
-writ add -s ROLE=desktop noblefactor
+writ deploy noblefactor
+writ deploy all noblefactor thenobles
+writ deploy --conflict=backup noblefactor
+writ deploy --conflict=overwrite noblefactor
+writ deploy -s ROLE=desktop noblefactor
 ```
 
 ## Parent Command
