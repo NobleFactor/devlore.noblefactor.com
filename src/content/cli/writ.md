@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-01-29T00:59:55Z"
-version: "fcf5957"
+generated: "2026-01-29T01:49:38Z"
+version: "e9ac56e"
 ---
 
 # writ
@@ -51,16 +51,15 @@ Declare your environment once — writ deploys it everywhere you work.
 
 | Command | Description |
 |---------|-------------|
-| [writ add](/cli/writ/add/) | Deploy projects by creating symlinks in the target location |
 | [writ adopt](/cli/writ/adopt/) | Move files from target location into a project and create symlinks |
 | [writ config](/cli/writ/config/) | Get and set configuration options |
 | [writ configure](/cli/writ/configure/) | Discover system info and configure template variables |
+| [writ decommission](/cli/writ/decommission/) | Remove deployed files and clean up resources for specified projects |
+| [writ deploy](/cli/writ/deploy/) | Deploy projects by creating symlinks in the target location |
 | [writ inspect](/cli/writ/inspect/) | Show detailed information about a project or deployed file |
 | [writ list](/cli/writ/list/) | List available projects for the current target |
 | [writ migrate](/cli/writ/migrate/) | Migrate an existing environment to a writ layer |
 | [writ receipt](/cli/writ/receipt/) | View and manage deployment receipts |
-| [writ remove](/cli/writ/remove/) | Remove deployed files for the specified projects |
-| [writ secrets](/cli/writ/secrets/) | Manage age-encrypted secrets |
+| [writ reconcile](/cli/writ/reconcile/) | Full-stack drift detection and repair |
 | [writ self-install](/cli/writ/self-install/) | Complete installation to specified directory |
-| [writ status](/cli/writ/status/) | Show symlink status for projects |
 | [writ upgrade](/cli/writ/upgrade/) | Regenerate copied files (templates, secrets) from current sources |

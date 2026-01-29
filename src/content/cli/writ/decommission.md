@@ -1,43 +1,40 @@
 ---
-title: "writ add"
-description: "Deploy projects by creating symlinks in the target location"
+title: "writ decommission"
+description: "Remove deployed files and clean up resources for specified projects"
 tool: "writ"
-command: "add"
+command: "decommission"
 parent: "writ"
-generated: "2026-01-29T00:59:55Z"
-version: "fcf5957"
+generated: "2026-01-29T01:49:38Z"
+version: "e9ac56e"
 ---
 
-# writ add
+# writ decommission
 
-Deploy projects by creating symlinks in the target location
+Remove deployed files and clean up resources for specified projects
 
 ## Usage
 
 ```
-writ add [flags] <project>...
+writ decommission [flags] <project>...
 ```
 
 ## Description
 
-Deploy projects by creating symlinks in the target location.
+Remove deployed files and clean up resources for specified projects.
 
-Files inside each project directory are symlinked to the target (default: ~).
-Platform-specific variants (e.g., project.Darwin) are selected automatically.
-If a project contains packages.manifest, writ delegates to lore for software installation.
+Symlinks are removed directly. Copied files (templates, secrets) are removed
+only after drift detection confirms they haven't been locally modified.
 
-Conflict handling (--conflict):
-  stop      Stop on first conflict (default)
-  backup    Move conflicting files to timestamped backups
-  overwrite Remove conflicting files without backup
-  skip      Skip conflicting files and continue
+Safety behavior depends on state file:
+  Signed state    → Safe: full drift detection before removal
+  Unsigned state  → Warning, requires --force to proceed
+  No state        → Error: cannot safely remove without state
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--conflict, -c` | `stop` | Conflict resolution: stop, backup, overwrite, skip |
-| `--segment, -s` | `[]` | Set custom segment value (KEY=value, repeatable) |
+| `--force` | `false` | Skip confirmation and proceed with unsigned state |
 
 ## Global Options
 
@@ -58,11 +55,9 @@ Conflict handling (--conflict):
 ## Examples
 
 ```bash
-writ add noblefactor
-writ add all noblefactor thenobles
-writ add --conflict=backup noblefactor
-writ add --conflict=overwrite noblefactor
-writ add -s ROLE=desktop noblefactor
+writ decommission noblefactor              # Remove project files
+writ decommission all noblefactor          # Remove multiple projects
+writ decommission --force noblefactor      # Skip confirmation prompts
 ```
 
 ## Parent Command
