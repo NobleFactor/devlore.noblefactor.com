@@ -4,8 +4,8 @@ description: "Remove packages and clean up their resources"
 tool: "lore"
 command: "decommission"
 parent: "lore"
-generated: "2026-01-29T00:59:55Z"
-version: "fcf5957"
+generated: "2026-01-29T02:01:36Z"
+version: "68f3b7b"
 ---
 
 # lore decommission
@@ -15,22 +15,12 @@ Remove packages and clean up their resources
 ## Usage
 
 ```
-lore decommission [@<receipt>] [<package>...] [flags]
+lore decommission [@<receipt>] [<package>...]
 ```
 
 ## Description
 
 Remove packages and clean up their resources.
-
-With --orphans-only, only removes packages that are no longer referenced
-by any packages.manifest in the environment repository. This is used by
-writ when removing a project to clean up software that's no longer needed.
-
-## Options
-
-| Option | Default | Description |
-|--------|---------|-------------|
-| `--orphans-only` | `false` | Only remove packages not referenced by any manifest |
 
 ## Global Options
 
@@ -53,7 +43,6 @@ writ when removing a project to clean up software that's no longer needed.
 ```bash
 lore decommission @workstation
 lore decommission docker kubectl
-lore decommission --orphans-only  # Remove unreferenced packages
 ```
 
 ## Parent Command

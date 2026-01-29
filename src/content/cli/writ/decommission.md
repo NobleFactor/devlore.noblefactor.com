@@ -1,26 +1,26 @@
 ---
-title: "writ remove"
-description: "Remove deployed files for the specified projects"
+title: "writ decommission"
+description: "Remove deployed files and clean up resources for specified projects"
 tool: "writ"
-command: "remove"
+command: "decommission"
 parent: "writ"
-generated: "2026-01-29T00:59:55Z"
-version: "fcf5957"
+generated: "2026-01-29T02:01:36Z"
+version: "68f3b7b"
 ---
 
-# writ remove
+# writ decommission
 
-Remove deployed files for the specified projects
+Remove deployed files and clean up resources for specified projects
 
 ## Usage
 
 ```
-writ remove [flags] <project>...
+writ decommission [flags] <project>...
 ```
 
 ## Description
 
-Remove deployed files for the specified projects.
+Remove deployed files and clean up resources for specified projects.
 
 Symlinks are removed directly. Copied files (templates, secrets) are removed
 only after drift detection confirms they haven't been locally modified.
@@ -30,14 +30,10 @@ Safety behavior depends on state file:
   Unsigned state  → Warning, requires --force to proceed
   No state        → Error: cannot safely remove without state
 
-With --decommission, delegates to lore to remove orphaned software packages
-that were installed via packages.manifest files in the removed projects.
-
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--decommission` | `false` | Delegate to lore to decommission orphaned software |
 | `--force` | `false` | Skip confirmation and proceed with unsigned state |
 
 ## Global Options
@@ -59,10 +55,9 @@ that were installed via packages.manifest files in the removed projects.
 ## Examples
 
 ```bash
-writ remove noblefactor              # Remove project files
-writ remove all noblefactor          # Remove multiple projects
-writ remove --force noblefactor      # Skip confirmation prompts
-writ remove --decommission noblefactor  # Also remove installed software
+writ decommission noblefactor              # Remove project files
+writ decommission all noblefactor          # Remove multiple projects
+writ decommission --force noblefactor      # Skip confirmation prompts
 ```
 
 ## Parent Command
