@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-01-29T00:59:55Z"
-version: "fcf5957"
+generated: "2026-01-29T01:15:44Z"
+version: "bbabd29"
 ---
 
 # writ
@@ -59,8 +59,8 @@ Declare your environment once — writ deploys it everywhere you work.
 | [writ list](/cli/writ/list/) | List available projects for the current target |
 | [writ migrate](/cli/writ/migrate/) | Migrate an existing environment to a writ layer |
 | [writ receipt](/cli/writ/receipt/) | View and manage deployment receipts |
+| [writ reconcile](/cli/writ/reconcile/) | Full-stack drift detection and repair |
 | [writ remove](/cli/writ/remove/) | Remove deployed files for the specified projects |
 | [writ secrets](/cli/writ/secrets/) | Manage age-encrypted secrets |
 | [writ self-install](/cli/writ/self-install/) | Complete installation to specified directory |
-| [writ status](/cli/writ/status/) | Show symlink status for projects |
 | [writ upgrade](/cli/writ/upgrade/) | Regenerate copied files (templates, secrets) from current sources |

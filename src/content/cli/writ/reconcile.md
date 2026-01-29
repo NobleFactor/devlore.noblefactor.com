@@ -1,31 +1,32 @@
 ---
-title: "writ status"
-description: "Show symlink status for projects"
+title: "writ reconcile"
+description: "Full-stack drift detection and repair"
 tool: "writ"
-command: "status"
+command: "reconcile"
 parent: "writ"
-generated: "2026-01-29T00:59:55Z"
-version: "fcf5957"
+generated: "2026-01-29T01:15:44Z"
+version: "bbabd29"
 ---
 
-# writ status
+# writ reconcile
 
-Show symlink status for projects
+Full-stack drift detection and repair
 
 ## Usage
 
 ```
-writ status [<project>...] [flags]
+writ reconcile [<project>...] [flags]
 ```
 
 ## Description
 
-Show symlink status for projects.
+Full-stack drift detection and repair.
 
-Without arguments, scans target directory for writ-managed symlinks and uses
-the receipt to check copied files (templates, secrets).
+Checks symlinks, copied files (templates/secrets), and optionally installed
+packages against the state file. Can automatically repair detected issues.
 
-With project arguments, builds a fresh tree and checks status against expected state.
+Without arguments, scans target directory for writ-managed files.
+With project arguments, builds a fresh tree and checks against expected state.
 
 Status indicators:
   ✓ Linked   — Symlink exists and points to project
@@ -33,8 +34,6 @@ Status indicators:
   ⚠ Conflict — File exists but isn't our symlink
   ✗ Missing  — Project file has no corresponding symlink
   ? Orphan   — Symlink points to nonexistent file
-
-With --drift (requires receipt):
   ↑ Stale    — Source changed since deployment, redeploy needed
   M Modified — Target file was edited locally
   ! Conflict — Both source and target changed
@@ -43,7 +42,8 @@ With --drift (requires receipt):
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--drift` | `false` | Check for drift in copied files using receipt checksums |
+| `--drift` | `false` | Check for drift in copied files (default: true) |
+| `--fix` | `false` | Automatically repair detected issues |
 | `--json` | `false` | Output as JSON |
 
 ## Global Options
@@ -65,9 +65,9 @@ With --drift (requires receipt):
 ## Examples
 
 ```bash
-writ status                    # Scan for deployed files
-writ status noblefactor        # Check specific project
-writ status --drift            # Check for drift in copied files
+writ reconcile                    # Scan for deployed files
+writ reconcile noblefactor        # Check specific project
+writ reconcile --fix              # Automatically repair issues
 ```
 
 ## Parent Command
