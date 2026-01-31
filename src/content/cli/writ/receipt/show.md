@@ -4,8 +4,8 @@ description: "Display deployment receipt"
 tool: "writ"
 command: "show"
 parent: "writ receipt"
-generated: "2026-01-29T23:18:01Z"
-version: "03ed8b0"
+generated: "2026-01-31T00:16:21Z"
+version: "ab899bf"
 ---
 
 # writ receipt show
@@ -26,7 +26,7 @@ Shows what was deployed: packages, symlinks, templates processed.
 
 Use --unified to include lore receipts (software installations) alongside
 writ receipts (configuration deployments). This provides a complete view
-of your environment state.
+of your environment deploystate.
 
 ## Options
 
