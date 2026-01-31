@@ -1,9 +1,9 @@
 ---
 title: "Deployment Receipts"
-description: "Understanding the deployment audit trail"
+description: "Understand writ deployment receipts for auditing and verification"
 tool: "writ"
 category: "reference"
-order: 5
+order: 4
 ---
 
 # Deployment Receipts
