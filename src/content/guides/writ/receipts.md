@@ -1,3 +1,11 @@
+---
+title: "Deployment Receipts"
+description: "Understanding the deployment audit trail"
+tool: "writ"
+category: "reference"
+order: 5
+---
+
 # Deployment Receipts
 
 Every time `writ deploy` runs, it creates a **receipt** recording exactly what was deployed. Receipts are essential for:
