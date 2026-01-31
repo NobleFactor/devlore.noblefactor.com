@@ -4,8 +4,8 @@ description: "Remove deployed files and clean up resources for specified project
 tool: "writ"
 command: "decommission"
 parent: "writ"
-generated: "2026-01-31T00:16:21Z"
-version: "ab899bf"
+generated: "2026-01-31T03:08:41Z"
+version: "b16a8cd"
 ---
 
 # writ decommission
@@ -35,6 +35,7 @@ Safety behavior depends on state file:
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--force` | `false` | Skip confirmation and proceed with unsigned state |
+| `--prune` | `false` | Remove empty parent directories after file removal |
 
 ## Global Options
 
@@ -57,6 +58,7 @@ Safety behavior depends on state file:
 ```bash
 writ decommission noblefactor              # Remove project files
 writ decommission all noblefactor          # Remove multiple projects
+writ decommission --prune noblefactor      # Also remove empty parent directories
 writ decommission --force noblefactor      # Skip confirmation prompts
 ```
 

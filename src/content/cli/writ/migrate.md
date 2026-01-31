@@ -4,8 +4,8 @@ description: "Migrate an existing environment to a writ layer"
 tool: "writ"
 command: "migrate"
 parent: "writ"
-generated: "2026-01-31T00:16:21Z"
-version: "ab899bf"
+generated: "2026-01-31T03:08:41Z"
+version: "b16a8cd"
 ---
 
 # writ migrate
@@ -43,7 +43,7 @@ Use --dry-run to preview without making changes.
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--format` | `text` | Output format: text, yaml, json (for --dry-run) |
+| `--format` | `json` | Output format: json (default), yaml, text (for --dry-run) |
 | `--layer` | `personal` | Target layer: personal, team, or base |
 | `--link` | `true` | Create symlink from layer to source (default) |
 | `--move` | `false` | Move content to layer directory, delete source |
