@@ -4,8 +4,8 @@ description: "Submit a package manifest to the registry"
 tool: "lore"
 command: "publish"
 parent: "lore"
-generated: "2026-01-29T23:18:01Z"
-version: "03ed8b0"
+generated: "2026-01-31T00:16:21Z"
+version: "ab899bf"
 ---
 
 # lore publish
@@ -20,7 +20,7 @@ lore publish <name>
 
 ## Description
 
-Submit a validated package manifest to the registry.
+Submit a validated package manifest to the lorepackage.
 
 Runs final validation, creates a pull request for community review,
 and triggers automated testing on macOS, Linux, and Windows.

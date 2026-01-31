@@ -4,8 +4,8 @@ description: "Show detailed information about a project or deployed file"
 tool: "writ"
 command: "inspect"
 parent: "writ"
-generated: "2026-01-29T23:18:01Z"
-version: "03ed8b0"
+generated: "2026-01-31T00:16:21Z"
+version: "ab899bf"
 ---
 
 # writ inspect
@@ -22,7 +22,7 @@ writ inspect <project|file> [flags]
 
 Show detailed information about a project or deployed file.
 
-For a project: shows source location, deployed files, segments, and state.
+For a project: shows source location, deployed files, segments, and deploystate.
 For a file path: shows source, target, operations, checksums, and drift status.
 
 Output is JSON by default for scripting. Use --format for alternatives.

@@ -4,8 +4,8 @@ description: "Full-stack drift detection and repair"
 tool: "writ"
 command: "reconcile"
 parent: "writ"
-generated: "2026-01-29T23:18:01Z"
-version: "03ed8b0"
+generated: "2026-01-31T00:16:21Z"
+version: "ab899bf"
 ---
 
 # writ reconcile
@@ -26,7 +26,7 @@ Checks symlinks, copied files (templates/secrets), and optionally installed
 packages against the state file. Can automatically repair detected issues.
 
 Without arguments, scans target directory for writ-managed files.
-With project arguments, builds a fresh tree and checks against expected state.
+With project arguments, builds a fresh tree and checks against expected deploystate.
 
 Status indicators:
   ✓ Linked   — Symlink exists and points to project
