@@ -4,8 +4,8 @@ description: "Get configuration values"
 tool: "lore"
 command: "get"
 parent: "lore config"
-generated: "2026-01-31T08:42:58Z"
-version: "9a264d3"
+generated: "2026-02-01T20:26:35Z"
+version: "fda2919"
 ---
 
 # lore config get
