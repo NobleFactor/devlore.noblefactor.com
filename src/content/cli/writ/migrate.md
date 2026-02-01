@@ -4,8 +4,8 @@ description: "Migrate an existing environment to a writ layer"
 tool: "writ"
 command: "migrate"
 parent: "writ"
-generated: "2026-01-31T08:42:58Z"
-version: "9a264d3"
+generated: "2026-02-01T21:21:56Z"
+version: "b7c2fe8"
 ---
 
 # writ migrate
@@ -48,7 +48,9 @@ Use --dry-run to preview without making changes.
 | `--link` | `true` | Create symlink from layer to source (default) |
 | `--move` | `false` | Move content to layer directory, delete source |
 | `--non-interactive` | `false` | Migrate without interactive prompts |
+| `--script-budget` | `0` | Max bytes of script content to include (default: 500KB, use lower values for smaller context) |
 | `--system` | `""` | Override auto-detection with a specific source system |
+| `--tree-depth` | `0` | Max directory depth to scan (default: 10, use lower values for smaller context) |
 
 ## Global Options
 
