@@ -4,8 +4,8 @@ description: "Remove configuration keys"
 tool: "lore"
 command: "unset"
 parent: "lore config"
-generated: "2026-02-02T17:43:43Z"
-version: "3781f85"
+generated: "2026-02-02T18:10:13Z"
+version: "0e3f98d"
 ---
 
 # lore config unset

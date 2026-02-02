@@ -4,8 +4,8 @@ description: "View and manage deployment receipts"
 tool: "writ"
 command: "receipt"
 parent: "writ"
-generated: "2026-02-02T17:43:43Z"
-version: "3781f85"
+generated: "2026-02-02T18:10:13Z"
+version: "0e3f98d"
 ---
 
 # writ receipt
