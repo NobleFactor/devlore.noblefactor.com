@@ -4,8 +4,8 @@ description: "View security audit log entries"
 tool: "lore"
 command: "audit"
 parent: "lore"
-generated: "2026-02-01T21:21:56Z"
-version: "b7c2fe8"
+generated: "2026-02-02T17:34:58Z"
+version: "bd2ad61"
 ---
 
 # lore audit
