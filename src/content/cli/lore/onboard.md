@@ -4,8 +4,8 @@ description: "Parse wiki or script and generate packages.manifest and config"
 tool: "lore"
 command: "onboard"
 parent: "lore"
-generated: "2026-02-01T21:21:56Z"
-version: "b7c2fe8"
+generated: "2026-02-02T17:43:43Z"
+version: "3781f85"
 ---
 
 # lore onboard
@@ -37,8 +37,8 @@ environment repository.
 | `--explain` | `false` | Show detailed reasoning for each confidence decision |
 | `--format` | `plain` | Manifest format (plain, yaml) |
 | `--from` | `""` | Source URL or file path |
+| `--max-fetches` | `5` | Maximum additional URLs to fetch |
 | `--output` | `""` | Output directory path (default: current directory) |
-| `--registry` | `""` | Registry to match against |
 | `--verbose` | `false` | Show AI reasoning |
 
 ## Global Options
@@ -52,6 +52,7 @@ environment repository.
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |
 | `--model-provider` | `""` | Model provider: anthropic, openai, azure-openai, ollama, github |
+| `--registry` | `""` | Registry path |
 | `--silent` | `false` | Suppress all status messages (stderr) |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
 
