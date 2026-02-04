@@ -4,8 +4,8 @@ description: "Regenerate copied files (templates, secrets) from current sources"
 tool: "writ"
 command: "upgrade"
 parent: "writ"
-generated: "2026-02-02T17:43:43Z"
-version: "3781f85"
+generated: "2026-02-04T02:04:53Z"
+version: "ec14e0f"
 ---
 
 # writ upgrade

@@ -4,8 +4,8 @@ description: "Output the embedded JSON schema"
 tool: "writ"
 command: "schema"
 parent: "writ config"
-generated: "2026-02-02T17:43:43Z"
-version: "3781f85"
+generated: "2026-02-04T02:04:53Z"
+version: "ec14e0f"
 ---
 
 # writ config schema
