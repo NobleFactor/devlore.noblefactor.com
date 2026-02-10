@@ -89,3 +89,10 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           action: "close"
+
+  quality-gate:
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
+    needs: build_and_deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Build and deploy succeeded"
