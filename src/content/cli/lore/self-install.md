@@ -4,8 +4,8 @@ description: "Complete installation to specified directory"
 tool: "lore"
 command: "self-install"
 parent: "lore"
-generated: "2026-02-04T02:04:53Z"
-version: "ec14e0f"
+generated: "2026-02-06T22:10:38Z"
+version: "530ff15"
 ---
 
 # lore self-install
@@ -15,16 +15,16 @@ Complete installation to specified directory
 ## Usage
 
 ```
-lore self-install <root-directory> [flags]
+lore self-install --prefix=<directory> [flags]
 ```
 
 ## Description
 
-Install lore and all supporting files to the specified root directory.
+Install lore and all supporting files to the specified prefix directory.
 
 This command:
-  1. Copies the binary to <root>/bin/lore
-  2. Installs man pages to <root>/share/man/man1/ (if man command exists)
+  1. Copies the binary to <prefix>/bin/lore
+  2. Installs man pages to <prefix>/share/man/man1/ (if man command exists)
   3. Installs shell completions (auto-detects bash, fish, powershell, zsh or use --shell)
   4. Creates shared config at $XDG_CONFIG_HOME/devlore/config.yaml
   5. Creates tool config at $XDG_CONFIG_HOME/devlore/config.d/lore.yaml
@@ -32,18 +32,19 @@ This command:
   7. Creates layer directories at $XDG_DATA_HOME/devlore/writ/layers/
 
 Shell completions are auto-detected by default. Use --shell to override:
-  lore self-install --shell bash --shell zsh ~/.local
+  lore self-install --prefix=~/.local --shell bash --shell zsh
 
 Example:
-  lore self-install ~/.local
-  lore self-install --shell bash --shell zsh ~/.local
+  lore self-install --prefix=~/.local
+  lore self-install --prefix=~/.local --shell bash --shell zsh
 
-After installation, ensure <root>/bin is in your PATH.
+After installation, ensure <prefix>/bin is in your PATH.
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
+| `--prefix` | `""` | Installation prefix directory (required, e.g., ~/.local) |
 | `--shell` | `[]` | Shell to install completions for (repeatable, e.g., --shell bash --shell zsh) |
 
 ## Global Options

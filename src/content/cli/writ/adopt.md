@@ -4,8 +4,8 @@ description: "Move files from target location into a project and create symlinks
 tool: "writ"
 command: "adopt"
 parent: "writ"
-generated: "2026-02-04T02:04:53Z"
-version: "ec14e0f"
+generated: "2026-02-06T22:10:38Z"
+version: "530ff15"
 ---
 
 # writ adopt
@@ -33,14 +33,14 @@ Scope (Home or System) is inferred from the item's location:
 Directories are adopted recursively—all files within are moved and symlinked.
 Existing symlinks within directories are skipped.
 
-With --from-receipt, reads a lore receipt and adopts packages.manifest and
+With --from-receipt, reads a lore receipt and adopts packages-manifest.yaml and
 config files into the environment repository.
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--from-receipt` | `false` | Adopt packages.manifest and config from lore receipt |
+| `--from-receipt` | `false` | Adopt packages-manifest.yaml and config from lore receipt |
 | `--layer` | `personal` | Layer to adopt into: personal, team, or base |
 | `--project` | `""` | Project name within the layer (required) |
 
