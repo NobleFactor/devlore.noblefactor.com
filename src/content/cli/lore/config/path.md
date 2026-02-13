@@ -4,8 +4,8 @@ description: "Show configuration file location"
 tool: "lore"
 command: "path"
 parent: "lore config"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-02-13T22:49:55Z"
+version: "3192789"
 ---
 
 # lore config path
