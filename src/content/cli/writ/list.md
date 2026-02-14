@@ -4,8 +4,8 @@ description: "List available projects for the current target"
 tool: "writ"
 command: "list"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-02-14T15:47:59Z"
+version: "c562fd7"
 ---
 
 # writ list
