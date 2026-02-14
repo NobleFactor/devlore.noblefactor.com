@@ -4,8 +4,8 @@ description: "Show detailed information about a project or deployed file"
 tool: "writ"
 command: "inspect"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-02-14T04:58:44Z"
+version: "d6b3e8a"
 ---
 
 # writ inspect
