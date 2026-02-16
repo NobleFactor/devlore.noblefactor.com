@@ -4,8 +4,8 @@ description: "Display deployment receipt"
 tool: "writ"
 command: "show"
 parent: "writ receipt"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-02-16T02:34:04Z"
+version: "c595408"
 ---
 
 # writ receipt show
