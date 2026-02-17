@@ -4,8 +4,8 @@ description: "Compare deployment receipts against actual system state"
 tool: "lore"
 command: "reconcile"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-02-17T07:58:02Z"
+version: "390d3d9"
 ---
 
 # lore reconcile
