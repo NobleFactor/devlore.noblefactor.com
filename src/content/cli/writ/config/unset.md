@@ -4,8 +4,8 @@ description: "Remove configuration keys"
 tool: "writ"
 command: "unset"
 parent: "writ config"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-02-17T05:35:55Z"
+version: "0ad446f"
 ---
 
 # writ config unset
