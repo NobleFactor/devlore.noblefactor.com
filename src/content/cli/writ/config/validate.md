@@ -4,8 +4,8 @@ description: "Validate configuration against schema"
 tool: "writ"
 command: "validate"
 parent: "writ config"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-03-04T22:33:46Z"
+version: "629ca3b"
 ---
 
 # writ config validate
