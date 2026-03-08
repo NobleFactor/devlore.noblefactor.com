@@ -4,8 +4,8 @@ description: "Full-stack drift detection and repair"
 tool: "writ"
 command: "reconcile"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-03-08T00:51:17Z"
+version: "1662e51"
 ---
 
 # writ reconcile
