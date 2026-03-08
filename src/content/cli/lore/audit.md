@@ -4,8 +4,8 @@ description: "View security audit log entries"
 tool: "lore"
 command: "audit"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-03-08T22:30:25Z"
+version: "f170ed6"
 ---
 
 # lore audit
@@ -22,7 +22,7 @@ lore audit [flags]
 
 View security audit log entries.
 
-The audit log records security-sensitive operations:
+The audit log records security-sensitive actions:
   - pmm.fetch: Package fetch with signature status
   - pmm.verify: Signature verification results
   - privilege.request: Sudo/elevation requests
