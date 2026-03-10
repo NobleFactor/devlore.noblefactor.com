@@ -4,8 +4,8 @@ description: "Deploy projects by creating symlinks in the target location"
 tool: "writ"
 command: "deploy"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-03-10T00:59:34Z"
+version: "991dbae"
 ---
 
 # writ deploy
@@ -24,8 +24,8 @@ Deploy projects by creating symlinks in the target location.
 
 Files inside each project directory are symlinked to the target (default: ~).
 Platform-specific variants (e.g., project.Darwin) are selected automatically.
-If a project contains packages-manifest.yaml, the Package Graph Builder adds
-package installation nodes to the execution graph (NOT YET IMPLEMENTED).
+If a project contains packages-manifest.yaml, the manifest is resolved through
+the lore Planner, adding package installation nodes to the execution graph.
 
 Conflict handling (--conflict):
   stop      Stop on first conflict (default)
