@@ -4,8 +4,8 @@ description: "Complete installation to specified directory"
 tool: "writ"
 command: "self-install"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-03-11T21:17:41Z"
+version: "54b9645"
 ---
 
 # writ self-install
@@ -53,7 +53,7 @@ After installation, ensure <prefix>/bin is in your PATH.
 |--------|---------|-------------|
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
-| `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |

@@ -4,8 +4,8 @@ description: "List deployed packages from pipeline receipts"
 tool: "lore"
 command: "list"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-03-11T21:17:41Z"
+version: "54b9645"
 ---
 
 # lore list

@@ -4,8 +4,8 @@ description: "Deploy projects by creating symlinks in the target location"
 tool: "writ"
 command: "deploy"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-03-11T21:17:41Z"
+version: "54b9645"
 ---
 
 # writ deploy
@@ -24,8 +24,8 @@ Deploy projects by creating symlinks in the target location.
 
 Files inside each project directory are symlinked to the target (default: ~).
 Platform-specific variants (e.g., project.Darwin) are selected automatically.
-If a project contains packages-manifest.yaml, the Package Graph Builder adds
-package installation nodes to the execution graph (NOT YET IMPLEMENTED).
+If a project contains packages-manifest.yaml, the manifest is resolved through
+the lore Planner, adding package installation nodes to the execution graph.
 
 Conflict handling (--conflict):
   stop      Stop on first conflict (default)
@@ -37,6 +37,7 @@ Conflict handling (--conflict):
 
 | Option | Default | Description |
 |--------|---------|-------------|
+| `--allow-dirty` | `false` | Allow planning against layers with uncommitted changes |
 | `--conflict, -c` | `stop` | Conflict resolution: stop, backup, overwrite, skip |
 | `--segment, -s` | `[]` | Set custom segment value (KEY=value, repeatable) |
 
@@ -46,7 +47,7 @@ Conflict handling (--conflict):
 |--------|---------|-------------|
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
-| `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |
