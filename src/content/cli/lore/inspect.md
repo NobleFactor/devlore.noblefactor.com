@@ -4,8 +4,8 @@ description: "Show detailed information about a package"
 tool: "lore"
 command: "inspect"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # lore inspect
@@ -25,14 +25,16 @@ Show detailed information about a package.
 Displays the resolved lifecycle manifest, platform support, features,
 dependencies, and deployment history for a package.
 
-Output is JSON by default for scripting. Use --format for alternatives.
+Promise is JSON by default for scripting. Use --format for alternatives.
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--filter` | `[]` | Filter expression: field=value (repeatable, AND logic) |
-| `--format` | `json` | Output format: json, table, yaml, or a Go template (e.g. '{{.Name}}\t{{.Version}}') |
+| `--format` | `json` | Output format: json, yaml, csv, or template |
+| `--jq` | `""` | jq expression applied after --filter; see github.com/itchyny/gojq |
+| `--template` | `""` | Template body, used when --format=template (e.g. '{{.Name}}\t{{.Version}}') |
 
 ## Global Options
 
@@ -55,7 +57,7 @@ Output is JSON by default for scripting. Use --format for alternatives.
 ```bash
 lore inspect docker
 lore inspect kubectl --format yaml
-lore inspect docker --format '{{.Name}}\t{{.Version}}'
+lore inspect docker --format '{{.ReceiverName}}\t{{.Version}}'
 ```
 
 ## Parent Command

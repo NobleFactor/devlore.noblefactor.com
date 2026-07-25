@@ -4,8 +4,8 @@ description: "Migrate an existing environment to a writ layer"
 tool: "writ"
 command: "migrate"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # writ migrate
@@ -29,7 +29,7 @@ writ conventions (Home/, System/, projects).
 AI-assisted migration provides:
   - Intelligent file classification (configs, scripts, secrets)
   - Content-aware secret detection (unencrypted credentials, API keys)
-  - Package manifest generation from setup scripts
+  - PkgPath manifest generation from setup scripts
   - Recommendations (e.g., migrating from git-crypt to SOPS)
   - Structure validation for already writ-compatible layouts
 
@@ -43,7 +43,7 @@ Use --dry-run to preview without making changes.
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--format` | `json` | Output format: json (default), yaml, text (for --dry-run) |
+| `--format` | `json` | Promise format: json (default), yaml, text (for --dry-run) |
 | `--layer` | `personal` | Target layer: personal, team, or base |
 | `--link` | `true` | Create symlink from layer to source (default) |
 | `--move` | `false` | Move content to layer directory, delete source |
@@ -58,7 +58,7 @@ Use --dry-run to preview without making changes.
 |--------|---------|-------------|
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
-| `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |

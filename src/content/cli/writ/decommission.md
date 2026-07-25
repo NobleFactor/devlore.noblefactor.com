@@ -4,8 +4,8 @@ description: "Remove deployed files and clean up resources for specified project
 tool: "writ"
 command: "decommission"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # writ decommission
@@ -22,19 +22,17 @@ writ decommission [flags] <project>...
 
 Remove deployed files and clean up resources for specified projects.
 
-Symlinks are removed directly. Copied files (templates, secrets) are removed
-only after drift detection confirms they haven't been locally modified.
+The deployed inventory comes from the store readback (never a directory scan), so
+decommission removes exactly what writ's runs put into effect. Symlinked entries are
+unlinked — a target the user replaced with a real file is refused, not deleted.
+Copied files are removed with recovery-site archival (restorable on unwind).
 
-Safety behavior depends on state file:
-  Signed state    → Safe: full drift detection before removal
-  Unsigned state  → Warning, requires --force to proceed
-  No state        → Error: cannot safely remove without state
+Signature-gated safety (refusing unsigned state) arrives with graph signing (step 46).
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--force` | `false` | Skip confirmation and proceed with unsigned state |
 | `--prune` | `false` | Remove empty parent directories after file removal |
 
 ## Global Options
@@ -43,7 +41,7 @@ Safety behavior depends on state file:
 |--------|---------|-------------|
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
-| `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |

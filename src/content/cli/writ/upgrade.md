@@ -4,8 +4,8 @@ description: "Regenerate copied files (templates, secrets) from current sources"
 tool: "writ"
 command: "upgrade"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # writ upgrade
@@ -25,13 +25,14 @@ Regenerate copied files (templates, secrets) from current sources.
 Symlinks are not affected. Only files that were copied during deployment
 (templates expanded, secrets decrypted) are regenerated.
 
-Reads from the state file to identify copied files. Source templates/secrets
-are re-processed and written to their target locations.
+The copied inventory comes from the store readback; source templates/secrets are
+re-processed through the same planned chains deploy uses.
 
-Drift handling:
-  Source changed only   → Regenerate
-  Target modified only  → Skip, warn (use --force to overwrite)
-  Both changed          → Skip, warn (use --force to overwrite)
+Each copied file is classified first: a missing target regenerates freely; an
+up-to-date target is left alone; a differing target skips with a warning and
+regenerates only under --force — until recorded content identity lands (step 48),
+source-changed cannot be distinguished from target-modified. Encrypted (sops)
+entries cannot be compared without decrypting and follow the same --force rule.
 
 ## Options
 
@@ -45,7 +46,7 @@ Drift handling:
 |--------|---------|-------------|
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
-| `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |

@@ -4,8 +4,8 @@ description: "Complete installation to specified directory"
 tool: "writ"
 command: "self-install"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # writ self-install
@@ -25,7 +25,7 @@ Install writ and all supporting files to the specified prefix directory.
 This command:
   1. Copies the binary to <prefix>/bin/writ
   2. Installs man pages to <prefix>/share/man/man1/ (if man command exists)
-  3. Installs shell completions (auto-detects bash, fish, powershell, zsh or use --shell)
+  3. Installs shell completions (auto-detects bash, fish, pwsh, zsh or use --shell)
   4. Creates shared config at $XDG_CONFIG_HOME/devlore/config.yaml
   5. Creates tool config at $XDG_CONFIG_HOME/devlore/config.d/writ.yaml
   6. Initializes cache directory at $XDG_CACHE_HOME/devlore/
@@ -53,7 +53,7 @@ After installation, ensure <prefix>/bin is in your PATH.
 |--------|---------|-------------|
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
-| `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |
