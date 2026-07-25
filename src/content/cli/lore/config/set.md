@@ -4,8 +4,8 @@ description: "Set configuration values"
 tool: "lore"
 command: "set"
 parent: "lore config"
-generated: "2026-07-25T21:31:57Z"
-version: "8715b11"
+generated: "2026-07-25T22:05:48Z"
+version: "9874db9"
 ---
 
 # lore config set
