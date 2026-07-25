@@ -4,8 +4,8 @@ description: "Parse wiki or script and generate packages-manifest.yaml and confi
 tool: "lore"
 command: "onboard"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # lore onboard
@@ -38,7 +38,7 @@ environment repository.
 | `--format` | `plain` | Manifest format (plain, yaml) |
 | `--from` | `""` | Source URL or file path |
 | `--max-fetches` | `5` | Maximum additional URLs to fetch |
-| `--output` | `""` | Output directory path (default: current directory) |
+| `--output` | `""` | Promise directory path (default: current directory) |
 | `--verbose` | `false` | Show AI reasoning |
 
 ## Global Options

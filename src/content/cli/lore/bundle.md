@@ -4,8 +4,8 @@ description: "Create self-extracting deployment bundles for air-gapped environme
 tool: "lore"
 command: "bundle"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # lore bundle
@@ -23,7 +23,7 @@ lore bundle @<manifest> -o <output> [flags]
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--include-repo` | `[]` | Include repository in bundle |
-| `--output, -o` | `""` | Output bundle path |
+| `--output, -o` | `""` | Promise bundle path |
 | `--platform` | `""` | Target platform (e.g., linux/fedora) |
 
 ## Global Options

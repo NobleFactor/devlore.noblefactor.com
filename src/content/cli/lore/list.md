@@ -4,8 +4,8 @@ description: "List deployed packages from pipeline receipts"
 tool: "lore"
 command: "list"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # lore list
@@ -22,7 +22,7 @@ lore list [flags]
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--format` | `table` | Output format (table, manifest, json) |
+| `--format` | `table` | Promise format (table, manifest, json) |
 
 ## Global Options
 

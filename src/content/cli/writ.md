@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # writ
@@ -37,7 +37,7 @@ Declare your environment once — writ deploys it everywhere you work.
 |--------|---------|-------------|
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
-| `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |
@@ -55,10 +55,8 @@ Declare your environment once — writ deploys it everywhere you work.
 | [writ config](/cli/writ/config/) | Get and set configuration options |
 | [writ decommission](/cli/writ/decommission/) | Remove deployed files and clean up resources for specified projects |
 | [writ deploy](/cli/writ/deploy/) | Deploy projects by creating symlinks in the target location |
-| [writ inspect](/cli/writ/inspect/) | Show detailed information about a project or deployed file |
-| [writ list](/cli/writ/list/) | List available projects for the current target |
 | [writ migrate](/cli/writ/migrate/) | Migrate an existing environment to a writ layer |
-| [writ receipt](/cli/writ/receipt/) | View and manage deployment receipts |
-| [writ reconcile](/cli/writ/reconcile/) | Full-stack drift detection and repair |
 | [writ self-install](/cli/writ/self-install/) | Complete installation to specified directory |
+| [writ status](/cli/writ/status/) | Report deployed state: what should be present, from where, and what's missing or different |
 | [writ upgrade](/cli/writ/upgrade/) | Regenerate copied files (templates, secrets) from current sources |
+| [writ verify](/cli/writ/verify/) | Verify the publisher signatures of graph and trace documents |

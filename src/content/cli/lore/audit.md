@@ -4,8 +4,8 @@ description: "View security audit log entries"
 tool: "lore"
 command: "audit"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # lore audit
@@ -22,8 +22,8 @@ lore audit [flags]
 
 View security audit log entries.
 
-The audit log records security-sensitive operations:
-  - pmm.fetch: Package fetch with signature status
+The audit log records security-sensitive actions:
+  - pmm.fetch: PkgPath fetch with signature status
   - pmm.verify: Signature verification results
   - privilege.request: Sudo/elevation requests
   - binary.download: Upstream binary downloads with hash verification

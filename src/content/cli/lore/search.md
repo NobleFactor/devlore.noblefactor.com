@@ -4,8 +4,8 @@ description: "Search available packages in the registry and native package manag
 tool: "lore"
 command: "search"
 parent: "lore"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # lore search
@@ -23,9 +23,9 @@ lore search <query> [flags]
 Search for packages across the lore registry and native package managers.
 
 Results show the package source and confidence level:
-  HIGH   - Package is in the lore registry with full lifecycle support
-  MEDIUM - Package found in native PM and verified to exist
-  LOW    - Package synthesized but not verified
+  HIGH   - PkgPath is in the lore registry with full lifecycle support
+  MEDIUM - PkgPath found in native PM and verified to exist
+  LOW    - PkgPath synthesized but not verified
 
 Use --lore-only to search only the lore lorepackage.
 Use --native-only to search only the native package manager.

@@ -4,8 +4,8 @@ description: "Move files from target location into a project and create symlinks
 tool: "writ"
 command: "adopt"
 parent: "writ"
-generated: "2026-02-06T22:10:38Z"
-version: "530ff15"
+generated: "2026-07-25T16:15:37Z"
+version: "259057b"
 ---
 
 # writ adopt
@@ -33,6 +33,9 @@ Scope (Home or System) is inferred from the item's location:
 Directories are adopted recursively—all files within are moved and symlinked.
 Existing symlinks within directories are skipped.
 
+Each scope's adoptions run as one execution graph: a failed adoption fails the
+run and completed adoptions roll back (moves reversed, links removed).
+
 With --from-receipt, reads a lore receipt and adopts packages-manifest.yaml and
 config files into the environment repository.
 
@@ -42,7 +45,7 @@ config files into the environment repository.
 |--------|---------|-------------|
 | `--from-receipt` | `false` | Adopt packages-manifest.yaml and config from lore receipt |
 | `--layer` | `personal` | Layer to adopt into: personal, team, or base |
-| `--project` | `""` | Project name within the layer (required) |
+| `--project` | `""` | Origin name within the layer (required) |
 
 ## Global Options
 
@@ -50,7 +53,7 @@ config files into the environment repository.
 |--------|---------|-------------|
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
-| `--interactive` | `false` | Force interactive mode (prompts for conflicts) |
+| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |
