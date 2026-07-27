@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-07-27T02:24:06Z"
-version: "7c05c97"
+generated: "2026-07-27T03:19:44Z"
+version: "e0cb20c"
 ---
 
 # writ
