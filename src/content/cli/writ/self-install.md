@@ -4,8 +4,8 @@ description: "Complete installation to specified directory"
 tool: "writ"
 command: "self-install"
 parent: "writ"
-generated: "2026-07-27T03:19:44Z"
-version: "e0cb20c"
+generated: "2026-07-27T20:21:32Z"
+version: "2b3780c"
 ---
 
 # writ self-install
