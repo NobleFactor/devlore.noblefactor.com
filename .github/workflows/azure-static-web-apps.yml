@@ -84,6 +84,30 @@ jobs:
           echo "at_limit=$at_limit" >> "$GITHUB_OUTPUT"
           echo "present=$present" >> "$GITHUB_OUTPUT"
 
+      - name: Evict the oldest merge staging environment
+        if: >-
+          github.event_name == 'pull_request' &&
+          steps.quota.outputs.at_limit == 'true' &&
+          steps.quota.outputs.present == 'false'
+        run: |
+          # Eviction policy (approved 2026-07-27): only PR "*-merge" environments are ever evicted,
+          # oldest first; branch environments (develop, release-*) are never touched. An evicted
+          # PR that is still open recreates its environment on its next synchronize event.
+          victim=$(az staticwebapp environment list \
+            --name devlore-noblefactor-com --output json \
+            | jq -r '[ .[] | {name: .name, created: (.createdTimeUtc // .properties.createdTimeUtc)}
+                       | select(.name | endswith("-merge")) ]
+                     | sort_by(.created) | first | .name // empty')
+          if [ -z "$victim" ]; then
+            echo "at limit but no *-merge environment exists to evict; the deploy below may be rejected"
+            exit 0
+          fi
+          echo "evicting staging environment: $victim"
+          az staticwebapp environment delete \
+            --name devlore-noblefactor-com \
+            --environment-name "$victim" \
+            --yes
+
       - name: Deploy to Azure Static Web Apps
         id: deploy
         uses: Azure/static-web-apps-deploy@v1
