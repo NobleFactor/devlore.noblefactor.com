@@ -79,6 +79,8 @@ jobs:
           count=$(echo "$staging" | jq 'length')
           present=$(echo "$staging" | jq --arg n "${{ steps.env.outputs.name }}" 'any(.[]; .name == $n)')
           at_limit=$([ "$count" -ge "$STAGING_LIMIT" ] && echo true || echo false)
+          echo "staging environment inventory:"
+          echo "$staging" | jq -r '.[] | "  \(.name)  (created \(.created))"'
           echo "staging environments: $count (limit: $STAGING_LIMIT, at_limit: $at_limit, this PR's environment present: $present)"
           echo "count=$count" >> "$GITHUB_OUTPUT"
           echo "at_limit=$at_limit" >> "$GITHUB_OUTPUT"
@@ -90,16 +92,19 @@ jobs:
           steps.quota.outputs.at_limit == 'true' &&
           steps.quota.outputs.present == 'false'
         run: |
-          # Eviction policy (approved 2026-07-27): only PR "*-merge" environments are ever evicted,
-          # oldest first; branch environments (develop, release-*) are never touched. An evicted
-          # PR that is still open recreates its environment on its next synchronize event.
+          # Eviction policy (approved 2026-07-27, predicate corrected after the live run showed SWA
+          # names PR environments by its own convention, not the deployment_environment input): only
+          # PR environments are ever evicted, oldest first — production ("default") and branch
+          # environments (develop, release-*) are never touched. An evicted PR that is still open
+          # recreates its environment on its next synchronize event.
           victim=$(az staticwebapp environment list \
             --name devlore-noblefactor-com --output json \
             | jq -r '[ .[] | {name: .name, created: (.createdTimeUtc // .properties.createdTimeUtc)}
-                       | select(.name | endswith("-merge")) ]
+                       | select(.name != "default" and .name != "develop"
+                                and (.name | startswith("release-") | not)) ]
                      | sort_by(.created) | first | .name // empty')
           if [ -z "$victim" ]; then
-            echo "at limit but no *-merge environment exists to evict; the deploy below may be rejected"
+            echo "at limit but only protected environments exist; the deploy below may be rejected"
             exit 0
           fi
           echo "evicting staging environment: $victim"
