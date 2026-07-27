@@ -13,6 +13,11 @@ on:
       - develop
   workflow_dispatch:
 
+env:
+  # Azure Static Web Apps staging-environment cap (Standard tier). Detection compares the
+  # live environment count against this before any PR deploy.
+  STAGING_LIMIT: 10
+
 jobs:
   build_and_deploy:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
@@ -55,6 +60,75 @@ jobs:
         env:
           PUBLIC_INSTALL_URL: ${{ steps.env.outputs.install_url }}
 
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Check staging environment quota
+        id: quota
+        if: github.event_name == 'pull_request'
+        run: |
+          # Staging environments are every environment except production ("default"). Branch
+          # environments (develop, release-*) count toward the quota but are never evicted.
+          # The list shape varies by az version (properties flattened or nested), so both are read.
+          staging=$(az staticwebapp environment list \
+            --name devlore-noblefactor-com --output json \
+            | jq '[ .[] | {name: .name, created: (.createdTimeUtc // .properties.createdTimeUtc)}
+                    | select(.name != "default") ]')
+          count=$(echo "$staging" | jq 'length')
+          present=$(echo "$staging" | jq --arg n "${{ steps.env.outputs.name }}" 'any(.[]; .name == $n)')
+          at_limit=$([ "$count" -ge "$STAGING_LIMIT" ] && echo true || echo false)
+          echo "staging environment inventory:"
+          echo "$staging" | jq -r '.[] | "  \(.name)  (created \(.created))"'
+          echo "staging environments: $count (limit: $STAGING_LIMIT, at_limit: $at_limit, this PR's environment present: $present)"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "at_limit=$at_limit" >> "$GITHUB_OUTPUT"
+          echo "present=$present" >> "$GITHUB_OUTPUT"
+
+      - name: Evict the oldest merge staging environment
+        if: >-
+          github.event_name == 'pull_request' &&
+          steps.quota.outputs.at_limit == 'true' &&
+          steps.quota.outputs.present == 'false'
+        run: |
+          # Eviction policy (approved 2026-07-27, predicate corrected after the live run showed SWA
+          # names PR environments by its own convention, not the deployment_environment input): only
+          # PR environments are ever evicted, oldest first — production ("default") and branch
+          # environments (develop, release-*) are never touched. An evicted PR that is still open
+          # recreates its environment on its next synchronize event.
+          victim=$(az staticwebapp environment list \
+            --name devlore-noblefactor-com --output json \
+            | jq -r '[ .[] | {name: .name, created: (.createdTimeUtc // .properties.createdTimeUtc)}
+                       | select(.name != "default" and .name != "develop"
+                                and (.name | startswith("release-") | not)) ]
+                     | sort_by(.created) | first | .name // empty')
+          if [ -z "$victim" ]; then
+            echo "at limit but only protected environments exist; the deploy below may be rejected"
+            exit 0
+          fi
+          echo "evicting staging environment: $victim"
+          # The service principal can issue the delete but lacks staticSitesOperationStatuses/read,
+          # so az's poll of the async operation fails after the delete is accepted. Tolerate that
+          # and confirm by ground truth: re-list until the victim disappears.
+          az staticwebapp environment delete \
+            --name devlore-noblefactor-com \
+            --environment-name "$victim" \
+            --yes || echo "delete returned non-zero (operation-status poll); confirming via list"
+          gone=false
+          for _ in $(seq 1 12); do
+            sleep 5
+            gone=$(az staticwebapp environment list \
+              --name devlore-noblefactor-com --output json \
+              | jq --arg v "$victim" 'any(.[]; .name == $v) | not')
+            [ "$gone" = "true" ] && break
+          done
+          if [ "$gone" != "true" ]; then
+            echo "environment $victim still present after 60s; the deploy below may be rejected"
+            exit 1
+          fi
+          echo "environment $victim evicted"
+
       - name: Deploy to Azure Static Web Apps
         id: deploy
         uses: Azure/static-web-apps-deploy@v1
@@ -66,11 +140,6 @@ jobs:
           skip_app_build: true
           production_branch: "main"
           deployment_environment: ${{ steps.env.outputs.name }}
-
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Configure custom domain
         run: |
