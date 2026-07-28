@@ -61,13 +61,45 @@ jobs:
           PUBLIC_INSTALL_URL: ${{ steps.env.outputs.install_url }}
 
       - name: Login to Azure
+        id: azure-login
+        continue-on-error: true
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Wait before Azure login retry
+        if: steps.azure-login.outcome == 'failure'
+        run: sleep 30
+
+      - name: Retry Azure login
+        id: azure-login-retry
+        if: steps.azure-login.outcome == 'failure'
+        continue-on-error: true
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Report Azure session
+        id: azure
+        run: |
+          # A transient management-plane failure must not kill a deploy that runs on the
+          # deployment token (2026-07-28: one develop deploy died on "No subscriptions
+          # found" with the service principal, its secret, and its role assignment all
+          # verified healthy; the next deploy succeeded untouched). One retry covers a
+          # short blip; on a longer outage the az-dependent steps below are skipped and
+          # the deploy proceeds — at the staging limit it then fails with Azure's own
+          # quota message, which is exactly the pre-eviction behavior.
+          if [ "${{ steps.azure-login.outcome }}" = "success" ] || [ "${{ steps.azure-login-retry.outcome }}" = "success" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+            echo "Azure session available"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Azure login failed twice; quota detection, eviction, and custom-domain configuration are skipped for this run"
+          fi
+
       - name: Check staging environment quota
         id: quota
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && steps.azure.outputs.available == 'true'
         run: |
           # Staging environments are every environment except production ("default"). Branch
           # environments (develop, release-*) count toward the quota but are never evicted.
@@ -142,6 +174,7 @@ jobs:
           deployment_environment: ${{ steps.env.outputs.name }}
 
       - name: Configure custom domain
+        if: steps.azure.outputs.available == 'true'
         run: |
           az staticwebapp hostname set \
             --name devlore-noblefactor-com \
