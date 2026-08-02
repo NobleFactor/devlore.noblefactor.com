@@ -4,8 +4,8 @@ description: "Modify an existing package manifest"
 tool: "lore"
 command: "update"
 parent: "lore manifest"
-generated: "2026-08-02T21:40:46Z"
-version: "f92a914"
+generated: "2026-08-02T21:49:03Z"
+version: "22936e6"
 ---
 
 # lore manifest update
