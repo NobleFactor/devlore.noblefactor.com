@@ -4,8 +4,8 @@ description: "Verify the publisher signatures of graph and trace documents"
 tool: "writ"
 command: "verify"
 parent: "writ"
-generated: "2026-08-07T16:50:39Z"
-version: "2b8e1c4"
+generated: "2026-08-07T19:58:23Z"
+version: "b34e8dd"
 ---
 
 # writ verify
@@ -62,7 +62,7 @@ is the signing policy ladder:
 ```bash
 writ verify ~/.local/state/devlore/graphs/*.yaml
 writ verify --signing-policy=reject_external ~/Downloads/shared-plan.yaml
-writ verify --json --signing-policy=reject receipt.yaml
+writ verify --json --signing-policy=reject trace.yaml
 ```
 
 ## Parent Command
