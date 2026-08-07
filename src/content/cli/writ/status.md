@@ -4,8 +4,8 @@ description: "Report deployed state: what should be present, from where, and wha
 tool: "writ"
 command: "status"
 parent: "writ"
-generated: "2026-08-07T16:50:39Z"
-version: "2b8e1c4"
+generated: "2026-08-07T19:58:23Z"
+version: "b34e8dd"
 ---
 
 # writ status
@@ -35,9 +35,10 @@ Status indicators:
   ✗ Missing           — Deployed target is gone            → writ deploy
   ⚠ Conflict          — Something else occupies the target
   ? Orphan            — Target's source no longer exists   → writ decommission
-  M Modified-or-stale — Copied target differs from a fresh result; source change
-                        and local edits are indistinguishable until recorded
-                        content identity lands (step 48)   → writ upgrade
+  ↑ Stale             — Source changed since the run       → writ upgrade
+  M Modified          — Target edited out-of-band          → writ upgrade --force
+  M Modified-or-stale — Differs, but the run predates recorded content
+                        identity: attribution indeterminate → writ upgrade
 
 ## Options
 
