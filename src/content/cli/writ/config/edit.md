@@ -4,8 +4,8 @@ description: "Open configuration file in $EDITOR"
 tool: "writ"
 command: "edit"
 parent: "writ config"
-generated: "2026-08-08T18:26:52Z"
-version: "68fa29f"
+generated: "2026-08-08T19:30:53Z"
+version: "3dfa813"
 ---
 
 # writ config edit
