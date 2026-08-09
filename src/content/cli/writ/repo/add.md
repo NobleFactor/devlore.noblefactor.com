@@ -4,8 +4,8 @@ description: "Register a repository as a layer"
 tool: "writ"
 command: "add"
 parent: "writ repo"
-generated: "2026-08-09T03:13:20Z"
-version: "d0b6ac1"
+generated: "2026-08-09T06:37:43Z"
+version: "966aa5c"
 ---
 
 # writ repo add
@@ -15,8 +15,24 @@ Register a repository as a layer
 ## Usage
 
 ```
-writ repo add <layer> <path>
+writ repo add <layer> <working-tree-root>|<repository-url> [<working-tree-root>] [flags]
 ```
+
+## Description
+
+Register a repository as a layer.
+
+The location is a local working-tree-root, or a repository URL — which triggers a
+git clone (git-clone's own grammar: the optional trailing working-tree-root is the
+clone destination, defaulting to the writ-owned home under
+XDG_DATA_HOME/devlore/writ/repos). After placement the repository is entirely
+yours: writ performs no hidden git operations, ever.
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--branch` | `""` | Branch to clone (repository-url form only) |
 
 ## Global Options
 
@@ -33,6 +49,15 @@ writ repo add <layer> <path>
 | `--target` | `Home` | Target to operate on |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
 | `--verbose, -v` | `false` | Verbose output |
+
+## Examples
+
+```bash
+writ repo add personal ~/Workspace/Personal
+writ repo add team git@github.com:acme/team-env.git
+writ repo add personal git@github.com:me/personal.git ~/Workspace/Personal
+writ repo add personal git@github.com:me/personal.git --branch devlore-cli/writ-layer
+```
 
 ## Parent Command
 
