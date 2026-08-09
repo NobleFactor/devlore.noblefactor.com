@@ -4,8 +4,8 @@ description: "Manage layer repository registrations"
 tool: "writ"
 command: "repo"
 parent: "writ"
-generated: "2026-08-09T06:37:43Z"
-version: "966aa5c"
+generated: "2026-08-09T07:52:03Z"
+version: "cbc2b71"
 ---
 
 # writ repo
