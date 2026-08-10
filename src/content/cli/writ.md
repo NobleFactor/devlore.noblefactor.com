@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-08-10T16:56:25Z"
-version: "64d4524"
+generated: "2026-08-10T17:12:46Z"
+version: "1da342d"
 ---
 
 # writ
@@ -57,7 +57,7 @@ Declare your environment once — writ deploys it everywhere you work.
 | [writ deploy](/cli/writ/deploy/) | Deploy projects by creating symlinks in the target location |
 | [writ migrate](/cli/writ/migrate/) | Migrate an existing environment to a writ layer |
 | [writ repo](/cli/writ/repo/) | Manage layer repository registrations |
-| [writ self-install](/cli/writ/self-install/) | Complete installation to specified directory |
+| [writ self](/cli/writ/self/) | Self-management commands |
 | [writ status](/cli/writ/status/) | Report deployed state: what should be present, from where, and what's missing or different |
 | [writ upgrade](/cli/writ/upgrade/) | Regenerate copied files (templates, secrets) from current sources |
 | [writ verify](/cli/writ/verify/) | Verify the publisher signatures of graph and trace documents |
