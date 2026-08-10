@@ -1,42 +1,38 @@
 ---
-title: "lore self-install"
-description: "Complete installation to specified directory"
-tool: "lore"
-command: "self-install"
-parent: "lore"
-generated: "2026-08-10T16:56:25Z"
-version: "64d4524"
+title: "writ self install"
+description: "Install writ and supporting files"
+tool: "writ"
+command: "install"
+parent: "writ self"
+generated: "2026-08-10T17:12:46Z"
+version: "1da342d"
 ---
 
-# lore self-install
+# writ self install
 
-Complete installation to specified directory
+Install writ and supporting files
 
 ## Usage
 
 ```
-lore self-install --prefix=<directory> [flags]
+writ self install [prefix] [flags]
 ```
 
 ## Description
 
-Install lore and all supporting files to the specified prefix directory.
+Install writ and all supporting files to the specified prefix directory.
 
 This command:
-  1. Copies the binary to <prefix>/bin/lore
+  1. Copies the binary to <prefix>/bin/writ
   2. Installs man pages to <prefix>/share/man/man1/ (if man command exists)
   3. Installs shell completions (auto-detects bash, fish, pwsh, zsh or use --shell)
-  4. Creates shared config at $XDG_CONFIG_HOME/devlore/config.yaml
-  5. Creates tool config at $XDG_CONFIG_HOME/devlore/config.d/lore.yaml
-  6. Initializes cache directory at $XDG_CACHE_HOME/devlore/
-  7. Creates layer directories at $XDG_DATA_HOME/devlore/writ/layers/
-
-Shell completions are auto-detected by default. Use --shell to override:
-  lore self-install --prefix=~/.local --shell bash --shell zsh
+  4. Initializes config and cache directories (if applicable)
+  5. Writes a manifest for uninstall tracking
 
 Example:
-  lore self-install --prefix=~/.local
-  lore self-install --prefix=~/.local --shell bash --shell zsh
+  writ self install           # defaults to ~/.local
+  writ self install ~/.local
+  writ self install /usr/local --shell bash --shell zsh
 
 After installation, ensure <prefix>/bin is in your PATH.
 
@@ -44,7 +40,6 @@ After installation, ensure <prefix>/bin is in your PATH.
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--prefix` | `""` | Installation prefix directory (required, e.g., ~/.local) |
 | `--shell` | `[]` | Shell to install completions for (repeatable, e.g., --shell bash --shell zsh) |
 
 ## Global Options
@@ -58,8 +53,8 @@ After installation, ensure <prefix>/bin is in your PATH.
 | `--model-api-key` | `""` | Model provider API key |
 | `--model-endpoint` | `""` | Model provider endpoint URL |
 | `--model-provider` | `""` | Model provider: anthropic, openai, azure-openai, ollama, github |
-| `--registry` | `""` | Registry path |
 | `--silent` | `false` | Suppress all status messages (stderr) |
+| `--target` | `Home` | Target to operate on |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
 | `--verbose, -v` | `false` | Verbose output |
 
@@ -67,4 +62,4 @@ After installation, ensure <prefix>/bin is in your PATH.
 
 | Command | Description |
 |---------|-------------|
-| [lore](/cli/lore/) | The tribal knowledge package deployer |
+| [writ self](/cli/writ/self/) | Self-management commands |
