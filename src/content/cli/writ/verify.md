@@ -4,8 +4,8 @@ description: "Verify the publisher signatures of graph and trace documents"
 tool: "writ"
 command: "verify"
 parent: "writ"
-generated: "2026-08-10T02:48:09Z"
-version: "8901143"
+generated: "2026-08-10T02:54:17Z"
+version: "e88c634"
 ---
 
 # writ verify
