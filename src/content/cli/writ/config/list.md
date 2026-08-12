@@ -4,8 +4,8 @@ description: "List all configuration settings"
 tool: "writ"
 command: "list"
 parent: "writ config"
-generated: "2026-08-12T05:23:52Z"
-version: "783db39"
+generated: "2026-08-12T05:58:32Z"
+version: "6c9f28e"
 ---
 
 # writ config list
