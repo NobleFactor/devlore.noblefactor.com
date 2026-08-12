@@ -4,8 +4,8 @@ description: "Scaffold a new package manifest"
 tool: "lore"
 command: "create"
 parent: "lore manifest"
-generated: "2026-08-12T00:59:32Z"
-version: "020c5b8"
+generated: "2026-08-12T01:57:18Z"
+version: "360a7a8"
 ---
 
 # lore manifest create
