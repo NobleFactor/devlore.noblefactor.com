@@ -4,8 +4,8 @@ description: "Remove deployed files and clean up resources for specified project
 tool: "writ"
 command: "decommission"
 parent: "writ"
-generated: "2026-08-13T00:01:46Z"
-version: "030a879"
+generated: "2026-08-13T02:20:26Z"
+version: "3574cc4"
 ---
 
 # writ decommission
