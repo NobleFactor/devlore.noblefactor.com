@@ -4,8 +4,8 @@ description: "Show detailed information about a package"
 tool: "lore"
 command: "inspect"
 parent: "lore"
-generated: "2026-08-13T02:20:26Z"
-version: "3574cc4"
+generated: "2026-08-13T02:43:40Z"
+version: "8887ce1"
 ---
 
 # lore inspect
