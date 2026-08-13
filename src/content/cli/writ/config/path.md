@@ -4,8 +4,8 @@ description: "Show configuration file location"
 tool: "writ"
 command: "path"
 parent: "writ config"
-generated: "2026-08-13T04:59:54Z"
-version: "f15c863"
+generated: "2026-08-13T05:09:25Z"
+version: "fdfa8c0"
 ---
 
 # writ config path
