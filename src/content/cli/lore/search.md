@@ -4,8 +4,8 @@ description: "Search available packages in the registry and native package manag
 tool: "lore"
 command: "search"
 parent: "lore"
-generated: "2026-08-14T22:09:48Z"
-version: "7d7aac3"
+generated: "2026-08-14T22:40:00Z"
+version: "fe8f2ea"
 ---
 
 # lore search
