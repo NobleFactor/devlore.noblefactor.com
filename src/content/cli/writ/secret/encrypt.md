@@ -4,8 +4,8 @@ description: "Encrypt files to .sops siblings per the governing .sops.yaml"
 tool: "writ"
 command: "encrypt"
 parent: "writ secret"
-generated: "2026-08-14T23:34:19Z"
-version: "1a454cd"
+generated: "2026-08-14T23:34:44Z"
+version: "60c689f"
 ---
 
 # writ secret encrypt

@@ -4,8 +4,8 @@ description: "Remove writ and supporting files"
 tool: "writ"
 command: "uninstall"
 parent: "writ self"
-generated: "2026-08-14T23:34:19Z"
-version: "1a454cd"
+generated: "2026-08-14T23:34:44Z"
+version: "60c689f"
 ---
 
 # writ self uninstall
