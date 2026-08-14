@@ -4,8 +4,8 @@ description: "Submit a package manifest to the registry"
 tool: "lore"
 command: "publish"
 parent: "lore"
-generated: "2026-08-14T05:48:49Z"
-version: "883c764"
+generated: "2026-08-14T18:55:49Z"
+version: "eaf80b5"
 ---
 
 # lore publish
