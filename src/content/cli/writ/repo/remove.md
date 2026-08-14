@@ -4,8 +4,8 @@ description: "Unregister a layer (does not delete files)"
 tool: "writ"
 command: "remove"
 parent: "writ repo"
-generated: "2026-08-14T00:17:04Z"
-version: "99a0dbb"
+generated: "2026-08-14T01:29:53Z"
+version: "54589f1"
 ---
 
 # writ repo remove
