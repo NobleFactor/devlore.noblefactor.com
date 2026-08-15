@@ -4,8 +4,8 @@ description: "Upgrade lore in place"
 tool: "lore"
 command: "upgrade"
 parent: "lore self"
-generated: "2026-08-15T02:31:00Z"
-version: "41c33b4"
+generated: "2026-08-15T03:35:59Z"
+version: "72a6dd6"
 ---
 
 # lore self upgrade
