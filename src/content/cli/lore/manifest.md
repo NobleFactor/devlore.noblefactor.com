@@ -4,8 +4,8 @@ description: "Create and manage package lifecycle manifests"
 tool: "lore"
 command: "manifest"
 parent: "lore"
-generated: "2026-08-15T02:31:00Z"
-version: "41c33b4"
+generated: "2026-08-15T03:35:59Z"
+version: "72a6dd6"
 ---
 
 # lore manifest
