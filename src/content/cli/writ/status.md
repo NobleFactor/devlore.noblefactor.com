@@ -4,8 +4,8 @@ description: "Report deployed state: what should be present, from where, and wha
 tool: "writ"
 command: "status"
 parent: "writ"
-generated: "2026-08-18T00:17:59Z"
-version: "b1da01e"
+generated: "2026-08-18T03:00:40Z"
+version: "1e1bd5b"
 ---
 
 # writ status
