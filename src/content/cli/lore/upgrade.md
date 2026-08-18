@@ -4,8 +4,8 @@ description: "Upgrade previously deployed packages to newer versions"
 tool: "lore"
 command: "upgrade"
 parent: "lore"
-generated: "2026-08-17T23:58:28Z"
-version: "f7e53fd"
+generated: "2026-08-18T00:17:59Z"
+version: "b1da01e"
 ---
 
 # lore upgrade
