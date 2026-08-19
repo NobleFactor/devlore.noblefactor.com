@@ -4,8 +4,8 @@ description: "Install lore and supporting files"
 tool: "lore"
 command: "install"
 parent: "lore self"
-generated: "2026-08-19T18:32:21Z"
-version: "5b2e287"
+generated: "2026-08-19T18:46:38Z"
+version: "7988c1d"
 ---
 
 # lore self install
