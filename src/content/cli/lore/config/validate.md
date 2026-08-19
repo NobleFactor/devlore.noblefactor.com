@@ -4,8 +4,8 @@ description: "Validate configuration against schema"
 tool: "lore"
 command: "validate"
 parent: "lore config"
-generated: "2026-08-19T17:28:06Z"
-version: "b6bc271"
+generated: "2026-08-19T18:32:21Z"
+version: "5b2e287"
 ---
 
 # lore config validate
