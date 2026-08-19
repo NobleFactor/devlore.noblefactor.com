@@ -4,8 +4,8 @@ description: "Set configuration values"
 tool: "writ"
 command: "set"
 parent: "writ config"
-generated: "2026-08-19T04:47:14Z"
-version: "2478978"
+generated: "2026-08-19T15:48:08Z"
+version: "ed45a1e"
 ---
 
 # writ config set
