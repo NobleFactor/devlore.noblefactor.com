@@ -4,8 +4,8 @@ description: "Synchronize the local registry cache from the central registry"
 tool: "lore"
 command: "update"
 parent: "lore"
-generated: "2026-08-19T15:48:08Z"
-version: "ed45a1e"
+generated: "2026-08-19T17:28:06Z"
+version: "b6bc271"
 ---
 
 # lore update
