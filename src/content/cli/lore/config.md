@@ -4,8 +4,8 @@ description: "Get and set configuration options"
 tool: "lore"
 command: "config"
 parent: "lore"
-generated: "2026-08-20T22:34:42Z"
-version: "d03ee66"
+generated: "2026-08-20T22:37:51Z"
+version: "818e708"
 ---
 
 # lore config
