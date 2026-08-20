@@ -4,8 +4,8 @@ description: "Get configuration values"
 tool: "lore"
 command: "get"
 parent: "lore config"
-generated: "2026-08-20T23:30:06Z"
-version: "84771f6"
+generated: "2026-08-20T23:53:37Z"
+version: "5cd501b"
 ---
 
 # lore config get
