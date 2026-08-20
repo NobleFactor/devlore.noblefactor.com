@@ -4,8 +4,8 @@ description: "Open configuration file in $EDITOR"
 tool: "lore"
 command: "edit"
 parent: "lore config"
-generated: "2026-08-20T19:09:08Z"
-version: "a7d7e06"
+generated: "2026-08-20T19:35:59Z"
+version: "84b416f"
 ---
 
 # lore config edit
