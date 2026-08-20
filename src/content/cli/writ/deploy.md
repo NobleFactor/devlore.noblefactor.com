@@ -4,8 +4,8 @@ description: "Deploy projects by creating symlinks in the target location"
 tool: "writ"
 command: "deploy"
 parent: "writ"
-generated: "2026-08-20T06:32:10Z"
-version: "925e888"
+generated: "2026-08-20T17:26:54Z"
+version: "203a540"
 ---
 
 # writ deploy
