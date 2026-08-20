@@ -4,8 +4,8 @@ description: "Deploy packages to the local system"
 tool: "lore"
 command: "deploy"
 parent: "lore"
-generated: "2026-08-19T23:31:52Z"
-version: "68c4632"
+generated: "2026-08-20T00:07:53Z"
+version: "0a96a5e"
 ---
 
 # lore deploy
