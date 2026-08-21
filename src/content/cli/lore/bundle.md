@@ -4,8 +4,8 @@ description: "Create self-extracting deployment bundles for air-gapped environme
 tool: "lore"
 command: "bundle"
 parent: "lore"
-generated: "2026-08-21T04:00:15Z"
-version: "b5b3898"
+generated: "2026-08-21T07:06:42Z"
+version: "92c18eb"
 ---
 
 # lore bundle
