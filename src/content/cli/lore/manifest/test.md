@@ -4,8 +4,8 @@ description: "Dry-run a package manifest on current system"
 tool: "lore"
 command: "test"
 parent: "lore manifest"
-generated: "2026-08-21T02:01:27Z"
-version: "84d42b7"
+generated: "2026-08-21T04:00:15Z"
+version: "b5b3898"
 ---
 
 # lore manifest test
