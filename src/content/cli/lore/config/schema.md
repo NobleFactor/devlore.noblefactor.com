@@ -4,8 +4,8 @@ description: "Output the embedded JSON schema"
 tool: "lore"
 command: "schema"
 parent: "lore config"
-generated: "2026-08-21T20:06:41Z"
-version: "2c5f6e6"
+generated: "2026-08-21T22:26:32Z"
+version: "70d540c"
 ---
 
 # lore config schema
