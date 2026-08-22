@@ -4,8 +4,8 @@ description: "Get and set configuration options"
 tool: "writ"
 command: "config"
 parent: "writ"
-generated: "2026-08-22T03:51:57Z"
-version: "f7a169b"
+generated: "2026-08-22T05:23:00Z"
+version: "c8898be"
 ---
 
 # writ config
