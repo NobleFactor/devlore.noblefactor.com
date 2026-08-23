@@ -4,8 +4,8 @@ description: "Remove packages and clean up their resources"
 tool: "lore"
 command: "decommission"
 parent: "lore"
-generated: "2026-08-23T22:44:07Z"
-version: "9425d29"
+generated: "2026-08-23T23:35:38Z"
+version: "48d1392"
 ---
 
 # lore decommission

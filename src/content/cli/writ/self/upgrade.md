@@ -4,8 +4,8 @@ description: "Upgrade writ in place"
 tool: "writ"
 command: "upgrade"
 parent: "writ self"
-generated: "2026-08-23T22:44:07Z"
-version: "9425d29"
+generated: "2026-08-23T23:35:38Z"
+version: "48d1392"
 ---
 
 # writ self upgrade
