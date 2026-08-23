@@ -4,8 +4,8 @@ description: "Register a repository as a layer"
 tool: "writ"
 command: "add"
 parent: "writ repo"
-generated: "2026-08-23T06:24:07Z"
-version: "516db84"
+generated: "2026-08-23T18:22:53Z"
+version: "bc32d09"
 ---
 
 # writ repo add
