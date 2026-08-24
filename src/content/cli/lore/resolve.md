@@ -4,8 +4,8 @@ description: "Show how a package would be installed on this platform"
 tool: "lore"
 command: "resolve"
 parent: "lore"
-generated: "2026-08-23T23:54:57Z"
-version: "c57fd60"
+generated: "2026-08-24T00:19:05Z"
+version: "5a680ab"
 ---
 
 # lore resolve
