@@ -4,8 +4,8 @@ description: "Validate a package manifest"
 tool: "lore"
 command: "validate"
 parent: "lore manifest"
-generated: "2026-08-24T15:57:43Z"
-version: "f2bfff4"
+generated: "2026-08-24T20:40:35Z"
+version: "20a6ebb"
 ---
 
 # lore manifest validate
