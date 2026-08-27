@@ -4,8 +4,8 @@ description: "Self-management commands"
 tool: "lore"
 command: "self"
 parent: "lore"
-generated: "2026-08-27T17:51:05Z"
-version: "d5b1375"
+generated: "2026-08-27T20:16:29Z"
+version: "a730b82"
 ---
 
 # lore self
