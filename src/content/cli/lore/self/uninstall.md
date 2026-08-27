@@ -4,8 +4,8 @@ description: "Remove lore and supporting files"
 tool: "lore"
 command: "uninstall"
 parent: "lore self"
-generated: "2026-08-27T01:08:13Z"
-version: "a36f5af"
+generated: "2026-08-27T01:11:22Z"
+version: "0583e1e"
 ---
 
 # lore self uninstall
