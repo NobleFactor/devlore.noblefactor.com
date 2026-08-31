@@ -4,8 +4,8 @@ description: "Show detailed information about a package"
 tool: "lore"
 command: "inspect"
 parent: "lore"
-generated: "2026-08-30T23:20:16Z"
-version: "5c4d546"
+generated: "2026-08-31T01:33:00Z"
+version: "18dedc6"
 ---
 
 # lore inspect
@@ -15,7 +15,7 @@ Show detailed information about a package
 ## Usage
 
 ```
-lore inspect <package> [flags]
+lore inspect <package>
 ```
 
 ## Description
@@ -25,16 +25,16 @@ Show detailed information about a package.
 Displays the resolved lifecycle manifest, platform support, features,
 dependencies, and deployment history for a package.
 
-Promise is JSON by default for scripting. Use --format for alternatives.
+Output is JSON by default for scripting. Use --output for alternatives.
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--filter` | `[]` | Filter expression: field=value (repeatable, AND logic) |
-| `--format` | `json` | Output format: json, yaml, csv, or template |
 | `--jq` | `""` | jq expression applied after --filter; see github.com/itchyny/gojq |
-| `--template` | `""` | Template body, used when --format=template (e.g. '{{.Name}}\t{{.Version}}') |
+| `--output, -o` | `json` | Output rendering: json, yaml, table, csv, value (raw, pairs with --jq), template=BODY, or none |
+| `--store` | `""` | Execution store root, holding definitions and traces (default: the XDG state path) |
 
 ## Global Options
 
