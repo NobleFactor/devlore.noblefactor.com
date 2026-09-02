@@ -1,21 +1,21 @@
 ---
-title: "writ status"
+title: "writ reconcile"
 description: "Report deployed state: what should be present, from where, and what's missing or different"
 tool: "writ"
-command: "status"
+command: "reconcile"
 parent: "writ"
-generated: "2026-09-01T21:19:09Z"
-version: "a4054b6"
+generated: "2026-09-02T01:24:54Z"
+version: "d4eb623"
 ---
 
-# writ status
+# writ reconcile
 
 Report deployed state: what should be present, from where, and what's missing or different
 
 ## Usage
 
 ```
-writ status [<project>...]
+writ reconcile [<project>...]
 ```
 
 ## Description
@@ -26,19 +26,20 @@ what's missing or different.
 The report is derived from the store (the run index plus the persisted graphs and
 traces) — never from a directory scan — and has four sections: the registered layer
 tree, the deployed inventory classified against the live filesystem, the package
-operations writ's runs performed, and store health. Status is report-only; each
-finding names the lifecycle command that repairs it.
+operations writ's runs performed, and store health. Reconcile produces a report; each
+finding names the lifecycle command that repairs it. The report is one JSON document,
+rendered by --output like every other result; --jq '.entries' selects the delta alone.
 
-Status indicators:
-  ✓ Linked            — Symlink present and resolving to its source
-  ✓ Copied            — Copied file present (encrypted content is not compared)
-  ✗ Missing           — Deployed target is gone            → writ deploy
-  ⚠ Conflict          — Something else occupies the target
-  ? Orphan            — Target's source no longer exists   → writ decommission
-  ↑ Stale             — Source changed since the run       → writ upgrade
-  M Modified          — Target edited out-of-band          → writ upgrade --force
-  M Modified-or-stale — Differs, but the run predates recorded content
-                        identity: attribution indeterminate → writ upgrade
+Entry states:
+  linked             Symlink present and resolving to its source
+  copied             Copied file present (encrypted content is not compared)
+  missing            Deployed target is gone                     → writ deploy
+  conflict           Something else occupies the target
+  orphan             Target's source no longer exists            → writ decommission
+  stale              Source changed since the run                → writ upgrade
+  modified           Target edited out-of-band                   → writ upgrade --force
+  modified-or-stale  Differs, but the run predates recorded content
+                     identity: attribution indeterminate         → writ upgrade
 
 ## Global Options
 
@@ -63,10 +64,10 @@ Status indicators:
 ## Examples
 
 ```bash
-writ status                    # Report everything writ has deployed
-writ status noblefactor        # Report one project
-writ status -o json            # Machine-readable report
-writ status -o table           # Aligned columns
+writ reconcile                 # Report everything writ has deployed
+writ reconcile noblefactor     # Report one project
+writ reconcile -o json         # Machine-readable report
+writ reconcile -o table        # Aligned columns
 ```
 
 ## Parent Command
