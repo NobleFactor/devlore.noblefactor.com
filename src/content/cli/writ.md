@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-09-01T21:19:09Z"
-version: "a4054b6"
+generated: "2026-09-02T01:24:54Z"
+version: "d4eb623"
 ---
 
 # writ
@@ -60,9 +60,9 @@ Declare your environment once — writ deploys it everywhere you work.
 | [writ decommission](/cli/writ/decommission/) | Remove deployed files and clean up resources for specified projects |
 | [writ deploy](/cli/writ/deploy/) | Deploy projects by creating symlinks in the target location |
 | [writ migrate](/cli/writ/migrate/) | Migrate an existing environment to a writ layer |
+| [writ reconcile](/cli/writ/reconcile/) | Report deployed state: what should be present, from where, and what's missing or different |
 | [writ repo](/cli/writ/repo/) | Manage layer repository registrations |
 | [writ secret](/cli/writ/secret/) | SOPS secrets for layer repositories |
 | [writ self](/cli/writ/self/) | Self-management commands |
-| [writ status](/cli/writ/status/) | Report deployed state: what should be present, from where, and what's missing or different |
 | [writ upgrade](/cli/writ/upgrade/) | Regenerate copied files (templates, secrets) from current sources |
 | [writ verify](/cli/writ/verify/) | Verify the publisher signatures of graph and trace documents |
