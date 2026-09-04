@@ -4,8 +4,8 @@ description: "SOPS secrets for layer repositories"
 tool: "writ"
 command: "secret"
 parent: "writ"
-generated: "2026-09-04T02:02:03Z"
-version: "966bdf9"
+generated: "2026-09-04T17:48:30Z"
+version: "1fc3ea9"
 ---
 
 # writ secret
