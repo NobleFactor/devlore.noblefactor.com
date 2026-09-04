@@ -4,8 +4,8 @@ description: "Parse wiki or script and generate packages-manifest.yaml and confi
 tool: "lore"
 command: "onboard"
 parent: "lore"
-generated: "2026-09-03T04:02:18Z"
-version: "4c8c62e"
+generated: "2026-09-04T02:02:03Z"
+version: "966bdf9"
 ---
 
 # lore onboard
@@ -37,7 +37,6 @@ environment repository.
 | `--explain` | `false` | Show detailed reasoning for each confidence decision |
 | `--from` | `""` | Source URL or file path |
 | `--max-fetches` | `5` | Maximum additional URLs to fetch |
-| `--verbose` | `false` | Show AI reasoning |
 
 ## Global Options
 
@@ -57,6 +56,7 @@ environment repository.
 | `--silent` | `false` | Suppress all status messages (stderr) |
 | `--store` | `""` | Execution store root, holding definitions and traces (default: the XDG state path) |
 | `--unattended` | `false` | Force unattended mode (no prompts, sensible defaults) |
+| `--verbose, -v` | `false` | Verbose output |
 
 ## Examples
 
