@@ -4,8 +4,8 @@ description: "Get configuration values"
 tool: "writ"
 command: "get"
 parent: "writ config"
-generated: "2026-09-05T03:53:38Z"
-version: "9c84a90"
+generated: "2026-09-05T21:15:18Z"
+version: "f4b3cdb"
 ---
 
 # writ config get
