@@ -4,8 +4,8 @@ description: "List layer registrations"
 tool: "writ"
 command: "list"
 parent: "writ repo"
-generated: "2026-09-10T03:05:14Z"
-version: "5be5164"
+generated: "2026-09-10T15:35:29Z"
+version: "f03794d"
 ---
 
 # writ repo list
