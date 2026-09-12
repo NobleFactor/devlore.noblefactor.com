@@ -4,8 +4,8 @@ description: "The tribal knowledge package deployer"
 tool: "lore"
 command: "lore"
 parent: ""
-generated: "2026-09-10T22:59:02Z"
-version: "6db5574"
+generated: "2026-09-12T17:32:21Z"
+version: "f860ea7"
 ---
 
 # lore
@@ -75,3 +75,4 @@ What took someone hours to figure out, you get in minutes.
 | [lore self](/cli/lore/self/) | Self-management commands |
 | [lore update](/cli/lore/update/) | Synchronize the local registry cache from the central registry |
 | [lore upgrade](/cli/lore/upgrade/) | Upgrade previously deployed packages to newer versions |
+| [lore workflow](/cli/lore/workflow/) | The store's workflows: each a definition and the execution traces of its runs |

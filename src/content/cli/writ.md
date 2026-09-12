@@ -4,8 +4,8 @@ description: "Environment manager with platform-aware symlinks"
 tool: "writ"
 command: "writ"
 parent: ""
-generated: "2026-09-10T22:59:02Z"
-version: "6db5574"
+generated: "2026-09-12T17:32:21Z"
+version: "f860ea7"
 ---
 
 # writ
@@ -65,4 +65,4 @@ Declare your environment once — writ deploys it everywhere you work.
 | [writ secret](/cli/writ/secret/) | SOPS secrets for layer repositories |
 | [writ self](/cli/writ/self/) | Self-management commands |
 | [writ upgrade](/cli/writ/upgrade/) | Regenerate copied files (templates, secrets) from current sources |
-| [writ verify](/cli/writ/verify/) | Verify the publisher signatures of graph and trace documents |
+| [writ workflow](/cli/writ/workflow/) | The store's workflows: each a definition and the execution traces of its runs |
