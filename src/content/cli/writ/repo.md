@@ -4,8 +4,8 @@ description: "Manage layer repository registrations"
 tool: "writ"
 command: "repo"
 parent: "writ"
-generated: "2026-09-10T22:59:02Z"
-version: "6db5574"
+generated: "2026-09-12T17:32:21Z"
+version: "f860ea7"
 ---
 
 # writ repo
@@ -25,8 +25,6 @@ Manage layer repository registrations.
 A layer (base, team, or personal) is registered by a symlink in the writ layers
 directory (XDG_DATA_HOME/devlore/writ/layers) pointing at the repository. This is
 packaging, not configuration: registrations never appear in config.yaml.
-
-With no subcommand, repo lists the registrations.
 
 ## Global Options
 
@@ -52,7 +50,7 @@ With no subcommand, repo lists the registrations.
 
 ```bash
 writ repo add personal ~/Workspace/Personal
-writ repo                       # list registrations
+writ repo list
 writ repo remove team
 ```
 
