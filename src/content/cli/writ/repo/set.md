@@ -1,32 +1,34 @@
 ---
-title: "writ repo add"
-description: "Register a repository as a layer"
+title: "writ repo set"
+description: "Register a layer, or re-point one that is registered"
 tool: "writ"
-command: "add"
+command: "set"
 parent: "writ repo"
-generated: "2026-09-18T18:39:41Z"
-version: "9aa570b"
+generated: "2026-09-20T08:06:39Z"
+version: "ad2219e"
 ---
 
-# writ repo add
+# writ repo set
 
-Register a repository as a layer
+Register a layer, or re-point one that is registered
 
 ## Usage
 
 ```
-writ repo add <layer> <working-tree-root>|<repository-url> [<working-tree-root>] [flags]
+writ repo set <layer> <working-tree-root>|<repository-url> [<working-tree-root>] [flags]
 ```
 
 ## Description
 
-Register a repository as a layer.
+Register a layer, or re-point one that is registered.
 
 The location is a local working-tree-root, or a repository URL — which triggers a
 git clone (git-clone's own grammar: the optional trailing working-tree-root is the
-clone destination, defaulting to the writ-owned home under
-XDG_DATA_HOME/devlore/writ/repos). After placement the repository is entirely
-yours: writ performs no hidden git operations, ever.
+clone destination). Without one, the clone lands in the writ-owned home under
+XDG_DATA_HOME/devlore/writ/repos, named as git clone names it: acme/team-env.git
+clones to repos/team-env. Two layers whose repositories share a name are refused.
+After placement the repository is entirely yours: writ performs no hidden git
+operations, ever.
 
 ## Options
 
@@ -59,10 +61,10 @@ yours: writ performs no hidden git operations, ever.
 ## Examples
 
 ```bash
-writ repo add personal ~/Workspace/Personal
-writ repo add team git@github.com:acme/team-env.git
-writ repo add personal git@github.com:me/personal.git ~/Workspace/Personal
-writ repo add personal git@github.com:me/personal.git --branch devlore-cli/writ-layer
+writ repo set personal ~/Workspace/Personal
+writ repo set team git@github.com:acme/team-env.git
+writ repo set personal git@github.com:me/personal.git ~/Workspace/Personal
+writ repo set personal git@github.com:me/personal.git --branch devlore-cli/writ-layer
 ```
 
 ## Parent Command
