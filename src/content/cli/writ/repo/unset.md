@@ -1,21 +1,21 @@
 ---
-title: "writ repo remove"
-description: "Unregister a layer (does not delete files)"
+title: "writ repo unset"
+description: "Unregister a layer"
 tool: "writ"
-command: "remove"
+command: "unset"
 parent: "writ repo"
-generated: "2026-09-18T18:39:41Z"
-version: "9aa570b"
+generated: "2026-09-20T08:06:39Z"
+version: "ad2219e"
 ---
 
-# writ repo remove
+# writ repo unset
 
-Unregister a layer (does not delete files)
+Unregister a layer
 
 ## Usage
 
 ```
-writ repo remove <layer>
+writ repo unset <layer>
 ```
 
 ## Global Options

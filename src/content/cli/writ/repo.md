@@ -4,8 +4,8 @@ description: "Manage layer repository registrations"
 tool: "writ"
 command: "repo"
 parent: "writ"
-generated: "2026-09-18T18:39:41Z"
-version: "9aa570b"
+generated: "2026-09-20T08:06:39Z"
+version: "ad2219e"
 ---
 
 # writ repo
@@ -51,9 +51,9 @@ packaging, not configuration: registrations never appear in config.yaml.
 ## Examples
 
 ```bash
-writ repo add personal ~/Workspace/Personal
+writ repo set personal ~/Workspace/Personal
 writ repo list
-writ repo remove team
+writ repo unset team
 ```
 
 ## Parent Command
@@ -66,6 +66,6 @@ writ repo remove team
 
 | Command | Description |
 |---------|-------------|
-| [writ repo add](/cli/writ/repo/add/) | Register a repository as a layer |
 | [writ repo list](/cli/writ/repo/list/) | List layer registrations |
-| [writ repo remove](/cli/writ/repo/remove/) | Unregister a layer (does not delete files) |
+| [writ repo set](/cli/writ/repo/set/) | Register a layer, or re-point one that is registered |
+| [writ repo unset](/cli/writ/repo/unset/) | Unregister a layer |

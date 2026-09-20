@@ -4,8 +4,8 @@ description: "Encrypt files to .sops siblings per the governing .sops.yaml"
 tool: "writ"
 command: "encrypt"
 parent: "writ secret"
-generated: "2026-09-18T18:39:41Z"
-version: "9aa570b"
+generated: "2026-09-20T08:06:39Z"
+version: "ad2219e"
 ---
 
 # writ secret encrypt
@@ -30,7 +30,7 @@ refuses — encrypt never overwrites — and the plaintext source is never
 deleted; removal belongs to the caller.
 
 Every argument must lie inside a registered layer's working tree; register a
-repository with 'writ repo add'. The run rides the standard pipeline: the
+repository with 'writ repo set'. The run rides the standard pipeline: the
 graph and trace persist to the execution store with receipts recorded.
 
 ## Global Options
