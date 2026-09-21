@@ -4,8 +4,8 @@ description: "Self-management commands"
 tool: "writ"
 command: "self"
 parent: "writ"
-generated: "2026-09-20T08:06:39Z"
-version: "ad2219e"
+generated: "2026-09-21T05:29:39Z"
+version: "0e78c7f"
 ---
 
 # writ self

@@ -4,8 +4,8 @@ description: "Deploy projects by creating symlinks in the target location"
 tool: "writ"
 command: "deploy"
 parent: "writ"
-generated: "2026-09-20T08:06:39Z"
-version: "ad2219e"
+generated: "2026-09-21T05:29:39Z"
+version: "0e78c7f"
 ---
 
 # writ deploy
@@ -69,8 +69,8 @@ Conflict handling (--conflict) — occupied targets (phase-8 step 49):
 ```bash
 writ deploy noblefactor
 writ deploy all noblefactor thenobles
-writ deploy --conflict=backup noblefactor
-writ deploy --conflict=overwrite noblefactor
+writ deploy --conflict=replace noblefactor
+writ deploy --conflict=skip noblefactor
 writ deploy -s ROLE=desktop noblefactor
 ```
 

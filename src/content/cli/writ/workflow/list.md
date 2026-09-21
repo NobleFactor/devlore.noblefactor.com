@@ -4,8 +4,8 @@ description: "List the store's workflows: tool, scope, definition, run count, la
 tool: "writ"
 command: "list"
 parent: "writ workflow"
-generated: "2026-09-20T08:06:39Z"
-version: "ad2219e"
+generated: "2026-09-21T05:29:39Z"
+version: "0e78c7f"
 ---
 
 # writ workflow list
