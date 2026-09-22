@@ -4,8 +4,8 @@ description: "Show merged configuration from star.yaml hierarchy"
 tool: "star"
 command: "show"
 parent: "star config"
-generated: "2026-09-22T13:04:19Z"
-version: "99c6740"
+generated: "2026-09-22T21:12:04Z"
+version: "c303307"
 ---
 
 # star config show

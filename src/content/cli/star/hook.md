@@ -4,8 +4,8 @@ description: "hook commands"
 tool: "star"
 command: "hook"
 parent: "star"
-generated: "2026-09-22T13:04:19Z"
-version: "99c6740"
+generated: "2026-09-22T21:12:04Z"
+version: "c303307"
 ---
 
 # star hook
