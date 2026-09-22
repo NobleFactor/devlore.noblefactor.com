@@ -4,8 +4,8 @@ description: "Move files from target location into a project and create symlinks
 tool: "writ"
 command: "adopt"
 parent: "writ"
-generated: "2026-09-22T10:51:50Z"
-version: "7535089"
+generated: "2026-09-22T12:01:32Z"
+version: "0b9426c"
 ---
 
 # writ adopt
