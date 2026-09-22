@@ -4,8 +4,8 @@ description: "Run Go lint checks (go mod tidy + golangci-lint)"
 tool: "star"
 command: "go"
 parent: "star lint"
-generated: "2026-09-22T13:04:19Z"
-version: "99c6740"
+generated: "2026-09-22T21:12:04Z"
+version: "c303307"
 ---
 
 # star lint go

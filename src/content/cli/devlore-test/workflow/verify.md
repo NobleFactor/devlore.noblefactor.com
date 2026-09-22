@@ -4,8 +4,8 @@ description: "Verify the publisher signatures of workflow definitions and execut
 tool: "devlore-test"
 command: "verify"
 parent: "devlore-test workflow"
-generated: "2026-09-22T13:04:19Z"
-version: "99c6740"
+generated: "2026-09-22T21:12:04Z"
+version: "c303307"
 ---
 
 # devlore-test workflow verify

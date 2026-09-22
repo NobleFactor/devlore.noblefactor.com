@@ -4,8 +4,8 @@ description: "List managed signing keys"
 tool: "star"
 command: "list"
 parent: "star key"
-generated: "2026-09-22T13:04:19Z"
-version: "99c6740"
+generated: "2026-09-22T21:12:04Z"
+version: "c303307"
 ---
 
 # star key list
