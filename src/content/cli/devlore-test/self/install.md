@@ -4,8 +4,8 @@ description: "Install devlore-test and supporting files"
 tool: "devlore-test"
 command: "install"
 parent: "devlore-test self"
-generated: "2026-09-22T10:51:50Z"
-version: "7535089"
+generated: "2026-09-22T12:01:32Z"
+version: "0b9426c"
 ---
 
 # devlore-test self install
