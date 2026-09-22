@@ -4,8 +4,8 @@ description: "Starlark-powered operations tool"
 tool: "star"
 command: "star"
 parent: ""
-generated: "2026-09-22T12:01:32Z"
-version: "0b9426c"
+generated: "2026-09-22T12:23:52Z"
+version: "463f978"
 ---
 
 # star
