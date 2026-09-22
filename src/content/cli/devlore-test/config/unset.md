@@ -4,8 +4,8 @@ description: "Remove configuration keys"
 tool: "devlore-test"
 command: "unset"
 parent: "devlore-test config"
-generated: "2026-09-22T12:23:52Z"
-version: "463f978"
+generated: "2026-09-22T13:04:19Z"
+version: "99c6740"
 ---
 
 # devlore-test config unset
