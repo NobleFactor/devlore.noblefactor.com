@@ -4,8 +4,8 @@ description: "package commands"
 tool: "star"
 command: "package"
 parent: "star devlore"
-generated: "2026-09-22T12:23:52Z"
-version: "463f978"
+generated: "2026-09-22T13:04:19Z"
+version: "99c6740"
 ---
 
 # star devlore package

@@ -4,8 +4,8 @@ description: "Initialize star.yaml and sync tool configurations"
 tool: "star"
 command: "config"
 parent: "star setup"
-generated: "2026-09-22T12:23:52Z"
-version: "463f978"
+generated: "2026-09-22T13:04:19Z"
+version: "99c6740"
 ---
 
 # star setup config
