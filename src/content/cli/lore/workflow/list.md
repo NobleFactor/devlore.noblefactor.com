@@ -4,8 +4,8 @@ description: "List the store's workflows: tool, scope, definition, run count, la
 tool: "lore"
 command: "list"
 parent: "lore workflow"
-generated: "2026-09-23T16:10:14Z"
-version: "d113cf5"
+generated: "2026-09-23T17:47:05Z"
+version: "3479cca"
 ---
 
 # lore workflow list

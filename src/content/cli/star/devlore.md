@@ -4,8 +4,8 @@ description: "devlore commands"
 tool: "star"
 command: "devlore"
 parent: "star"
-generated: "2026-09-23T16:10:14Z"
-version: "d113cf5"
+generated: "2026-09-23T17:47:05Z"
+version: "3479cca"
 ---
 
 # star devlore
