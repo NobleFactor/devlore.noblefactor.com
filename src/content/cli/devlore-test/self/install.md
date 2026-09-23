@@ -4,8 +4,8 @@ description: "Install devlore-test and supporting files"
 tool: "devlore-test"
 command: "install"
 parent: "devlore-test self"
-generated: "2026-09-23T07:11:20Z"
-version: "a835739"
+generated: "2026-09-23T16:10:14Z"
+version: "d113cf5"
 ---
 
 # devlore-test self install
@@ -27,7 +27,9 @@ This command:
   2. Installs man pages to <prefix>/share/man/man1/ (if man command exists)
   3. Installs shell completions (auto-detects bash, fish, pwsh, zsh or use --shell)
   4. Initializes config and cache directories (if applicable)
-  5. Writes a manifest for uninstall tracking
+  5. Retires files a previous install placed and this one does not, leaving any that
+     have been modified since and reporting them
+  6. Writes a manifest of what this install owns, which "self uninstall" reads
 
 Example:
   devlore-test self install           # defaults to ~/.local
