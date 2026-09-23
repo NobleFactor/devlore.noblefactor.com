@@ -4,8 +4,8 @@ description: "Check status of required lint tools"
 tool: "star"
 command: "tools"
 parent: "star lint"
-generated: "2026-09-22T21:12:04Z"
-version: "c303307"
+generated: "2026-09-23T07:11:20Z"
+version: "a835739"
 ---
 
 # star lint tools
