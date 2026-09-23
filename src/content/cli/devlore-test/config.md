@@ -4,8 +4,8 @@ description: "Get and set configuration options"
 tool: "devlore-test"
 command: "config"
 parent: "devlore-test"
-generated: "2026-09-22T21:12:04Z"
-version: "c303307"
+generated: "2026-09-23T07:11:20Z"
+version: "a835739"
 ---
 
 # devlore-test config

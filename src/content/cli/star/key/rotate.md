@@ -4,8 +4,8 @@ description: "Rotate a signing key with ceremony"
 tool: "star"
 command: "rotate"
 parent: "star key"
-generated: "2026-09-22T21:12:04Z"
-version: "c303307"
+generated: "2026-09-23T07:11:20Z"
+version: "a835739"
 ---
 
 # star key rotate
