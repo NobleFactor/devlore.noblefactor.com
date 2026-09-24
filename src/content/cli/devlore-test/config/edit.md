@@ -4,8 +4,8 @@ description: "Open configuration file in $EDITOR"
 tool: "devlore-test"
 command: "edit"
 parent: "devlore-test config"
-generated: "2026-09-24T07:33:51Z"
-version: "2ce7a04"
+generated: "2026-09-24T07:49:40Z"
+version: "d54626d"
 ---
 
 # devlore-test config edit
