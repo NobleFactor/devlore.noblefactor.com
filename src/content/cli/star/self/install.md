@@ -4,8 +4,8 @@ description: "Install star and supporting files"
 tool: "star"
 command: "install"
 parent: "star self"
-generated: "2026-09-23T17:47:05Z"
-version: "3479cca"
+generated: "2026-09-24T06:15:34Z"
+version: "ec1d2c0"
 ---
 
 # star self install

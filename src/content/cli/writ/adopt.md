@@ -4,8 +4,8 @@ description: "Move files from target location into a project and create symlinks
 tool: "writ"
 command: "adopt"
 parent: "writ"
-generated: "2026-09-23T17:47:04Z"
-version: "3479cca"
+generated: "2026-09-24T06:15:34Z"
+version: "ec1d2c0"
 ---
 
 # writ adopt
@@ -45,6 +45,7 @@ config files into the environment repository.
 |--------|---------|-------------|
 | `--from-receipt` | `false` | Adopt packages-manifest.yaml and config from lore receipt |
 | `--layer` | `personal` | Layer to adopt into: personal, team, or base |
+| `--platform` | `""` | Platform suffix the adopted files carry, in the segment vocabulary the layer tree matches (Darwin, Unix, Windows, Linux, Linux.Debian, Darwin.arm64, ...); absent, the platform-neutral project directory |
 | `--project` | `""` | Origin name within the layer (required) |
 
 ## Global Options
@@ -83,6 +84,8 @@ writ adopt --project noblefactor ~/.config/nvim
 
 # Adopt into team layer
 writ adopt --layer team --project shared ~/.editorconfig
+# Adopt a Debian-only file: it lands under <project>.Linux.Debian and deploys only there
+writ adopt --project noblefactor --platform Linux.Debian ~/.config/apt.conf
 
 # Adopt system file (inferred as System scope)
 writ adopt --project noblefactor /etc/myapp/config.yaml

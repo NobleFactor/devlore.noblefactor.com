@@ -4,8 +4,8 @@ description: "Output the embedded JSON schema"
 tool: "devlore-test"
 command: "schema"
 parent: "devlore-test config"
-generated: "2026-09-23T17:47:05Z"
-version: "3479cca"
+generated: "2026-09-24T06:15:34Z"
+version: "ec1d2c0"
 ---
 
 # devlore-test config schema
