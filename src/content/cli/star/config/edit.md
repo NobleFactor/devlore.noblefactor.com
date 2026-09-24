@@ -4,8 +4,8 @@ description: "Open configuration file in $EDITOR"
 tool: "star"
 command: "edit"
 parent: "star config"
-generated: "2026-09-24T06:15:34Z"
-version: "ec1d2c0"
+generated: "2026-09-24T07:33:51Z"
+version: "2ce7a04"
 ---
 
 # star config edit

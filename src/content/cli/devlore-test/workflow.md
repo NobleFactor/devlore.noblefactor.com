@@ -4,8 +4,8 @@ description: "The store's workflows: each a definition and the execution traces 
 tool: "devlore-test"
 command: "workflow"
 parent: "devlore-test"
-generated: "2026-09-24T06:15:34Z"
-version: "ec1d2c0"
+generated: "2026-09-24T07:33:51Z"
+version: "2ce7a04"
 ---
 
 # devlore-test workflow

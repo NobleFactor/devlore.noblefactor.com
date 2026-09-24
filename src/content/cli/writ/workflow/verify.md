@@ -4,8 +4,8 @@ description: "Verify the publisher signatures of workflow definitions and execut
 tool: "writ"
 command: "verify"
 parent: "writ workflow"
-generated: "2026-09-24T06:15:34Z"
-version: "ec1d2c0"
+generated: "2026-09-24T07:33:51Z"
+version: "2ce7a04"
 ---
 
 # writ workflow verify
