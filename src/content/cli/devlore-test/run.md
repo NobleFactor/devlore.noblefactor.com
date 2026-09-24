@@ -4,8 +4,8 @@ description: "Run a Starlark test script that plans and executes a graph"
 tool: "devlore-test"
 command: "run"
 parent: "devlore-test"
-generated: "2026-09-23T17:47:05Z"
-version: "3479cca"
+generated: "2026-09-24T06:15:34Z"
+version: "ec1d2c0"
 ---
 
 # devlore-test run
