@@ -4,8 +4,8 @@ description: "Extract knowledge artifacts from devlore-cli source"
 tool: "star"
 command: "extract"
 parent: "star devlore knowledge"
-generated: "2026-09-24T06:15:34Z"
-version: "ec1d2c0"
+generated: "2026-09-24T07:33:51Z"
+version: "2ce7a04"
 ---
 
 # star devlore knowledge extract
