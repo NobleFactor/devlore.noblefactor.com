@@ -4,8 +4,8 @@ description: "List all configuration settings"
 tool: "devlore-test"
 command: "list"
 parent: "devlore-test config"
-generated: "2026-09-24T07:33:51Z"
-version: "2ce7a04"
+generated: "2026-09-24T07:49:40Z"
+version: "d54626d"
 ---
 
 # devlore-test config list
