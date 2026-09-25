@@ -4,8 +4,8 @@ description: "List all configuration settings"
 tool: "star"
 command: "list"
 parent: "star config"
-generated: "2026-09-24T07:49:40Z"
-version: "d54626d"
+generated: "2026-09-25T04:59:04Z"
+version: "e94dd83"
 ---
 
 # star config list

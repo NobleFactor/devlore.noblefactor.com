@@ -4,8 +4,8 @@ description: "Show configuration file location"
 tool: "devlore-test"
 command: "path"
 parent: "devlore-test config"
-generated: "2026-09-24T07:49:40Z"
-version: "d54626d"
+generated: "2026-09-25T04:59:05Z"
+version: "e94dd83"
 ---
 
 # devlore-test config path
