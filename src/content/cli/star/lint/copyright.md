@@ -4,8 +4,8 @@ description: "Check or fix copyright headers in source files"
 tool: "star"
 command: "copyright"
 parent: "star lint"
-generated: "2026-09-24T07:49:40Z"
-version: "d54626d"
+generated: "2026-09-25T04:59:05Z"
+version: "e94dd83"
 ---
 
 # star lint copyright

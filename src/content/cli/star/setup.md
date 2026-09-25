@@ -4,8 +4,8 @@ description: "Run all setup tasks (tools check, config init, hooks install)"
 tool: "star"
 command: "setup"
 parent: "star"
-generated: "2026-09-24T07:49:40Z"
-version: "d54626d"
+generated: "2026-09-25T04:59:05Z"
+version: "e94dd83"
 ---
 
 # star setup

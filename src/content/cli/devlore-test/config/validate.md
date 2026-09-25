@@ -4,8 +4,8 @@ description: "Validate configuration against schema"
 tool: "devlore-test"
 command: "validate"
 parent: "devlore-test config"
-generated: "2026-09-24T07:49:40Z"
-version: "d54626d"
+generated: "2026-09-25T04:59:05Z"
+version: "e94dd83"
 ---
 
 # devlore-test config validate

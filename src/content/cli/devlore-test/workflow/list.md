@@ -4,8 +4,8 @@ description: "List the store's workflows: tool, scope, definition, run count, la
 tool: "devlore-test"
 command: "list"
 parent: "devlore-test workflow"
-generated: "2026-09-24T07:49:40Z"
-version: "d54626d"
+generated: "2026-09-25T04:59:05Z"
+version: "e94dd83"
 ---
 
 # devlore-test workflow list

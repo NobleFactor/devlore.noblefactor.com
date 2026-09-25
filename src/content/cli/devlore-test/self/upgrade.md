@@ -4,8 +4,8 @@ description: "Upgrade devlore-test in place"
 tool: "devlore-test"
 command: "upgrade"
 parent: "devlore-test self"
-generated: "2026-09-24T07:49:40Z"
-version: "d54626d"
+generated: "2026-09-25T04:59:05Z"
+version: "e94dd83"
 ---
 
 # devlore-test self upgrade
