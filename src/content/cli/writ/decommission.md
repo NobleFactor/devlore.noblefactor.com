@@ -5,8 +5,8 @@ description: "Remove deployed files and clean up resources for specified project
 tool: "writ"
 command: "decommission"
 parent: "writ"
-generated: "2026-09-26T10:03:41Z"
-version: "ac4c19e"
+generated: "2026-09-26T11:06:47Z"
+version: "ba3eea9"
 ---
 
 # writ decommission
@@ -64,7 +64,6 @@ Signature-gated safety (refusing unsigned state) arrives with graph signing (ste
 writ decommission noblefactor              # Remove project files
 writ decommission all noblefactor          # Remove multiple projects
 writ decommission --prune noblefactor      # Also remove empty parent directories
-writ decommission --force noblefactor      # Skip confirmation prompts
 ```
 
 ## Parent Command
