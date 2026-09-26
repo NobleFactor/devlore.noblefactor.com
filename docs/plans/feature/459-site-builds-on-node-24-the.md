@@ -53,17 +53,17 @@ carrying #953 and #956 merged (site #462), and #463's `develop` deploy succeeded
 
 ### Phase 2: The change
 
-- [ ] `node-version: "24"` (Requirement 1)
-- [ ] `engines.node` (Requirement 2)
-- [ ] #457's plan closed (Requirement 3)
+- [x] `node-version: "24"` (Requirement 1)
+- [x] `engines.node` (Requirement 2)
+- [x] #457's plan closed (Requirement 3)
 
 ### Phase 3: Verify, then merge
 
-- [ ] The workflow parses as YAML; `package.json` parses as JSON and `npm` would read it (checked with
-      python's `json` here; node is not on DANOBLE-UD24-1)
+- [x] The workflow parses as YAML; `package.json` parses as JSON (python's `json` here; node is not on
+      DANOBLE-UD24-1); the PR script re-checks the pin and the floor before it commits
 - [ ] The build on the pull request runs on Node 24: the `Setup Node.js` step's log names a 24.x, and
       `npm ci` and `npm run build` pass — the site's gate, where it runs
-- [ ] PR script written, shown, and handed over
+- [x] PR script written, shown, and handed over
 - [ ] After the merge: the `develop` deploy run succeeds on 24; production is unchanged in content
 
 ## Out of Scope
