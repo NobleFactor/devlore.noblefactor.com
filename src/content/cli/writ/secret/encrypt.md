@@ -1,11 +1,12 @@
 ---
 title: "writ secret encrypt"
+slug: "writ/secret/encrypt"
 description: "Encrypt files to .sops siblings per the governing .sops.yaml"
 tool: "writ"
 command: "encrypt"
 parent: "writ secret"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # writ secret encrypt

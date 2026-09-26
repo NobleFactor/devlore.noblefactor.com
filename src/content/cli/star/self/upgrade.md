@@ -1,11 +1,12 @@
 ---
 title: "star self upgrade"
+slug: "star/self/upgrade"
 description: "Upgrade star in place"
 tool: "star"
 command: "upgrade"
 parent: "star self"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star self upgrade

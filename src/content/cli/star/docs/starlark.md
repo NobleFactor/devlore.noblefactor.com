@@ -1,11 +1,12 @@
 ---
 title: "star docs starlark"
+slug: "star/docs/starlark"
 description: "Show how to write Starlark operations"
 tool: "star"
 command: "starlark"
 parent: "star docs"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star docs starlark

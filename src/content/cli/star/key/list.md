@@ -1,11 +1,12 @@
 ---
 title: "star key list"
+slug: "star/key/list"
 description: "List managed signing keys"
 tool: "star"
 command: "list"
 parent: "star key"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star key list

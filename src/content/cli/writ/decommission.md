@@ -1,11 +1,12 @@
 ---
 title: "writ decommission"
+slug: "writ/decommission"
 description: "Remove deployed files and clean up resources for specified projects"
 tool: "writ"
 command: "decommission"
 parent: "writ"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # writ decommission

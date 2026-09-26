@@ -1,11 +1,12 @@
 ---
 title: "devlore-test config path"
+slug: "devlore-test/config/path"
 description: "Show configuration file location"
 tool: "devlore-test"
 command: "path"
 parent: "devlore-test config"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # devlore-test config path

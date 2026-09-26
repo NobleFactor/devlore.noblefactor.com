@@ -1,11 +1,12 @@
 ---
 title: "writ workflow list"
+slug: "writ/workflow/list"
 description: "List the store's workflows: tool, scope, definition, run count, latest run"
 tool: "writ"
 command: "list"
 parent: "writ workflow"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # writ workflow list

@@ -1,11 +1,12 @@
 ---
 title: "star self uninstall"
+slug: "star/self/uninstall"
 description: "Remove star and supporting files"
 tool: "star"
 command: "uninstall"
 parent: "star self"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star self uninstall

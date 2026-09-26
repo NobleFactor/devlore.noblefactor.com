@@ -1,11 +1,12 @@
 ---
 title: "star lint markdown"
+slug: "star/lint/markdown"
 description: "Run markdownlint and frontmatter check on markdown files"
 tool: "star"
 command: "markdown"
 parent: "star lint"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star lint markdown

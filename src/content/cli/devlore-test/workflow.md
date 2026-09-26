@@ -1,11 +1,12 @@
 ---
 title: "devlore-test workflow"
+slug: "devlore-test/workflow"
 description: "The store's workflows: each a definition and the execution traces of its runs"
 tool: "devlore-test"
 command: "workflow"
 parent: "devlore-test"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # devlore-test workflow

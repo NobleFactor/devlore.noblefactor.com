@@ -1,11 +1,12 @@
 ---
 title: "devlore-test config"
+slug: "devlore-test/config"
 description: "Get and set configuration options"
 tool: "devlore-test"
 command: "config"
 parent: "devlore-test"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # devlore-test config

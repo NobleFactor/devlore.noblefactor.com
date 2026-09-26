@@ -1,11 +1,12 @@
 ---
 title: "star devlore model build"
+slug: "star/devlore/model/build"
 description: "Generate Ollama Modelfile from knowledge domain"
 tool: "star"
 command: "build"
 parent: "star devlore model"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star devlore model build

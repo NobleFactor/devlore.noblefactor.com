@@ -1,11 +1,12 @@
 ---
 title: "devlore-test self install"
+slug: "devlore-test/self/install"
 description: "Install devlore-test and supporting files"
 tool: "devlore-test"
 command: "install"
 parent: "devlore-test self"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # devlore-test self install

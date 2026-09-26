@@ -1,11 +1,12 @@
 ---
 title: "star setup check"
+slug: "star/setup/check"
 description: "Check setup status without making changes"
 tool: "star"
 command: "check"
 parent: "star setup"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star setup check

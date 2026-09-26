@@ -1,11 +1,12 @@
 ---
 title: "devlore-test workflow list"
+slug: "devlore-test/workflow/list"
 description: "List the store's workflows: tool, scope, definition, run count, latest run"
 tool: "devlore-test"
 command: "list"
 parent: "devlore-test workflow"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # devlore-test workflow list

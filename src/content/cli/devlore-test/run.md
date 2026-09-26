@@ -1,11 +1,12 @@
 ---
 title: "devlore-test run"
+slug: "devlore-test/run"
 description: "Run a Starlark test script that plans and executes a graph"
 tool: "devlore-test"
 command: "run"
 parent: "devlore-test"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # devlore-test run

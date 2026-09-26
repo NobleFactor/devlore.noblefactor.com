@@ -1,11 +1,12 @@
 ---
 title: "writ migrate"
+slug: "writ/migrate"
 description: "Migrate an existing environment to a writ layer"
 tool: "writ"
 command: "migrate"
 parent: "writ"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # writ migrate
