@@ -5,8 +5,8 @@ description: "Generate and sign knowledge index"
 tool: "star"
 command: "sign"
 parent: "star devlore knowledge"
-generated: "2026-09-26T11:06:47Z"
-version: "ba3eea9"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star devlore knowledge sign
