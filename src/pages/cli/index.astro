@@ -1,20 +1,21 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { tools } from "@/lib/tools";
 
 const allDocs = await getCollection("cli");
 
-// Get root commands (top-level: writ.md, lore.md)
-const writRoot = allDocs.find((d) => d.slug === "writ");
-const loreRoot = allDocs.find((d) => d.slug === "lore");
+// One card per product (#457): its root page's description, or the fallback when the collection has no
+// root page for it, and its direct subcommands -- the pages one level below the root.
+const cards = tools.map((tool) => ({
+  name: tool.name,
+  description: allDocs.find((d) => d.slug === tool.name)?.data.description || tool.fallback,
+  commands: allDocs
+    .filter((d) => d.data.tool === tool.name && d.slug !== tool.name && d.slug.split("/").length === 2)
+    .sort((a, b) => a.data.command.localeCompare(b.data.command)),
+}));
 
-// Get direct subcommands for each tool
-const writCommands = allDocs
-  .filter((d) => d.data.tool === "writ" && d.slug !== "writ" && d.slug.split("/").length === 2)
-  .sort((a, b) => a.data.command.localeCompare(b.data.command));
-const loreCommands = allDocs
-  .filter((d) => d.data.tool === "lore" && d.slug !== "lore" && d.slug.split("/").length === 2)
-  .sort((a, b) => a.data.command.localeCompare(b.data.command));
+const version = allDocs.find((d) => d.slug === tools[0].name)?.data.version;
 ---
 
 <BaseLayout title="CLI Reference | DevLore">
@@ -24,60 +25,34 @@ const loreCommands = allDocs
       Complete command reference for the DevLore CLI tools.
     </p>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- Writ -->
-      <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-        <h2 class="text-xl font-bold mb-1">
-          <a href="/cli/writ/" class="hover:text-lore-accent transition">writ</a>
-        </h2>
-        <p class="text-gray-400 text-sm mb-4">
-          {writRoot?.data.description || "Environment manager with platform-aware symlinks"}
-        </p>
-        {writCommands.length > 0 && (
-          <ul class="space-y-1">
-            {writCommands.map((cmd) => (
-              <li class="flex items-baseline gap-2">
-                <a
-                  href={`/cli/${cmd.slug}/`}
-                  class="text-sm font-mono text-lore-accent hover:underline"
-                >
-                  {cmd.data.command}
-                </a>
-                <span class="text-xs text-gray-500">{cmd.data.description}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      <!-- Lore -->
-      <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-        <h2 class="text-xl font-bold mb-1">
-          <a href="/cli/lore/" class="hover:text-lore-accent transition">lore</a>
-        </h2>
-        <p class="text-gray-400 text-sm mb-4">
-          {loreRoot?.data.description || "The tribal knowledge package deployer"}
-        </p>
-        {loreCommands.length > 0 && (
-          <ul class="space-y-1">
-            {loreCommands.map((cmd) => (
-              <li class="flex items-baseline gap-2">
-                <a
-                  href={`/cli/${cmd.slug}/`}
-                  class="text-sm font-mono text-lore-accent hover:underline"
-                >
-                  {cmd.data.command}
-                </a>
-                <span class="text-xs text-gray-500">{cmd.data.description}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {cards.map((card) => (
+        <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
+          <h2 class="text-xl font-bold mb-1">
+            <a href={`/cli/${card.name}/`} class="hover:text-lore-accent transition">{card.name}</a>
+          </h2>
+          <p class="text-gray-400 text-sm mb-4">{card.description}</p>
+          {card.commands.length > 0 && (
+            <ul class="space-y-1">
+              {card.commands.map((cmd) => (
+                <li class="flex items-baseline gap-2">
+                  <a
+                    href={`/cli/${cmd.slug}/`}
+                    class="text-sm font-mono text-lore-accent hover:underline"
+                  >
+                    {cmd.data.command}
+                  </a>
+                  <span class="text-xs text-gray-500">{cmd.data.description}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
     </div>
 
     <p class="text-xs text-gray-600 mt-8">
-      Generated from devlore-cli{writRoot?.data.version ? ` ${writRoot.data.version}` : ""}.
+      Generated from devlore-cli{version ? ` ${version}` : ""}.
     </p>
   </div>
 </BaseLayout>

@@ -5,7 +5,9 @@ const cli = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    tool: z.enum(["writ", "lore"]),
+    // The committed products (#457, ruled 2026-09-26). A page for anything else fails the build, and
+    // should: the docs sync (devlore-cli#956) is what keeps other trees out, and this is the check.
+    tool: z.enum(["writ", "lore", "star"]),
     command: z.string(),
     parent: z.string(),
     generated: z.string(),
@@ -18,7 +20,7 @@ const guides = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    tool: z.enum(["devlore", "writ", "lore"]),
+    tool: z.enum(["devlore", "writ", "lore", "star"]),
     category: z.enum(["overview", "tutorial", "concept", "reference"]),
     order: z.number(),
   }),
