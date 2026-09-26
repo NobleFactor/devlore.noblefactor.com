@@ -1,7 +1,7 @@
 ---
 title: "The cli collection admits writ and lore only: star's pages fail the schema, and the CLI index lists two products of three"
 issue: https://github.com/NobleFactor/devlore.noblefactor.com/issues/457
-status: active
+status: complete
 created: 2026-09-26
 updated: 2026-09-26
 ---
@@ -93,13 +93,14 @@ into the branch, and the PR's build is the first that can go green.
 - [x] Node is not on DANOBLE-UD24-1, so no parse or build runs here; the PR script checks that the
       product list and the schema name the same three, and the site's own gate, `npm ci` and `npm run
       build`, runs on the pull request, where the script's CI gate holds the merge until it reports
-- [ ] The docs sync carrying devlore-cli#953 and #956 has merged into the site's `develop` before the
-      script runs (Requirement 4)
+- [x] The docs sync carrying devlore-cli#953 and #956 merged into the site's `develop` as #462
+      (2026-09-26 11:50) before the script ran; the script's guard checked it (Requirement 4)
 - [x] PR script written, shown, and handed over; it refuses to run until the site's `develop` carries
       lane 3's sync (no `devlore-test` page, `slug:` on every page)
-- [ ] After the merge: the push to `develop` builds and deploys; `/cli/` lists three products;
-      `/cli/star/devlore/knowledge/index/` and `/cli/star/devlore/package/index/` exist. That closes
-      devlore-cli#952's last box and unblocks lane 4
+- [x] After the merge (#463, 2026-09-26 14:31): the `develop` deploy, run 36248830682, built and
+      deployed three products — the site's first green build since 2026-09-24. The pages exist behind
+      the login wall, which answers 302 to an anonymous check whether a page exists or not, so the deploy
+      run is the evidence. Closes devlore-cli#952's and #956's last boxes; unblocks lanes 5 and 6
 
 ## Out of Scope
 
