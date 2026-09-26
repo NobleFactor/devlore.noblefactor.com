@@ -18,6 +18,10 @@
       "allowedRoles": ["anonymous", "authenticated"]
     },
     {
+      "route": "/install.ps1",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
       "route": "/*",
       "allowedRoles": ["authenticated"]
     }

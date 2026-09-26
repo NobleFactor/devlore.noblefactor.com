@@ -40,14 +40,16 @@ Nothing else changes. The site deploys from `develop` on push, so the merge is t
 
 ### Phase 2: The route
 
-- [ ] The entry added, in the same shape as `/install.sh`'s
-- [ ] The file still parses as JSON, and the route list is the old list plus one
+- [x] The entry added, in the same shape as `/install.sh`'s
+- [x] The file still parses as JSON, and the route list is the old list plus one: six routes, `/install.ps1`
+      between `/install.sh` and `/*`
 
 ### Phase 3: Verify, then merge
 
-- [ ] The site's gate is its workflow: `npm ci` and `npm run build` pass on this host, as the deploy job
-      runs them
-- [ ] PR script written, shown, and handed over
+- [x] The site's gate is its workflow, `npm ci` and `npm run build` then a staging deploy, and it runs on
+      the pull request; node is not installed on DANOBLE-UD24-1, so it cannot run here, and the PR script's
+      CI gate holds the merge until it reports. The change is JSON the build copies, not code it compiles
+- [x] PR script written, shown, and handed over
 - [ ] After the merge and the deploy: `curl --silent --head https://devlore.noblefactor.com/install.ps1`
       answers 200, and its body is byte-identical to devlore-cli's `install.ps1` at `develop`. That
       closes devlore-cli#948's last open box, ticked in the next devlore-cli commit
