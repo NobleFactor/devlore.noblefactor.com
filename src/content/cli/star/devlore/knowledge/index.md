@@ -1,11 +1,12 @@
 ---
 title: "star devlore knowledge index"
+slug: "star/devlore/knowledge/index"
 description: "Generate index.yaml for knowledge domains"
 tool: "star"
 command: "index"
 parent: "star devlore knowledge"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star devlore knowledge index

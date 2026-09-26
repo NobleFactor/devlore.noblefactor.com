@@ -1,11 +1,12 @@
 ---
 title: "star self install"
+slug: "star/self/install"
 description: "Install star and supporting files"
 tool: "star"
 command: "install"
 parent: "star self"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star self install

@@ -1,11 +1,12 @@
 ---
 title: "star lint shell"
+slug: "star/lint/shell"
 description: "Run shellcheck and shfmt on shell scripts"
 tool: "star"
 command: "shell"
 parent: "star lint"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star lint shell

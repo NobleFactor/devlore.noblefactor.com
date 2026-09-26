@@ -1,11 +1,12 @@
 ---
 title: "writ self uninstall"
+slug: "writ/self/uninstall"
 description: "Remove writ and supporting files"
 tool: "writ"
 command: "uninstall"
 parent: "writ self"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # writ self uninstall

@@ -1,11 +1,12 @@
 ---
 title: "lore workflow list"
+slug: "lore/workflow/list"
 description: "List the store's workflows: tool, scope, definition, run count, latest run"
 tool: "lore"
 command: "list"
 parent: "lore workflow"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # lore workflow list

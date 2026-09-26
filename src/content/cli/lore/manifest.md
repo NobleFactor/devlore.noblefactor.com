@@ -1,11 +1,12 @@
 ---
 title: "lore manifest"
+slug: "lore/manifest"
 description: "Create and manage package lifecycle manifests"
 tool: "lore"
 command: "manifest"
 parent: "lore"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # lore manifest

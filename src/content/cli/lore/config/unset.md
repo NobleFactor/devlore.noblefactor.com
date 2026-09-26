@@ -1,11 +1,12 @@
 ---
 title: "lore config unset"
+slug: "lore/config/unset"
 description: "Remove configuration keys"
 tool: "lore"
 command: "unset"
 parent: "lore config"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # lore config unset

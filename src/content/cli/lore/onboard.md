@@ -1,11 +1,12 @@
 ---
 title: "lore onboard"
+slug: "lore/onboard"
 description: "Parse wiki or script and generate packages-manifest.yaml and config"
 tool: "lore"
 command: "onboard"
 parent: "lore"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # lore onboard

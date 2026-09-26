@@ -1,11 +1,12 @@
 ---
 title: "writ reconcile"
+slug: "writ/reconcile"
 description: "Report deployed state: what should be present, from where, and what's missing or different"
 tool: "writ"
 command: "reconcile"
 parent: "writ"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # writ reconcile
@@ -37,6 +38,11 @@ Entry states -- the record is the reference:
   changed    The target is there but is not what the record says  → writ deploy (link), writ upgrade --force (copy)
   dangling   The source the record names does not resolve         → writ deploy
   stale      As recorded; the source resolves and its content moved → writ upgrade
+
+Exit status -- the answer, gateable like git diff --exit-code (#756):
+  0    deployed and clean: every entry is linked or copied
+  1    deployed and drifted: any entry is absent, changed, dangling or stale
+  66   never deployed: no current deployment to compare against
 
 ## Global Options
 

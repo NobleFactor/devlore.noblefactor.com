@@ -1,11 +1,12 @@
 ---
 title: "writ workflow verify"
+slug: "writ/workflow/verify"
 description: "Verify the publisher signatures of workflow definitions and execution traces"
 tool: "writ"
 command: "verify"
 parent: "writ workflow"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # writ workflow verify

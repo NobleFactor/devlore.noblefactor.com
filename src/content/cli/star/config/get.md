@@ -1,11 +1,12 @@
 ---
 title: "star config get"
+slug: "star/config/get"
 description: "Get configuration values"
 tool: "star"
 command: "get"
 parent: "star config"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star config get
