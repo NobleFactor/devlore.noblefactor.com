@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { tools } from "@/lib/tools";
 
 interface Props {
   title: string;
@@ -13,13 +14,13 @@ const { title, description, tool, currentSlug } = Astro.props;
 
 const allDocs = await getCollection("cli");
 
-// Group docs by tool
-const writDocs = allDocs
-  .filter((d) => d.data.tool === "writ")
-  .sort((a, b) => a.slug.localeCompare(b.slug));
-const loreDocs = allDocs
-  .filter((d) => d.data.tool === "lore")
-  .sort((a, b) => a.slug.localeCompare(b.slug));
+// One sidebar section per product that has pages (#457), in the products' display order.
+const sections = tools
+  .map((t) => ({
+    name: t.name,
+    docs: allDocs.filter((d) => d.data.tool === t.name).sort((a, b) => a.slug.localeCompare(b.slug)),
+  }))
+  .filter((s) => s.docs.length > 0);
 
 // Build breadcrumbs from current slug
 function buildBreadcrumbs(slug: string | undefined) {
@@ -55,11 +56,11 @@ function getDepth(slug: string) {
           &larr; CLI Reference
         </a>
 
-        {writDocs.length > 0 && (
+        {sections.map((section) => (
           <div class="mb-6">
-            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">writ</h3>
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{section.name}</h3>
             <ul class="space-y-1">
-              {writDocs.map((doc) => (
+              {section.docs.map((doc) => (
                 <li style={`padding-left: ${getDepth(doc.slug) * 0.75}rem`}>
                   <a
                     href={`/cli/${doc.slug}/`}
@@ -75,29 +76,7 @@ function getDepth(slug: string) {
               ))}
             </ul>
           </div>
-        )}
-
-        {loreDocs.length > 0 && (
-          <div class="mb-6">
-            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">lore</h3>
-            <ul class="space-y-1">
-              {loreDocs.map((doc) => (
-                <li style={`padding-left: ${getDepth(doc.slug) * 0.75}rem`}>
-                  <a
-                    href={`/cli/${doc.slug}/`}
-                    class={`block text-sm py-0.5 transition ${
-                      currentSlug === doc.slug
-                        ? "text-lore-accent font-medium"
-                        : "text-gray-300 hover:text-white"
-                    }`}
-                  >
-                    {doc.data.command}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        ))}
       </nav>
     </aside>
 

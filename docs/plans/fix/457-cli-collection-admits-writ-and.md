@@ -83,18 +83,20 @@ into the branch, and the PR's build is the first that can go green.
 
 ### Phase 2: The change
 
-- [ ] `src/lib/tools.ts` (Requirement 1)
-- [ ] `src/content/config.ts` (Requirement 2)
-- [ ] `src/pages/cli/index.astro` and `src/layouts/CLIRefLayout.astro` (Requirement 3)
+- [x] `src/lib/tools.ts` (Requirement 1)
+- [x] `src/content/config.ts` (Requirement 2)
+- [x] `src/pages/cli/index.astro` and `src/layouts/CLIRefLayout.astro` (Requirement 3): each maps over
+      `tools`; the two hand-written copies in each file are gone
 
 ### Phase 3: Verify, then merge
 
-- [ ] The three edited files pass a TypeScript/Astro parse where one can run; node is not on
-      DANOBLE-UD24-1, so the site's own gate, `npm ci` and `npm run build`, runs on the pull request and
-      the script's CI gate holds the merge until it reports
+- [x] Node is not on DANOBLE-UD24-1, so no parse or build runs here; the PR script checks that the
+      product list and the schema name the same three, and the site's own gate, `npm ci` and `npm run
+      build`, runs on the pull request, where the script's CI gate holds the merge until it reports
 - [ ] The docs sync carrying devlore-cli#953 and #956 has merged into the site's `develop` before the
       script runs (Requirement 4)
-- [ ] PR script written, shown, and handed over
+- [x] PR script written, shown, and handed over; it refuses to run until the site's `develop` carries
+      lane 3's sync (no `devlore-test` page, `slug:` on every page)
 - [ ] After the merge: the push to `develop` builds and deploys; `/cli/` lists three products;
       `/cli/star/devlore/knowledge/index/` and `/cli/star/devlore/package/index/` exist. That closes
       devlore-cli#952's last box and unblocks lane 4
