@@ -5,8 +5,8 @@ description: "Deploy projects by creating symlinks in the target location"
 tool: "writ"
 command: "deploy"
 parent: "writ"
-generated: "2026-09-26T10:03:41Z"
-version: "ac4c19e"
+generated: "2026-09-26T11:06:47Z"
+version: "ba3eea9"
 ---
 
 # writ deploy
@@ -16,12 +16,17 @@ Deploy projects by creating symlinks in the target location
 ## Usage
 
 ```
-writ deploy [flags] <project>...
+writ deploy [flags] [<project>...]
 ```
 
 ## Description
 
 Deploy projects by creating symlinks in the target location.
+
+A bare "writ deploy" deploys the implicit set: the reserved common project and one
+project per configured layer repository, named for the repository (#843, #850), plus
+whatever the current record already holds. Naming a project adds it, from every
+layer that carries it; a name no registered layer carries is refused.
 
 Files inside each project directory are symlinked to the target (default: ~).
 Platform-specific variants (e.g., project.Darwin) are selected automatically.
@@ -68,8 +73,9 @@ Conflict handling (--conflict) — occupied targets (phase-8 step 49):
 ## Examples
 
 ```bash
+writ deploy                    # the implicit set: common and the layer repositories' projects
 writ deploy noblefactor
-writ deploy all noblefactor thenobles
+writ deploy noblefactor thenobles
 writ deploy --conflict=replace noblefactor
 writ deploy --conflict=skip noblefactor
 writ deploy -s ROLE=desktop noblefactor
