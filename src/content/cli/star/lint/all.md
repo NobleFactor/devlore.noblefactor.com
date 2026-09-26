@@ -1,11 +1,12 @@
 ---
 title: "star lint all"
+slug: "star/lint/all"
 description: "Run all configured linters"
 tool: "star"
 command: "all"
 parent: "star lint"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star lint all

@@ -1,11 +1,12 @@
 ---
 title: "writ repo set"
+slug: "writ/repo/set"
 description: "Register a layer, or re-point one that is registered"
 tool: "writ"
 command: "set"
 parent: "writ repo"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # writ repo set

@@ -1,11 +1,12 @@
 ---
 title: "writ repo unset"
+slug: "writ/repo/unset"
 description: "Unregister a layer"
 tool: "writ"
 command: "unset"
 parent: "writ repo"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # writ repo unset

@@ -1,11 +1,12 @@
 ---
 title: "devlore-test config validate"
+slug: "devlore-test/config/validate"
 description: "Validate configuration against schema"
 tool: "devlore-test"
 command: "validate"
 parent: "devlore-test config"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # devlore-test config validate

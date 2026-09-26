@@ -1,11 +1,12 @@
 ---
 title: "lore config schema"
+slug: "lore/config/schema"
 description: "Output the embedded JSON schema"
 tool: "lore"
 command: "schema"
 parent: "lore config"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # lore config schema

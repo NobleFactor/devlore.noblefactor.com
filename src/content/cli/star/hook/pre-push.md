@@ -1,11 +1,12 @@
 ---
 title: "star hook pre-push"
+slug: "star/hook/pre-push"
 description: "Run pre-push checks (called by git pre-push hook)"
 tool: "star"
 command: "pre-push"
 parent: "star hook"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star hook pre-push

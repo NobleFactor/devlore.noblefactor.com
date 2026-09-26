@@ -1,11 +1,12 @@
 ---
 title: "star devlore knowledge validate"
+slug: "star/devlore/knowledge/validate"
 description: "Validate knowledge artifact YAML files against JSON schemas"
 tool: "star"
 command: "validate"
 parent: "star devlore knowledge"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star devlore knowledge validate

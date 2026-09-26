@@ -1,11 +1,12 @@
 ---
 title: "star workflow list"
+slug: "star/workflow/list"
 description: "List the store's workflows: tool, scope, definition, run count, latest run"
 tool: "star"
 command: "list"
 parent: "star workflow"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # star workflow list

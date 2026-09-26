@@ -1,11 +1,12 @@
 ---
 title: "lore self uninstall"
+slug: "lore/self/uninstall"
 description: "Remove lore and supporting files"
 tool: "lore"
 command: "uninstall"
 parent: "lore self"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # lore self uninstall

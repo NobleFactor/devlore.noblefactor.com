@@ -1,11 +1,12 @@
 ---
 title: "lore manifest create"
+slug: "lore/manifest/create"
 description: "Scaffold a new package manifest"
 tool: "lore"
 command: "create"
 parent: "lore manifest"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T10:03:41Z"
+version: "ac4c19e"
 ---
 
 # lore manifest create
