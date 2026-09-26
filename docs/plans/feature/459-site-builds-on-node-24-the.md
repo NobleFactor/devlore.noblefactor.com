@@ -1,7 +1,7 @@
 ---
 title: "The site builds on Node 24, the current LTS: CI pins 20, which reached end of life on 2026-04-30"
 issue: https://github.com/NobleFactor/devlore.noblefactor.com/issues/459
-status: active
+status: complete
 created: 2026-09-26
 updated: 2026-09-26
 ---
@@ -61,10 +61,11 @@ carrying #953 and #956 merged (site #462), and #463's `develop` deploy succeeded
 
 - [x] The workflow parses as YAML; `package.json` parses as JSON (python's `json` here; node is not on
       DANOBLE-UD24-1); the PR script re-checks the pin and the floor before it commits
-- [ ] The build on the pull request runs on Node 24: the `Setup Node.js` step's log names a 24.x, and
-      `npm ci` and `npm run build` pass — the site's gate, where it runs
+- [x] The build on the pull request (#464) ran on Node 24: the `Setup Node.js` step's log shows
+      `node-version: 24`, and `npm ci` and `npm run build` passed in 1m38s
 - [x] PR script written, shown, and handed over
-- [ ] After the merge: the `develop` deploy run succeeds on 24; production is unchanged in content
+- [x] After the merge (2026-09-26 16:08): the `develop` deploy run succeeded on 24; production is
+      unchanged in content
 
 ## Out of Scope
 
