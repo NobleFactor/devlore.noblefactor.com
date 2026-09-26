@@ -1,11 +1,12 @@
 ---
 title: "writ repo list"
+slug: "writ/repo/list"
 description: "List layer registrations"
 tool: "writ"
 command: "list"
 parent: "writ repo"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # writ repo list

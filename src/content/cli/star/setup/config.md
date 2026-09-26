@@ -1,11 +1,12 @@
 ---
 title: "star setup config"
+slug: "star/setup/config"
 description: "Initialize star.yaml and sync tool configurations"
 tool: "star"
 command: "config"
 parent: "star setup"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star setup config

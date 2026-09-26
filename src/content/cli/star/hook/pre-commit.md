@@ -1,11 +1,12 @@
 ---
 title: "star hook pre-commit"
+slug: "star/hook/pre-commit"
 description: "Run pre-commit checks (called by git pre-commit hook)"
 tool: "star"
 command: "pre-commit"
 parent: "star hook"
-generated: "2026-09-25T04:59:04Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star hook pre-commit

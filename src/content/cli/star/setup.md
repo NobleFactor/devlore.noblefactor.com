@@ -1,11 +1,12 @@
 ---
 title: "star setup"
+slug: "star/setup"
 description: "Run all setup tasks (tools check, config init, hooks install)"
 tool: "star"
 command: "setup"
 parent: "star"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star setup

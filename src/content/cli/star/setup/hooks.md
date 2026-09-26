@@ -1,11 +1,12 @@
 ---
 title: "star setup hooks"
+slug: "star/setup/hooks"
 description: "Install pre-commit hooks"
 tool: "star"
 command: "hooks"
 parent: "star setup"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star setup hooks

@@ -1,11 +1,12 @@
 ---
 title: "star key rotate"
+slug: "star/key/rotate"
 description: "Rotate a signing key with ceremony"
 tool: "star"
 command: "rotate"
 parent: "star key"
-generated: "2026-09-25T04:59:05Z"
-version: "e94dd83"
+generated: "2026-09-26T11:50:42Z"
+version: "5509da4"
 ---
 
 # star key rotate
