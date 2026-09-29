@@ -5,8 +5,8 @@ description: "Verify the publisher signatures of workflow definitions and execut
 tool: "lore"
 command: "verify"
 parent: "lore workflow"
-generated: "2026-09-29T15:54:13Z"
-version: "e265344"
+generated: "2026-09-29T22:48:53Z"
+version: "f0d21c4"
 ---
 
 # lore workflow verify
