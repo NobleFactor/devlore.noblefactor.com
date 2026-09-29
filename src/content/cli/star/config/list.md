@@ -5,8 +5,8 @@ description: "List all configuration settings"
 tool: "star"
 command: "list"
 parent: "star config"
-generated: "2026-09-29T15:30:18Z"
-version: "e5ec97b"
+generated: "2026-09-29T15:54:13Z"
+version: "e265344"
 ---
 
 # star config list
