@@ -5,8 +5,8 @@ description: "Regenerate copied files (templates, secrets) from current sources"
 tool: "writ"
 command: "upgrade"
 parent: "writ"
-generated: "2026-09-30T04:01:45Z"
-version: "19014c9"
+generated: "2026-09-30T18:37:12Z"
+version: "e440151"
 ---
 
 # writ upgrade
@@ -40,6 +40,7 @@ entries cannot be compared without decrypting and follow the same --force rule.
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--force` | `false` | Overwrite locally modified files without prompting |
+| `--segment, -s` | `[]` | Set a segment's value, NAME=value (repeatable); an extra must be declared in writ.segments |
 
 ## Global Options
 
