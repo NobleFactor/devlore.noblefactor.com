@@ -5,8 +5,8 @@ description: "Generate index.yaml and cross-reference.yaml for lore packages"
 tool: "star"
 command: "index"
 parent: "star devlore package"
-generated: "2026-09-30T01:03:53Z"
-version: "e3b501d"
+generated: "2026-09-30T02:05:04Z"
+version: "4b35a87"
 ---
 
 # star devlore package index

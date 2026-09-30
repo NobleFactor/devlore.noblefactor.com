@@ -5,8 +5,8 @@ description: "model commands"
 tool: "star"
 command: "model"
 parent: "star devlore"
-generated: "2026-09-30T01:03:53Z"
-version: "e3b501d"
+generated: "2026-09-30T02:05:04Z"
+version: "4b35a87"
 ---
 
 # star devlore model
