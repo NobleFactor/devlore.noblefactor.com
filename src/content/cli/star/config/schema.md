@@ -5,8 +5,8 @@ description: "Output the embedded JSON schema"
 tool: "star"
 command: "schema"
 parent: "star config"
-generated: "2026-09-30T18:37:12Z"
-version: "e440151"
+generated: "2026-09-30T19:46:28Z"
+version: "42e6e4e"
 ---
 
 # star config schema
