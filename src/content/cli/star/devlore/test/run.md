@@ -5,8 +5,8 @@ description: "Run a Starlark test script that plans and executes a graph"
 tool: "star"
 command: "run"
 parent: "star devlore test"
-generated: "2026-09-30T01:03:53Z"
-version: "e3b501d"
+generated: "2026-09-30T02:05:04Z"
+version: "4b35a87"
 ---
 
 # star devlore test run

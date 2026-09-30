@@ -5,8 +5,8 @@ description: "lint commands"
 tool: "star"
 command: "lint"
 parent: "star"
-generated: "2026-09-30T01:03:53Z"
-version: "e3b501d"
+generated: "2026-09-30T02:05:04Z"
+version: "4b35a87"
 ---
 
 # star lint
@@ -56,4 +56,5 @@ star lint
 | [star lint go-style](/cli/star/lint/go-style/) | Enforce Go style guidelines |
 | [star lint markdown](/cli/star/lint/markdown/) | Run markdownlint and frontmatter check on markdown files |
 | [star lint shell](/cli/star/lint/shell/) | Run shellcheck and shfmt on shell scripts |
+| [star lint starlark](/cli/star/lint/starlark/) | Check Starlark files for dead plan.* references and phase-script mistakes |
 | [star lint tools](/cli/star/lint/tools/) | Check status of required lint tools |
