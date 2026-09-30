@@ -5,8 +5,8 @@ description: "Generate Starlark plan receivers and execution graph actions from 
 tool: "star"
 command: "generate"
 parent: "star devlore actions"
-generated: "2026-09-30T02:43:52Z"
-version: "ea5cebd"
+generated: "2026-09-30T04:01:45Z"
+version: "19014c9"
 ---
 
 # star devlore actions generate

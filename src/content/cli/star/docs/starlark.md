@@ -5,8 +5,8 @@ description: "Show how to write Starlark operations"
 tool: "star"
 command: "starlark"
 parent: "star docs"
-generated: "2026-09-30T02:43:52Z"
-version: "ea5cebd"
+generated: "2026-09-30T04:01:45Z"
+version: "19014c9"
 ---
 
 # star docs starlark
