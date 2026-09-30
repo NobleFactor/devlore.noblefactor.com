@@ -5,8 +5,8 @@ description: "Validate Starlark API contract against resource provider source"
 tool: "star"
 command: "validate"
 parent: "star devlore actions"
-generated: "2026-09-30T02:43:52Z"
-version: "ea5cebd"
+generated: "2026-09-30T04:01:45Z"
+version: "19014c9"
 ---
 
 # star devlore actions validate
