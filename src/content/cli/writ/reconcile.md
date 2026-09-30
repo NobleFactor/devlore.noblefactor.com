@@ -5,8 +5,8 @@ description: "Report deployed state: what should be present, from where, and wha
 tool: "writ"
 command: "reconcile"
 parent: "writ"
-generated: "2026-09-30T04:01:45Z"
-version: "19014c9"
+generated: "2026-09-30T18:37:12Z"
+version: "e440151"
 ---
 
 # writ reconcile
@@ -16,7 +16,7 @@ Report deployed state: what should be present, from where, and what's missing or
 ## Usage
 
 ```
-writ reconcile [<project>...]
+writ reconcile [<project>...] [flags]
 ```
 
 ## Description
@@ -43,6 +43,12 @@ Exit status -- the answer, gateable like git diff --exit-code (#756):
   0    deployed and clean: every entry is linked or copied
   1    deployed and drifted: any entry is absent, changed, dangling or stale
   66   never deployed: no current deployment to compare against
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--segment, -s` | `[]` | Set a segment's value, NAME=value (repeatable); an extra must be declared in writ.segments |
 
 ## Global Options
 

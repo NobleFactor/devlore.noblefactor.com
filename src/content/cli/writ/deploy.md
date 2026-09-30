@@ -5,8 +5,8 @@ description: "Deploy projects by creating symlinks in the target location"
 tool: "writ"
 command: "deploy"
 parent: "writ"
-generated: "2026-09-30T04:01:45Z"
-version: "19014c9"
+generated: "2026-09-30T18:37:12Z"
+version: "e440151"
 ---
 
 # writ deploy
@@ -46,7 +46,7 @@ Conflict handling (--conflict) — occupied targets (phase-8 step 49):
 |--------|---------|-------------|
 | `--allow-dirty` | `false` | Allow planning against layers with uncommitted changes |
 | `--conflict, -c` | `stop` | Occupied-target policy: stop, skip, replace |
-| `--segment, -s` | `[]` | Set custom segment value (KEY=value, repeatable) |
+| `--segment, -s` | `[]` | Set a segment's value, NAME=value (repeatable); an extra must be declared in writ.segments |
 
 ## Global Options
 

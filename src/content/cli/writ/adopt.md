@@ -5,8 +5,8 @@ description: "Move files from target location into a project and create symlinks
 tool: "writ"
 command: "adopt"
 parent: "writ"
-generated: "2026-09-30T04:01:45Z"
-version: "19014c9"
+generated: "2026-09-30T18:37:12Z"
+version: "e440151"
 ---
 
 # writ adopt
@@ -46,8 +46,9 @@ config files into the environment repository.
 |--------|---------|-------------|
 | `--from-receipt` | `false` | Adopt packages-manifest.yaml and config from lore receipt |
 | `--layer` | `personal` | Layer to adopt into: personal, team, or base |
-| `--platform` | `""` | Platform suffix the adopted files carry, in the segment vocabulary the layer tree matches (Darwin, Unix, Windows, Linux, Linux.Debian, Darwin.arm64, ...); absent, the platform-neutral project directory |
+| `--platform` | `""` | Platform suffix the adopted files carry, as a directory name reads it: one word of this machine's chain, then its architecture, then declared segment values (Unix, Linux, Debian, Ubuntu, Debian.arm64, ...); it must name this machine. Absent, the platform-neutral project directory |
 | `--project` | `""` | Origin name within the layer (required) |
+| `--segment, -s` | `[]` | Set a segment's value, NAME=value (repeatable); an extra must be declared in writ.segments |
 
 ## Global Options
 
@@ -85,8 +86,9 @@ writ adopt --project noblefactor ~/.config/nvim
 
 # Adopt into team layer
 writ adopt --layer team --project shared ~/.editorconfig
-# Adopt a Debian-only file: it lands under <project>.Linux.Debian and deploys only there
-writ adopt --project noblefactor --platform Linux.Debian ~/.config/apt.conf
+# Adopt a Debian file: it lands under <project>.Debian and deploys on Debian and every
+# distribution descended from it, Ubuntu among them
+writ adopt --project noblefactor --platform Debian ~/.config/apt.conf
 
 # Adopt system file (inferred as System scope)
 writ adopt --project noblefactor /etc/myapp/config.yaml
