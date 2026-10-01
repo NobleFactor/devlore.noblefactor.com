@@ -5,8 +5,8 @@ description: "Self-management commands"
 tool: "writ"
 command: "self"
 parent: "writ"
-generated: "2026-09-30T19:46:28Z"
-version: "42e6e4e"
+generated: "2026-10-01T19:34:47Z"
+version: "0163449"
 ---
 
 # writ self
@@ -53,4 +53,4 @@ writ self
 |---------|-------------|
 | [writ self install](/cli/writ/self/install/) | Install writ and supporting files |
 | [writ self uninstall](/cli/writ/self/uninstall/) | Remove writ and supporting files |
-| [writ self upgrade](/cli/writ/self/upgrade/) | Upgrade writ in place |
+| [writ self upgrade](/cli/writ/self/upgrade/) | Upgrade writ, and every devlore program beside it, to one release |

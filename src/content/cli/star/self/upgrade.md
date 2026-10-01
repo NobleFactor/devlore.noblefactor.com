@@ -1,17 +1,17 @@
 ---
 title: "star self upgrade"
 slug: "star/self/upgrade"
-description: "Upgrade star in place"
+description: "Upgrade star, and every devlore program beside it, to one release"
 tool: "star"
 command: "upgrade"
 parent: "star self"
-generated: "2026-09-30T19:46:28Z"
-version: "42e6e4e"
+generated: "2026-10-01T19:34:47Z"
+version: "0163449"
 ---
 
 # star self upgrade
 
-Upgrade star in place
+Upgrade star, and every devlore program beside it, to one release
 
 ## Usage
 
@@ -21,19 +21,59 @@ star self upgrade [flags]
 
 ## Description
 
-Upgrade star by overwriting the currently installed binary and refreshing
-man pages, completions, config, and cache.
+Upgrade star, and every other devlore program installed beside it, to one release.
 
-The installation prefix is resolved from the running binary's location.
-No prefix argument is needed.
+The prefix is the one the running binary is in, <prefix>/bin/star. The programs are
+the ones a release carries -- lore, star and writ -- that the prefix holds; one it does not hold
+is not added. When every one is already at the release, nothing is downloaded and nothing
+changes.
 
-Example:
+The release is downloaded from GitHub into a temporary directory, verified against its checksums
+file and GitHub's own SHA-256 digest, and unpacked there; the directory is removed when the
+command ends, interrupted or not. Each program's new binary is then placed in <prefix>/bin, and
+the program installs itself with its own "self install", which refreshes its man pages and
+completions and replaces its record. The first program that fails stops the run; nothing is
+rolled back, and running the command again finishes the job.
+
+What it upgrades to is decided by the first of these that is given:
+  --from <archive>     a release archive on disk, its checksums file beside it
+  --channel <channel>  the newest release on that channel
+  DEVLORE_VERSION      that release, whatever its channel; "latest" pins nothing
+  self.channel         the channel in the configuration every program shares
+  the build's channel  the channel this build was made on, which --version names
+
+The channels:
+  develop  every build from develop, each a pre-release
+  release  GitHub's latest release; with --prerelease, or self.prerelease: true beside
+           self.channel: release, the release channel's pre-releases too
+
+The channel stays with the installed builds: after "star self upgrade --channel release",
+a plain "star self upgrade" stays on release, unless DEVLORE_VERSION or self.channel
+is set, either of which outranks the build's channel. A local build has no channel, and
+upgrades only when told what to.
+
+GitHub is asked without a token, which allows 60 requests an hour. Set GH_TOKEN to a GitHub token
+to raise the limit; it is sent with requests to GitHub's API, never with downloads. Nothing
+prompts.
+
+--dry-run finds, downloads and verifies the release, says what it would upgrade, and changes
+nothing.
+
+Examples:
   star self upgrade
+  star self upgrade --channel release
+  star self upgrade --channel release --prerelease
+  DEVLORE_VERSION=<tag> star self upgrade
+  star self upgrade --from ./devlore-cli_<tag>_<os>_<arch>.tar.gz
+  star self upgrade --dry-run
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
+| `--channel` | `""` | Channel to upgrade on: develop or release; outranks a DEVLORE_VERSION pin (default: the pin, else self.channel, else the channel this build was made on) |
+| `--from` | `""` | Release archive on disk to upgrade to, its checksums file beside it; GitHub is not asked |
+| `--prerelease` | `false` | Include the release channel's pre-releases |
 | `--shell` | `[]` | Shell to install completions for (repeatable, e.g., --shell bash --shell zsh) |
 
 ## Global Options

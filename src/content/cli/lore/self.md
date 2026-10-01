@@ -5,8 +5,8 @@ description: "Self-management commands"
 tool: "lore"
 command: "self"
 parent: "lore"
-generated: "2026-09-30T19:46:28Z"
-version: "42e6e4e"
+generated: "2026-10-01T19:34:47Z"
+version: "0163449"
 ---
 
 # lore self
@@ -53,4 +53,4 @@ lore self
 |---------|-------------|
 | [lore self install](/cli/lore/self/install/) | Install lore and supporting files |
 | [lore self uninstall](/cli/lore/self/uninstall/) | Remove lore and supporting files |
-| [lore self upgrade](/cli/lore/self/upgrade/) | Upgrade lore in place |
+| [lore self upgrade](/cli/lore/self/upgrade/) | Upgrade lore, and every devlore program beside it, to one release |

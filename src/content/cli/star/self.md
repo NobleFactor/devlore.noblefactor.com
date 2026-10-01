@@ -5,8 +5,8 @@ description: "Self-management commands"
 tool: "star"
 command: "self"
 parent: "star"
-generated: "2026-09-30T19:46:28Z"
-version: "42e6e4e"
+generated: "2026-10-01T19:34:47Z"
+version: "0163449"
 ---
 
 # star self
@@ -52,4 +52,4 @@ star self
 |---------|-------------|
 | [star self install](/cli/star/self/install/) | Install star and supporting files |
 | [star self uninstall](/cli/star/self/uninstall/) | Remove star and supporting files |
-| [star self upgrade](/cli/star/self/upgrade/) | Upgrade star in place |
+| [star self upgrade](/cli/star/self/upgrade/) | Upgrade star, and every devlore program beside it, to one release |
