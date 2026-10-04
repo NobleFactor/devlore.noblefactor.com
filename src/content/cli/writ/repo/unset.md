@@ -5,8 +5,8 @@ description: "Unregister a layer"
 tool: "writ"
 command: "unset"
 parent: "writ repo"
-generated: "2026-10-01T19:34:47Z"
-version: "0163449"
+generated: "2026-10-04T06:17:08Z"
+version: "f30c209"
 ---
 
 # writ repo unset

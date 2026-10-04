@@ -5,8 +5,8 @@ description: "List the store's workflows: tool, scope, definition, run count, la
 tool: "star"
 command: "list"
 parent: "star workflow"
-generated: "2026-10-01T19:34:47Z"
-version: "0163449"
+generated: "2026-10-04T06:17:08Z"
+version: "f30c209"
 ---
 
 # star workflow list
