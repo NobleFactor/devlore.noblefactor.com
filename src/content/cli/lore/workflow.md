@@ -5,8 +5,8 @@ description: "The store's workflows: each a definition and the execution traces 
 tool: "lore"
 command: "workflow"
 parent: "lore"
-generated: "2026-10-04T06:17:08Z"
-version: "f30c209"
+generated: "2026-10-05T02:00:08Z"
+version: "6f600d6"
 ---
 
 # lore workflow
