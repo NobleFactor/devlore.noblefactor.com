@@ -5,8 +5,8 @@ description: "Remove star and supporting files"
 tool: "star"
 command: "uninstall"
 parent: "star self"
-generated: "2026-10-05T06:33:37Z"
-version: "71dc125"
+generated: "2026-10-05T18:29:41Z"
+version: "0283bd7"
 ---
 
 # star self uninstall
@@ -23,9 +23,14 @@ star self uninstall [prefix] [flags]
 
 Remove star and all files installed by "self install".
 
-Reads the installation manifest and removes only files that have not been
-modified since installation. Modified files are skipped and reported.
-Empty directories left behind are cleaned up.
+Reads the installation manifest and removes the files it records. A file
+changed since it was installed is kept, in case it is your own edit; a file
+that cannot be removed is kept and named for its reason. Empty directories
+left behind are cleaned up. The manifest is kept until nothing it records is
+left, so a later run can finish what one could not.
+
+On Windows the running program cannot delete itself, so it is removed once
+this command exits.
 
 Example:
   star self uninstall           # resolves prefix from binary location
