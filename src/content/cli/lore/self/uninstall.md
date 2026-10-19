@@ -5,8 +5,8 @@ description: "Remove lore and supporting files"
 tool: "lore"
 command: "uninstall"
 parent: "lore self"
-generated: "2026-10-10T20:10:58Z"
-version: "4d18e48"
+generated: "2026-10-19T22:18:50Z"
+version: "65c8b40"
 ---
 
 # lore self uninstall
@@ -32,6 +32,11 @@ left, so a later run can finish what one could not.
 On Windows the running program cannot delete itself, so it is removed once
 this command exits.
 
+It asks before removing anything, and reads the answer from standard input,
+whether or not that is a terminal. Only y or yes removes; any other answer,
+or none, removes nothing. --force removes without asking. --unattended asks
+nothing and takes the default, No, so it removes nothing.
+
 Example:
   lore self uninstall           # resolves prefix from binary location
   lore self uninstall ~/.local
@@ -50,7 +55,6 @@ Example:
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
 | `--filter` | `[]` | Filter expression: field=value (repeatable, AND logic) |
-| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--jq` | `""` | jq expression applied after --filter; see github.com/itchyny/gojq |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
