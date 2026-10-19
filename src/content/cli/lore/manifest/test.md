@@ -5,8 +5,8 @@ description: "Dry-run a package manifest on current system"
 tool: "lore"
 command: "test"
 parent: "lore manifest"
-generated: "2026-10-10T20:10:58Z"
-version: "4d18e48"
+generated: "2026-10-19T22:18:50Z"
+version: "65c8b40"
 ---
 
 # lore manifest test
@@ -42,7 +42,6 @@ Use --set to test with specific settings. Use --debug for verbose output.
 | `--config` | `""` | Config file (default: ~/.config/devlore/config.yaml) |
 | `--dry-run` | `false` | Show what would be done without making changes |
 | `--filter` | `[]` | Filter expression: field=value (repeatable, AND logic) |
-| `--interactive` | `false` | Force interactive mode (prompts, rich output) |
 | `--jq` | `""` | jq expression applied after --filter; see github.com/itchyny/gojq |
 | `--model` | `""` | Model name (e.g., claude-sonnet-4-20250514, gpt-4o) |
 | `--model-api-key` | `""` | Model provider API key |
