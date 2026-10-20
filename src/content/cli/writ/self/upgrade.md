@@ -5,8 +5,8 @@ description: "Upgrade writ, and every devlore program beside it, to one release"
 tool: "writ"
 command: "upgrade"
 parent: "writ self"
-generated: "2026-10-20T05:35:24Z"
-version: "5201113"
+generated: "2026-10-20T16:35:23Z"
+version: "4612242"
 ---
 
 # writ self upgrade
