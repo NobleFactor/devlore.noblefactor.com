@@ -5,8 +5,8 @@ description: "Migrate an existing environment to a writ layer"
 tool: "writ"
 command: "migrate"
 parent: "writ"
-generated: "2026-10-20T05:35:24Z"
-version: "5201113"
+generated: "2026-10-20T16:35:23Z"
+version: "4612242"
 ---
 
 # writ migrate
