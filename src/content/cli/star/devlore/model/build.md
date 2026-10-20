@@ -5,8 +5,8 @@ description: "Generate Ollama Modelfile from knowledge domain"
 tool: "star"
 command: "build"
 parent: "star devlore model"
-generated: "2026-10-19T22:18:50Z"
-version: "65c8b40"
+generated: "2026-10-20T05:35:24Z"
+version: "5201113"
 ---
 
 # star devlore model build
