@@ -5,8 +5,8 @@ description: "The store's workflows: each a definition and the execution traces 
 tool: "writ"
 command: "workflow"
 parent: "writ"
-generated: "2026-10-20T16:35:23Z"
-version: "4612242"
+generated: "2026-10-20T18:13:16Z"
+version: "83e6b96"
 ---
 
 # writ workflow
