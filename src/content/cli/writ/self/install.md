@@ -5,8 +5,8 @@ description: "Install writ and supporting files"
 tool: "writ"
 command: "install"
 parent: "writ self"
-generated: "2026-10-20T18:13:16Z"
-version: "83e6b96"
+generated: "2026-10-20T19:39:00Z"
+version: "720b3db"
 ---
 
 # writ self install

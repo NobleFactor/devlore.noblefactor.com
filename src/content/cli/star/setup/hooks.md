@@ -5,8 +5,8 @@ description: "Install pre-commit hooks"
 tool: "star"
 command: "hooks"
 parent: "star setup"
-generated: "2026-10-20T18:13:16Z"
-version: "83e6b96"
+generated: "2026-10-20T19:39:00Z"
+version: "720b3db"
 ---
 
 # star setup hooks
