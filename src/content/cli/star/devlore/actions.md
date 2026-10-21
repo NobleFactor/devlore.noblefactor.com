@@ -5,8 +5,8 @@ description: "actions commands"
 tool: "star"
 command: "actions"
 parent: "star devlore"
-generated: "2026-10-21T22:42:34Z"
-version: "0f5deff"
+generated: "2026-10-21T23:12:20Z"
+version: "ca6328a"
 ---
 
 # star devlore actions
