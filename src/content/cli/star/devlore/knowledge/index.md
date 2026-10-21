@@ -5,8 +5,8 @@ description: "Generate index.yaml for knowledge domains"
 tool: "star"
 command: "index"
 parent: "star devlore knowledge"
-generated: "2026-10-21T17:15:01Z"
-version: "98c5991"
+generated: "2026-10-21T18:42:03Z"
+version: "45a0dd4"
 ---
 
 # star devlore knowledge index
@@ -23,7 +23,6 @@ star devlore knowledge index [flags]
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--dry_run` | `""` | Show what would be done without writing files |
 | `--target` | `""` | Knowledge root to read/write indexes (default: ../devlore-registry) |
 
 ## Global Options
