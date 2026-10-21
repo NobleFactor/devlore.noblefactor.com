@@ -5,8 +5,8 @@ description: "star's own documentation"
 tool: "star"
 command: "docs"
 parent: "star"
-generated: "2026-10-21T19:56:48Z"
-version: "dbc4cab"
+generated: "2026-10-21T22:07:35Z"
+version: "4992f58"
 ---
 
 # star docs

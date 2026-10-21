@@ -5,8 +5,8 @@ description: "Check setup status without making changes"
 tool: "star"
 command: "check"
 parent: "star setup"
-generated: "2026-10-21T19:56:48Z"
-version: "dbc4cab"
+generated: "2026-10-21T22:07:35Z"
+version: "4992f58"
 ---
 
 # star setup check
