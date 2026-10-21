@@ -5,8 +5,8 @@ description: "Self-management commands"
 tool: "star"
 command: "self"
 parent: "star"
-generated: "2026-10-21T22:07:35Z"
-version: "4992f58"
+generated: "2026-10-21T22:42:34Z"
+version: "0f5deff"
 ---
 
 # star self
