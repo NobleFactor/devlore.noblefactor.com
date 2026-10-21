@@ -5,8 +5,8 @@ description: "Display package manifest details"
 tool: "lore"
 command: "show"
 parent: "lore manifest"
-generated: "2026-10-21T07:11:20Z"
-version: "c8a31a4"
+generated: "2026-10-21T17:15:01Z"
+version: "98c5991"
 ---
 
 # lore manifest show
