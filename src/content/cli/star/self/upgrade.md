@@ -5,8 +5,8 @@ description: "Upgrade star, and every devlore program beside it, to one release"
 tool: "star"
 command: "upgrade"
 parent: "star self"
-generated: "2026-10-21T04:49:14Z"
-version: "78881b0"
+generated: "2026-10-21T07:11:20Z"
+version: "c8a31a4"
 ---
 
 # star self upgrade

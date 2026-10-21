@@ -5,8 +5,8 @@ description: "Run markdownlint and frontmatter check on markdown files"
 tool: "star"
 command: "markdown"
 parent: "star lint"
-generated: "2026-10-21T04:49:14Z"
-version: "78881b0"
+generated: "2026-10-21T07:11:20Z"
+version: "c8a31a4"
 ---
 
 # star lint markdown
