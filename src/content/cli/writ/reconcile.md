@@ -5,8 +5,8 @@ description: "Report deployed state: what should be present, from where, and wha
 tool: "writ"
 command: "reconcile"
 parent: "writ"
-generated: "2026-10-21T18:42:03Z"
-version: "45a0dd4"
+generated: "2026-10-21T19:56:48Z"
+version: "dbc4cab"
 ---
 
 # writ reconcile

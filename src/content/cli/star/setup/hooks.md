@@ -5,8 +5,8 @@ description: "Install pre-commit hooks"
 tool: "star"
 command: "hooks"
 parent: "star setup"
-generated: "2026-10-21T18:42:03Z"
-version: "45a0dd4"
+generated: "2026-10-21T19:56:48Z"
+version: "dbc4cab"
 ---
 
 # star setup hooks
