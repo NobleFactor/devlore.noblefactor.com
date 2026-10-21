@@ -5,8 +5,8 @@ description: "Show required development tools and installation status"
 tool: "star"
 command: "tools"
 parent: "star setup"
-generated: "2026-10-21T19:56:48Z"
-version: "dbc4cab"
+generated: "2026-10-21T22:07:35Z"
+version: "4992f58"
 ---
 
 # star setup tools

@@ -5,8 +5,8 @@ description: "Generate a new signing key"
 tool: "star"
 command: "generate"
 parent: "star key"
-generated: "2026-10-21T19:56:48Z"
-version: "dbc4cab"
+generated: "2026-10-21T22:07:35Z"
+version: "4992f58"
 ---
 
 # star key generate
