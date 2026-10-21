@@ -5,8 +5,8 @@ description: "Check Starlark files for dead plan.* references and phase-script m
 tool: "star"
 command: "starlark"
 parent: "star lint"
-generated: "2026-10-21T18:42:03Z"
-version: "45a0dd4"
+generated: "2026-10-21T19:56:48Z"
+version: "dbc4cab"
 ---
 
 # star lint starlark

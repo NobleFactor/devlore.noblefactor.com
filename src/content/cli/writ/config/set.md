@@ -5,8 +5,8 @@ description: "Set configuration values"
 tool: "writ"
 command: "set"
 parent: "writ config"
-generated: "2026-10-21T18:42:03Z"
-version: "45a0dd4"
+generated: "2026-10-21T19:56:48Z"
+version: "dbc4cab"
 ---
 
 # writ config set
