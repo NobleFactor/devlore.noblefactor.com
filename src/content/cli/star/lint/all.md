@@ -5,8 +5,8 @@ description: "Run all configured linters"
 tool: "star"
 command: "all"
 parent: "star lint"
-generated: "2026-10-21T22:07:35Z"
-version: "4992f58"
+generated: "2026-10-21T22:42:34Z"
+version: "0f5deff"
 ---
 
 # star lint all
