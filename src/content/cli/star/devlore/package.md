@@ -5,8 +5,8 @@ description: "package commands"
 tool: "star"
 command: "package"
 parent: "star devlore"
-generated: "2026-10-22T00:08:36Z"
-version: "272e6a9"
+generated: "2026-10-22T04:57:53Z"
+version: "0e7bcdd"
 ---
 
 # star devlore package
