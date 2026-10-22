@@ -5,8 +5,8 @@ description: "Register a layer, or re-point one that is registered"
 tool: "writ"
 command: "set"
 parent: "writ repo"
-generated: "2026-10-22T04:57:53Z"
-version: "0e7bcdd"
+generated: "2026-10-22T18:42:17Z"
+version: "ae87e6a"
 ---
 
 # writ repo set
