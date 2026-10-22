@@ -5,8 +5,8 @@ description: "Register a layer, or re-point one that is registered"
 tool: "writ"
 command: "set"
 parent: "writ repo"
-generated: "2026-10-21T23:12:20Z"
-version: "ca6328a"
+generated: "2026-10-22T00:08:36Z"
+version: "272e6a9"
 ---
 
 # writ repo set
@@ -28,14 +28,22 @@ git clone (git-clone's own grammar: the optional trailing working-tree-root is t
 clone destination). Without one, the clone lands in the writ-owned home under
 XDG_DATA_HOME/devlore/writ/repos, named as git clone names it: acme/team-env.git
 clones to repos/team-env. Two layers whose repositories share a name are refused.
-After placement the repository is entirely yours: writ performs no hidden git
-operations, ever.
+A clone an earlier run left at the destination is used rather than cloned again;
+anything else there is refused.
+
+With --branch, for either form, writ fetches origin, switches to the branch
+(creating it from origin's when only origin has it) and fast-forwards it when it
+is behind; a branch with commits origin lacks is left as it is. It refuses, and
+registers nothing, when the branch is nowhere or uncommitted changes block the
+switch. Without --branch the tree is left on whatever it has checked out. Either
+way writ says what it found and did, and the branch the layer is on; it performs
+no other git operations on the repository.
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--branch` | `""` | Branch to clone (repository-url form only) |
+| `--branch` | `""` | Branch to clone, or to switch the tree to |
 
 ## Global Options
 
