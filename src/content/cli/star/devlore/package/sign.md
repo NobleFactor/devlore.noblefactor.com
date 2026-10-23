@@ -5,8 +5,8 @@ description: "Sign a lore package with release key"
 tool: "star"
 command: "sign"
 parent: "star devlore package"
-generated: "2026-10-23T03:54:48Z"
-version: "65ee707"
+generated: "2026-10-23T05:54:23Z"
+version: "17d9cce"
 ---
 
 # star devlore package sign
