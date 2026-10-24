@@ -5,8 +5,8 @@ description: "Upgrade lore, and every devlore program beside it, to one release"
 tool: "lore"
 command: "upgrade"
 parent: "lore self"
-generated: "2026-10-24T01:08:31Z"
-version: "fcc4354"
+generated: "2026-10-24T16:12:39Z"
+version: "6c2ba59"
 ---
 
 # lore self upgrade
