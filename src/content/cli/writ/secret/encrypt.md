@@ -5,8 +5,8 @@ description: "Encrypt files to .sops siblings per the governing .sops.yaml"
 tool: "writ"
 command: "encrypt"
 parent: "writ secret"
-generated: "2026-10-23T05:54:23Z"
-version: "17d9cce"
+generated: "2026-10-24T01:08:31Z"
+version: "fcc4354"
 ---
 
 # writ secret encrypt
@@ -24,8 +24,9 @@ writ secret encrypt <file>...
 Encrypt files to .sops siblings per the governing .sops.yaml.
 
 The <file>.sops sibling is written beside each input — deployed names are
-unchanged (foo.env.sops deploys as foo.env). Recipients and document format
-come from the .sops.yaml resolved within the containing layer; a file no
+unchanged (foo.env.sops deploys as foo.env). Each file is encrypted as its
+bytes, whatever its name, so it deploys exactly as written. Recipients come
+from the .sops.yaml resolved within the containing layer; a file no
 creation rule governs fails with the resolver's error. An existing sibling
 refuses — encrypt never overwrites — and the plaintext source is never
 deleted; removal belongs to the caller.
