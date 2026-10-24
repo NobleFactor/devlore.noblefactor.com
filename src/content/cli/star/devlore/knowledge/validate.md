@@ -5,8 +5,8 @@ description: "Validate knowledge artifact YAML files against JSON schemas"
 tool: "star"
 command: "validate"
 parent: "star devlore knowledge"
-generated: "2026-10-23T05:54:23Z"
-version: "17d9cce"
+generated: "2026-10-24T01:08:31Z"
+version: "fcc4354"
 ---
 
 # star devlore knowledge validate

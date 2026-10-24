@@ -5,8 +5,8 @@ description: "Run pre-push checks (called by git pre-push hook)"
 tool: "star"
 command: "pre-push"
 parent: "star hook"
-generated: "2026-10-23T05:54:23Z"
-version: "17d9cce"
+generated: "2026-10-24T01:08:31Z"
+version: "fcc4354"
 ---
 
 # star hook pre-push
