@@ -5,8 +5,8 @@ description: "Key management operations"
 tool: "star"
 command: "key"
 parent: "star"
-generated: "2026-10-25T05:18:42Z"
-version: "cae0cec"
+generated: "2026-10-25T20:08:52Z"
+version: "8aee59f"
 ---
 
 # star key
