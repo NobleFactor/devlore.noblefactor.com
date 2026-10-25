@@ -5,8 +5,8 @@ description: "Get and set configuration options"
 tool: "star"
 command: "config"
 parent: "star"
-generated: "2026-10-25T03:11:47Z"
-version: "d5a147f"
+generated: "2026-10-25T04:27:50Z"
+version: "c80d023"
 ---
 
 # star config

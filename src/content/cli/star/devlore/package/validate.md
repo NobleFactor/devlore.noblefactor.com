@@ -5,8 +5,8 @@ description: "Validate lore package YAML files against JSON schemas"
 tool: "star"
 command: "validate"
 parent: "star devlore package"
-generated: "2026-10-25T03:11:47Z"
-version: "d5a147f"
+generated: "2026-10-25T04:27:50Z"
+version: "c80d023"
 ---
 
 # star devlore package validate
