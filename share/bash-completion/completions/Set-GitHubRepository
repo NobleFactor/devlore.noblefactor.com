@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2207,SC2034 # COMPREPLY and standard completion variables
+
+# bash completion for Set-GitHubRepository
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 Noble Factor. All rights reserved.
+
+_set_githubrepository() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD - 1]}"
+
+    opts="-h --help -r --repo -b --default-branch --skip-secrets --skip-protection"
+
+    case "${prev}" in
+        -r | --repo)
+            # The repositories gh can see under the login's own account and its organizations
+            COMPREPLY=($(compgen -W "$(gh repo list --limit 100 --json nameWithOwner --jq '.[].nameWithOwner' 2>/dev/null)" -- "${cur}"))
+            return 0
+            ;;
+        -b | --default-branch)
+            COMPREPLY=($(compgen -W "develop main" -- "${cur}"))
+            return 0
+            ;;
+    esac
+
+    if [[ ${cur} == -* ]]; then
+        COMPREPLY=($(compgen -W "${opts}" -- "${cur}"))
+        return 0
+    fi
+
+    return 0
+}
+
+complete -F _set_githubrepository Set-GitHubRepository

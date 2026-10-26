@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 Noble Factor. All rights reserved.
+
+# Publish-Site - build the DevLore site and publish it to production, prompting for an Azure login
+# for documentation: man Publish-Site, or Publish-Site --help
+
+# This repository's tools are not deployed, so they source the base layer's deployed Declare-BashScript, found on PATH.
+# Fail closed when it is missing (NobleFactor/noblefactor-engprod#214): it defines error handling and errexit, so its
+# absence cannot be reported through it.
+declare_bash_script="$(command -v Declare-BashScript || true)"
+[[ -r "${declare_bash_script}" ]] || {
+    printf '%s: cannot find Declare-BashScript on PATH; deploy the base layer, NobleFactor/noblefactor-engprod\n' "${0##*/}" >&2
+    exit 72 # EX_OSFILE
+}
+
+# shellcheck source=Declare-BashScript
+source "${declare_bash_script}" "$0" "help" "h" "$@"
+require_nix
+
+###########
+# Arguments
+###########
+
+declare -r synopsis="Publish-Site [-h|--help]"
+eval set -- "$script_arguments"
+
+while :; do
+    case $1 in
+        -h | --help)
+            usage "$synopsis"
+            ;;
+        --)
+            shift 1
+            break
+            ;;
+        *)
+            error $EX_USAGE "Unrecognized option: $1"
+            ;;
+    esac
+done
+
+(($# == 0)) || error $EX_USAGE "Unexpected argument: $1"
+
+readonly app_name="devlore-noblefactor-com"
+readonly resource_group="rg-devlore-site"
+
+######
+# Main
+######
+
+cd "${script_root}/.."
+
+require_command az npm
+
+note "Checking the Azure login"
+if ! az account show >/dev/null 2>&1; then
+    note "Not logged in to Azure; opening a browser to log in"
+    az login
+fi
+az account show --query "{Subscription:name, User:user.name}" -o table
+
+note "Installing dependencies"
+npm ci --silent
+
+note "Building the site"
+npm run build
+
+note "Deploying to Azure Static Web Apps: app ${app_name}, resource group ${resource_group}"
+deployment_token=$(az staticwebapp secrets list -n "${app_name}" -g "${resource_group}" \
+    --query "properties.apiKey" -o tsv 2>/dev/null || true)
+[[ -n "${deployment_token}" ]] ||
+    error $EX_UNAVAILABLE "Could not retrieve the deployment token. Check that the Static Web App exists."
+
+if ! command -v swa >/dev/null 2>&1; then
+    note "Installing the Azure Static Web Apps CLI"
+    npm install -g @azure/static-web-apps-cli
+fi
+
+swa deploy ./dist --deployment-token "${deployment_token}" --env production
+
+success "Published: https://delightful-grass-0ac0a4c1e.6.azurestaticapps.net"

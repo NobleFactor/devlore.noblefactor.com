@@ -1,0 +1,192 @@
+#!/usr/bin/env bash
+
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 Noble Factor. All rights reserved.
+
+# Set-GitHubRepository - set a site repository's secrets, branch protection ruleset, merge settings and default branch
+# for documentation: man Set-GitHubRepository, or Set-GitHubRepository --help
+
+# This repository's tools are not deployed, so they source the base layer's deployed Declare-BashScript, found on PATH.
+# Fail closed when it is missing (NobleFactor/noblefactor-engprod#214): it defines error handling and errexit, so its
+# absence cannot be reported through it.
+declare_bash_script="$(command -v Declare-BashScript || true)"
+[[ -r "${declare_bash_script}" ]] || {
+    printf '%s: cannot find Declare-BashScript on PATH; deploy the base layer, NobleFactor/noblefactor-engprod\n' "${0##*/}" >&2
+    exit 72 # EX_OSFILE
+}
+
+# shellcheck source=Declare-BashScript
+source "${declare_bash_script}" "$0" "help,repo:,default-branch:,skip-secrets,skip-protection" "hr:b:" "$@"
+require_nix
+
+###########
+# Arguments
+###########
+
+declare -r synopsis="Set-GitHubRepository --repo <owner/repo> [--default-branch <branch>] [--skip-secrets] [--skip-protection]"
+eval set -- "$script_arguments"
+
+repo=""
+default_branch="develop"
+skip_secrets=false
+skip_protection=false
+
+while :; do
+    case $1 in
+        -h | --help)
+            usage "$synopsis"
+            ;;
+        -r | --repo)
+            repo="$2"
+            shift 2
+            ;;
+        -b | --default-branch)
+            default_branch="$2"
+            shift 2
+            ;;
+        --skip-secrets)
+            skip_secrets=true
+            shift 1
+            ;;
+        --skip-protection)
+            skip_protection=true
+            shift 1
+            ;;
+        --)
+            shift 1
+            break
+            ;;
+        *)
+            error $EX_USAGE "Unrecognized option: $1"
+            ;;
+    esac
+done
+
+(($# == 0)) || error $EX_USAGE "Unexpected argument: $1"
+[[ -n "${repo}" ]] || error $EX_USAGE "Missing required --repo argument"
+readonly repo default_branch skip_secrets skip_protection
+
+######
+# Main
+######
+
+note "Checking prerequisites"
+require_command gh
+gh auth status &>/dev/null || error $EX_NOPERM "Not logged in to GitHub. Run 'gh auth login' first."
+gh repo view "${repo}" &>/dev/null || error $EX_NOPERM "Repository ${repo} not found or no access"
+
+note "Repository: ${repo}"
+note "Default branch: ${default_branch}"
+
+# Phase 1: the secrets, from the environment; each one unset is skipped
+if [[ "${skip_secrets}" != "true" ]]; then
+    note "Setting repository secrets"
+    for secret in AZURE_STATIC_WEB_APPS_API_TOKEN AZURE_CREDENTIALS SITE_DEPLOY_TOKEN; do
+        if [[ -n "${!secret:-}" ]]; then
+            printf '%s\n' "${!secret}" | gh secret set "${secret}" --repo "${repo}"
+            success "Set ${secret}"
+        else
+            error 0 "${secret} not set, skipping"
+        fi
+    done
+fi
+
+# Phase 2: branch protection, as a repository ruleset: https://docs.github.com/en/rest/repos/rules
+if [[ "${skip_protection}" != "true" ]]; then
+    note "Configuring branch protection rulesets"
+
+    ruleset=$(
+        cat <<'RULESET'
+{
+    "name": "Branch Protection",
+    "target": "branch",
+    "enforcement": "active",
+    "conditions": {
+        "ref_name": {
+            "include": ["~DEFAULT_BRANCH", "refs/heads/main", "refs/heads/release/*"],
+            "exclude": []
+        }
+    },
+    "rules": [
+        {
+            "type": "pull_request",
+            "parameters": {
+                "required_approving_review_count": 1,
+                "dismiss_stale_reviews_on_push": true,
+                "require_code_owner_review": false,
+                "require_last_push_approval": false,
+                "required_review_thread_resolution": false
+            }
+        },
+        {
+            "type": "required_linear_history"
+        },
+        {
+            "type": "non_fast_forward"
+        }
+    ],
+    "bypass_actors": [
+        {
+            "actor_id": 5,
+            "actor_type": "RepositoryRole",
+            "bypass_mode": "pull_request"
+        }
+    ]
+}
+RULESET
+    )
+    readonly ruleset
+
+    existing_ruleset=$(gh api "repos/${repo}/rulesets" --jq '.[] | select(.name == "Branch Protection") | .id' 2>/dev/null || true)
+
+    if [[ -n "${existing_ruleset}" ]]; then
+        error 0 "Ruleset 'Branch Protection' already exists (id: ${existing_ruleset}); updating it"
+        printf '%s\n' "${ruleset}" | gh api --method PUT "repos/${repo}/rulesets/${existing_ruleset}" --input - >/dev/null
+        success "Updated branch protection ruleset"
+    else
+        note "Creating new ruleset"
+        printf '%s\n' "${ruleset}" | gh api --method POST "repos/${repo}/rulesets" --input - >/dev/null
+        success "Created branch protection ruleset"
+    fi
+fi
+
+# Phase 3: the repository's settings: squash merges only, and a merged branch deleted
+note "Configuring repository settings"
+gh api --method PATCH "repos/${repo}" \
+    --field allow_squash_merge=true \
+    --field allow_merge_commit=false \
+    --field allow_rebase_merge=false \
+    --field delete_branch_on_merge=true \
+    --field allow_auto_merge=false \
+    --silent
+success "Configured merge settings (squash only, delete branch on merge)"
+
+current_default=$(gh repo view "${repo}" --json defaultBranchRef --jq '.defaultBranchRef.name')
+if [[ "${current_default}" != "${default_branch}" ]]; then
+    note "Setting default branch to ${default_branch}"
+    gh api --method PATCH "repos/${repo}" --field default_branch="${default_branch}" --silent
+    success "Set default branch to ${default_branch}"
+fi
+
+cat <<SUMMARY
+
+==============================================
+  GitHub Repository Setup Complete
+==============================================
+
+Repository:      ${repo}
+Default Branch:  ${default_branch}
+
+Branch Protection:
+  - PRs required for: main, develop, release/*
+  - 1 approval required
+  - Stale reviews dismissed
+  - Admins bypass: PR merge only (no direct push)
+
+Merge Settings:
+  - Squash merge only
+  - Delete branch on merge
+
+Secrets configured:
+SUMMARY
+gh secret list --repo "${repo}" 2>/dev/null || echo "  (none or no access)"

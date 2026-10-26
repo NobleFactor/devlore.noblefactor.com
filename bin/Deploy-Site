@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 Noble Factor. All rights reserved.
+
+# Deploy-Site - build the DevLore site and deploy it to its Azure Static Web App with the SWA CLI
+# for documentation: man Deploy-Site, or Deploy-Site --help
+
+# This repository's tools are not deployed, so they source the base layer's deployed Declare-BashScript, found on PATH.
+# Fail closed when it is missing (NobleFactor/noblefactor-engprod#214): it defines error handling and errexit, so its
+# absence cannot be reported through it.
+declare_bash_script="$(command -v Declare-BashScript || true)"
+[[ -r "${declare_bash_script}" ]] || {
+    printf '%s: cannot find Declare-BashScript on PATH; deploy the base layer, NobleFactor/noblefactor-engprod\n' "${0##*/}" >&2
+    exit 72 # EX_OSFILE
+}
+
+# shellcheck source=Declare-BashScript
+source "${declare_bash_script}" "$0" "help" "h" "$@"
+require_nix
+
+###########
+# Arguments
+###########
+
+declare -r synopsis="Deploy-Site [-h|--help]"
+eval set -- "$script_arguments"
+
+while :; do
+    case $1 in
+        -h | --help)
+            usage "$synopsis"
+            ;;
+        --)
+            shift 1
+            break
+            ;;
+        *)
+            error $EX_USAGE "Unrecognized option: $1"
+            ;;
+    esac
+done
+
+(($# == 0)) || error $EX_USAGE "Unexpected argument: $1"
+
+readonly app_name="${AZURE_SWA_APP_NAME:-devlore-noblefactor-com}"
+readonly resource_group="${AZURE_RESOURCE_GROUP:-rg-devlore-site}"
+
+######
+# Main
+######
+
+cd "${script_root}/.."
+
+require_command az swa npm
+
+if ! az account show >/dev/null 2>&1; then
+    note "Not logged in to Azure; running az login"
+    az login
+fi
+
+note "Building the site"
+npm ci
+npm run build
+
+note "Deploying to Azure Static Web Apps: app ${app_name}, resource group ${resource_group}"
+swa deploy ./dist --app-name "${app_name}" --resource-group "${resource_group}"
+
+success "Deployed: https://${app_name}.azurestaticapps.net"
+note "Next: configure the custom domain in the Azure portal, and invite stakeholders through Role management"
