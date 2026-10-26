@@ -1,0 +1,50 @@
+.\" SPDX-License-Identifier: Apache-2.0
+.\" Copyright (c) 2026 Noble Factor. All rights reserved.
+.TH PUBLISH-SITE 1 "October 2026" "Noble Factor" "User Commands"
+.SH NAME
+Publish-Site \- build the DevLore site and publish it to production, prompting for an Azure login
+.SH SYNOPSIS
+.B Publish-Site
+.RB [ \-h | \-\-help ]
+.SH DESCRIPTION
+.B Publish-Site
+checks the Azure login and opens a browser to log in when there is none, shows the subscription and user,
+installs the site's dependencies with
+.BR "npm ci" ,
+builds it, reads the Static Web App's deployment token with
+.BR "az staticwebapp secrets list" ,
+installs the SWA CLI when it is missing, and deploys
+.I dist
+to the production environment with that token.
+The app is devlore-noblefactor-com in rg-devlore-site.
+It runs from the repository's root, wherever it is called from.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Show this manual page and exit.
+.SH EXIT STATUS
+.TP
+.B 0
+Success \- the site is published.
+.TP
+.B 64
+Usage error \- a missing or invalid option.
+.TP
+.B 69
+A tool it needs is not on PATH, or the deployment token cannot be read: the Static Web App does not exist or the login cannot see it.
+.TP
+.B 72
+Critical file missing \- \fBDeclare-BashScript\fR is not on PATH; deploy the base layer, NobleFactor/noblefactor-engprod.
+.SH EXAMPLES
+.nf
+bin/Publish-Site
+.fi
+.SH SEE ALSO
+.BR Deploy-Site (1),
+.BR az (1)
+.SH AUTHOR
+Noble Factor
+.SH COPYRIGHT
+Copyright \(co 2026 Noble Factor.
+.br
+Licensed under the Apache License, Version 2.0.

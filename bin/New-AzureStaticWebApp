@@ -1,0 +1,222 @@
+#!/usr/bin/env bash
+
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 Noble Factor. All rights reserved.
+
+# New-AzureStaticWebApp - create a site's Azure resource group, Static Web App, Entra ID sign-in and GitHub Actions principal
+# for documentation: man New-AzureStaticWebApp, or New-AzureStaticWebApp --help
+
+# This repository's tools are not deployed, so they source the base layer's deployed Declare-BashScript, found on PATH.
+# Fail closed when it is missing (NobleFactor/noblefactor-engprod#214): it defines error handling and errexit, so its
+# absence cannot be reported through it.
+declare_bash_script="$(command -v Declare-BashScript || true)"
+[[ -r "${declare_bash_script}" ]] || {
+    printf '%s: cannot find Declare-BashScript on PATH; deploy the base layer, NobleFactor/noblefactor-engprod\n' "${0##*/}" >&2
+    exit 72 # EX_OSFILE
+}
+
+# shellcheck source=Declare-BashScript
+source "${declare_bash_script}" "$0" "help,name:,domain:" "hn:d:" "$@"
+require_nix
+
+###########
+# Arguments
+###########
+
+declare -r synopsis="New-AzureStaticWebApp --name <app-name> --domain <custom-domain>"
+eval set -- "$script_arguments"
+
+app_name=""
+custom_domain=""
+
+while :; do
+    case $1 in
+        -h | --help)
+            usage "$synopsis"
+            ;;
+        -n | --name)
+            app_name="$2"
+            shift 2
+            ;;
+        -d | --domain)
+            custom_domain="$2"
+            shift 2
+            ;;
+        --)
+            shift 1
+            break
+            ;;
+        *)
+            error $EX_USAGE "Unrecognized option: $1"
+            ;;
+    esac
+done
+
+(($# == 0)) || error $EX_USAGE "Unexpected argument: $1"
+[[ -n "${app_name}" ]] || error $EX_USAGE "Missing required --name argument"
+[[ -n "${custom_domain}" ]] || error $EX_USAGE "Missing required --domain argument"
+readonly app_name custom_domain
+
+readonly location="${AZURE_LOCATION:-westus2}"
+readonly resource_group="${AZURE_RESOURCE_GROUP:-rg-${app_name}}"
+readonly swa_name="${app_name}"
+readonly entra_app_name="${app_name}-auth"
+
+######
+# Main
+######
+
+note "Checking prerequisites"
+require_command az
+az account show &>/dev/null || error $EX_NOPERM "Not logged in to Azure. Run 'az login' first."
+
+subscription="${AZURE_SUBSCRIPTION:-$(az account show --query id -o tsv)}"
+subscription_name=$(az account show --query name -o tsv)
+tenant_id=$(az account show --query tenantId -o tsv)
+readonly subscription subscription_name tenant_id
+
+note "Subscription: ${subscription_name}"
+note "Tenant ID: ${tenant_id}"
+note "Location: ${location}"
+note "Resource Group: ${resource_group}"
+note "SWA Name: ${swa_name}"
+
+read -p "Continue with these settings? [y/N] " -n 1 -r
+echo
+[[ $REPLY =~ ^[Yy]$ ]] || error $EX_TEMPFAIL "Not confirmed; nothing was changed."
+
+# Phase 1: the resource group
+note "Creating resource group"
+if az group show --name "${resource_group}" &>/dev/null; then
+    error 0 "Resource group ${resource_group} already exists"
+else
+    az group create --name "${resource_group}" --location "${location}" --output none
+    success "Created resource group: ${resource_group}"
+fi
+
+# Phase 2: the Static Web App, on the Standard SKU, which custom authentication requires
+note "Creating Static Web App"
+if az staticwebapp show --name "${swa_name}" --resource-group "${resource_group}" &>/dev/null; then
+    error 0 "Static Web App ${swa_name} already exists"
+else
+    az staticwebapp create \
+        --name "${swa_name}" \
+        --resource-group "${resource_group}" \
+        --location "${location}" \
+        --sku Standard \
+        --output none
+    success "Created Static Web App: ${swa_name}"
+fi
+
+swa_hostname=$(az staticwebapp show --name "${swa_name}" --resource-group "${resource_group}" --query defaultHostname -o tsv)
+readonly swa_hostname
+note "SWA hostname: ${swa_hostname}"
+
+# Phase 3: the Entra ID app registration, with the redirect URIs the Static Web App's sign-in uses
+note "Creating Entra ID app registration"
+existing_app=$(az ad app list --display-name "${entra_app_name}" --query "[0].appId" -o tsv 2>/dev/null || true)
+
+if [[ -n "${existing_app}" ]]; then
+    error 0 "Entra ID app ${entra_app_name} already exists (appId: ${existing_app})"
+    app_id="${existing_app}"
+else
+    app_id=$(az ad app create \
+        --display-name "${entra_app_name}" \
+        --web-redirect-uris \
+        "https://${swa_hostname}/.auth/login/aad/callback" \
+        "https://${custom_domain}/.auth/login/aad/callback" \
+        --sign-in-audience AzureADMyOrg \
+        --query appId -o tsv)
+    success "Created Entra ID app: ${app_id}"
+fi
+readonly app_id
+
+note "Creating client secret"
+client_secret=$(az ad app credential reset \
+    --id "${app_id}" \
+    --display-name "SWA Auth Secret" \
+    --years 2 \
+    --query password -o tsv)
+readonly client_secret
+success "Created client secret"
+
+# Phase 4: the deployment token
+note "Getting deployment token"
+deployment_token=$(az staticwebapp secrets list \
+    --name "${swa_name}" \
+    --resource-group "${resource_group}" \
+    --query "properties.apiKey" -o tsv)
+readonly deployment_token
+
+# Phase 5: the service principal GitHub Actions deploys as, Contributor on the resource group alone
+note "Creating service principal for GitHub Actions"
+readonly sp_name="sp-${app_name}-github"
+existing_sp=$(az ad sp list --display-name "${sp_name}" --query "[0].appId" -o tsv 2>/dev/null || true)
+
+if [[ -n "${existing_sp}" ]]; then
+    error 0 "Service principal ${sp_name} already exists; resetting its credentials"
+    sp_credentials=$(az ad sp credential reset --id "${existing_sp}" \
+        --query "{clientId:appId, clientSecret:password, tenantId:'${tenant_id}', subscriptionId:'${subscription}'}" -o json)
+else
+    sp_credentials=$(az ad sp create-for-rbac \
+        --name "${sp_name}" \
+        --role Contributor \
+        --scopes "/subscriptions/${subscription}/resourceGroups/${resource_group}" \
+        --query "{clientId:appId, clientSecret:password, tenantId:tenant, subscriptionId:'${subscription}'}" -o json)
+    success "Created service principal: ${sp_name}"
+fi
+readonly sp_credentials
+
+# The summary, on standard output. New-SiteHosting reads the secrets back by their labels, each value on the line after
+# its label, so this block keeps its shape.
+cat <<SUMMARY
+
+==============================================
+  Azure Static Web App Setup Complete
+==============================================
+
+Resource Group:    ${resource_group}
+Static Web App:    ${swa_name}
+SWA Hostname:      ${swa_hostname}
+Custom Domain:     ${custom_domain}
+Entra App ID:      ${app_id}
+
+==============================================
+  GitHub Secrets (store these securely)
+==============================================
+
+AZURE_STATIC_WEB_APPS_API_TOKEN:
+${deployment_token}
+
+AZURE_CREDENTIALS:
+${sp_credentials}
+
+AAD_CLIENT_ID:
+${app_id}
+
+AAD_CLIENT_SECRET:
+${client_secret}
+
+==============================================
+  DNS Configuration
+==============================================
+
+Add these DNS records at your registrar:
+
+Type:  CNAME
+Name:  ${custom_domain%%.*}
+Value: ${swa_hostname}
+
+After DNS propagates, register the domain:
+  az staticwebapp hostname set --name ${swa_name} --resource-group ${resource_group} --hostname ${custom_domain}
+
+==============================================
+  Next Steps
+==============================================
+
+1. Add GitHub secrets using Set-GitHubRepository
+2. Configure DNS records
+3. Register custom domain with Azure
+4. Deploy your site
+
+SUMMARY

@@ -20,10 +20,16 @@ Deployed via Azure Static Web Apps with Microsoft Entra ID authentication (stake
 ### Quick Republish
 
 ```bash
-./scripts/republish.sh
+bin/Publish-Site
 ```
 
-This will prompt for Azure login if needed, build the site, and deploy to Azure.
+This will prompt for Azure login if needed, build the site, and deploy to Azure. Each tool in `bin/` shows its
+manual with `--help`.
+
+### Setting up hosting
+
+`bin/New-SiteHosting` creates a site's hosting from nothing: it runs `bin/New-AzureStaticWebApp` for the Azure
+resources, then `bin/Set-GitHubRepository` for the repository's secrets, ruleset and settings. Each runs alone too.
 
 ### Automatic Deployment
 
@@ -108,10 +114,16 @@ src/
 public/
 └── staticwebapp.config.json    # Azure SWA routing and auth config
 
-scripts/
-├── republish.sh                # Build and deploy to Azure
-├── setup-azure.sh              # Initial Azure resource creation
-└── deploy.sh                   # Deploy using SWA CLI
+bin/
+├── Publish-Site                # Build and publish to production
+├── Deploy-Site                 # Build and deploy using the SWA CLI
+├── New-SiteHosting             # Create a site's whole hosting: the two below, in order
+├── New-AzureStaticWebApp       # The resource group, Static Web App, sign-in and GitHub Actions principal
+└── Set-GitHubRepository        # The repository's secrets, ruleset, merge settings and default branch
+
+share/
+├── man/man1/                   # Each tool's manual, which --help shows
+└── bash-completion/completions/
 ```
 
 ## Authentication

@@ -1,0 +1,91 @@
+.\" SPDX-License-Identifier: Apache-2.0
+.\" Copyright (c) 2026 Noble Factor. All rights reserved.
+.TH NEW-AZURESTATICWEBAPP 1 "October 2026" "Noble Factor" "User Commands"
+.SH NAME
+New-AzureStaticWebApp \- create a site's Azure resource group, Static Web App, Entra ID sign-in and GitHub Actions principal
+.SH SYNOPSIS
+.B New-AzureStaticWebApp
+.RB [ \-h | \-\-help ]
+.B \-\-name
+.I app-name
+.B \-\-domain
+.I custom-domain
+.SH DESCRIPTION
+.B New-AzureStaticWebApp
+shows the subscription, tenant, location and names it will use, asks for confirmation, and then creates, in order:
+.IP 1. 3
+the resource group;
+.IP 2. 3
+the Static Web App, on the Standard SKU, which custom authentication requires;
+.IP 3. 3
+the Entra ID app registration
+.IR app-name \-auth,
+with the sign-in redirect URIs of the app's own hostname and of
+.IR custom-domain ,
+and a client secret good for two years;
+.IP 4. 3
+the deployment token, read from the app;
+.IP 5. 3
+the service principal
+.RI sp\- app-name \-github,
+Contributor on the resource group alone, for GitHub Actions; one that exists has its credentials reset.
+.PP
+Each that exists already is reported and kept.
+It ends by printing, on standard output, the secrets each under its label, the DNS record to add, and the
+.B az staticwebapp hostname set
+command that registers the domain once DNS has propagated.
+.BR New-SiteHosting (1)
+reads the secrets back by their labels.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Show this manual page and exit.
+.TP
+.BR \-n ", " \-\-name " " \fIapp-name\fR
+The application's name, from which the resources are named. Required.
+.TP
+.BR \-d ", " \-\-domain " " \fIcustom-domain\fR
+The custom domain the site will answer at. Required.
+.SH ENVIRONMENT
+.TP
+.B AZURE_SUBSCRIPTION
+The subscription. Default: the current one.
+.TP
+.B AZURE_LOCATION
+The region. Default: westus2.
+.TP
+.B AZURE_RESOURCE_GROUP
+The resource group. Default: rg-\fIapp-name\fR.
+.SH EXIT STATUS
+.TP
+.B 0
+Success \- the resources exist and the secrets are printed.
+.TP
+.B 64
+Usage error \- a missing or invalid option.
+.TP
+.B 69
+A tool it needs is not on PATH.
+.TP
+.B 75
+Not confirmed; nothing was changed.
+.TP
+.B 77
+Not logged in to Azure.
+.TP
+.B 72
+Critical file missing \- \fBDeclare-BashScript\fR is not on PATH; deploy the base layer, NobleFactor/noblefactor-engprod.
+.SH EXAMPLES
+.nf
+bin/New-AzureStaticWebApp --name devlore-site --domain devlore.noblefactor.com
+.fi
+.SH SEE ALSO
+.BR New-SiteHosting (1),
+.BR Set-GitHubRepository (1),
+.BR az (1)
+.SH AUTHOR
+Noble Factor
+.SH COPYRIGHT
+Copyright \(co 2026 Noble Factor.
+.br
+Licensed under the Apache License, Version 2.0.

@@ -1,0 +1,64 @@
+.\" SPDX-License-Identifier: Apache-2.0
+.\" Copyright (c) 2026 Noble Factor. All rights reserved.
+.TH DEPLOY-SITE 1 "October 2026" "Noble Factor" "User Commands"
+.SH NAME
+Deploy-Site \- build the DevLore site and deploy it to its Azure Static Web App with the SWA CLI
+.SH SYNOPSIS
+.B Deploy-Site
+.RB [ \-h | \-\-help ]
+.SH DESCRIPTION
+.B Deploy-Site
+installs the site's dependencies with
+.BR "npm ci" ,
+builds it with
+.BR "npm run build" ,
+and deploys
+.I dist
+to the Static Web App with the SWA CLI's
+.BR "swa deploy" ,
+by app name and resource group.
+It runs
+.B az login
+first when Azure has no login.
+It runs from the repository's root, wherever it is called from.
+.PP
+.BR Publish-Site (1)
+is the usual way to publish; this one deploys by name rather than by deployment token.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Show this manual page and exit.
+.SH ENVIRONMENT
+.TP
+.B AZURE_SWA_APP_NAME
+The Static Web App. Default: devlore-noblefactor-com.
+.TP
+.B AZURE_RESOURCE_GROUP
+Its resource group. Default: rg-devlore-site.
+.SH EXIT STATUS
+.TP
+.B 0
+Success \- the site is deployed.
+.TP
+.B 64
+Usage error \- a missing or invalid option.
+.TP
+.B 69
+A tool it needs is not on PATH.
+.TP
+.B 72
+Critical file missing \- \fBDeclare-BashScript\fR is not on PATH; deploy the base layer, NobleFactor/noblefactor-engprod.
+.SH EXAMPLES
+.nf
+bin/Deploy-Site
+.fi
+.SH SEE ALSO
+.BR Publish-Site (1),
+.BR New-SiteHosting (1),
+.BR az (1)
+.SH AUTHOR
+Noble Factor
+.SH COPYRIGHT
+Copyright \(co 2026 Noble Factor.
+.br
+Licensed under the Apache License, Version 2.0.

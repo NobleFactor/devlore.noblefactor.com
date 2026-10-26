@@ -1,0 +1,93 @@
+.\" SPDX-License-Identifier: Apache-2.0
+.\" Copyright (c) 2026 Noble Factor. All rights reserved.
+.TH NEW-SITEHOSTING 1 "October 2026" "Noble Factor" "User Commands"
+.SH NAME
+New-SiteHosting \- create a DevLore site's whole hosting: its Azure resources, then its GitHub repository's configuration
+.SH SYNOPSIS
+.B New-SiteHosting
+.RB [ \-h | \-\-help ]
+.B \-\-name
+.I project
+.B \-\-domain
+.I domain
+.B \-\-repo
+.I owner/repo
+.RB [ \-\-default\-branch
+.IR branch ]
+.RB [ \-\-skip\-azure ]
+.RB [ \-\-skip\-github ]
+.RB [ \-\-dry\-run ]
+.SH DESCRIPTION
+.B New-SiteHosting
+checks that az and gh are logged in and the repository can be seen, asks for confirmation, and runs three phases:
+.IP 1. 3
+.BR New-AzureStaticWebApp (1),
+beside it in
+.IR bin/ ,
+capturing its output to read back the secrets by their labels;
+.IP 2. 3
+.BR Set-GitHubRepository (1),
+with those secrets in its environment;
+.IP 3. 3
+a check that the resource group and the Static Web App exist, and a count of the repository's secrets and rulesets.
+.PP
+It ends with a summary and the next steps: the DNS record, the
+.B az staticwebapp hostname set
+command that registers the domain, the first deploy, and the stakeholders to invite.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Show this manual page and exit.
+.TP
+.BR \-n ", " \-\-name " " \fIproject\fR
+The project's name, from which the Azure resources are named. Required.
+.TP
+.BR \-d ", " \-\-domain " " \fIdomain\fR
+The custom domain. Required.
+.TP
+.BR \-r ", " \-\-repo " " \fIowner/repo\fR
+The site's repository. Required.
+.TP
+.BR \-b ", " \-\-default\-branch " " \fIbranch\fR
+The default branch. Default: develop.
+.TP
+.B \-\-skip\-azure
+Skip phase 1.
+.TP
+.B \-\-skip\-github
+Skip phase 2.
+.TP
+.B \-\-dry\-run
+Say what each phase would run, and change nothing.
+.SH EXIT STATUS
+.TP
+.B 0
+Success \- the hosting exists.
+.TP
+.B 64
+Usage error \- a missing or invalid option.
+.TP
+.B 69
+A tool it needs is not on PATH, or a login or the repository is not available.
+.TP
+.B 75
+Not confirmed; nothing was changed.
+.TP
+.B 72
+Critical file missing \- \fBDeclare-BashScript\fR is not on PATH; deploy the base layer, NobleFactor/noblefactor-engprod.
+.SH EXAMPLES
+.nf
+bin/New-SiteHosting --name devlore-site --domain devlore.noblefactor.com \\
+    --repo NobleFactor/devlore.noblefactor.com
+.fi
+.SH SEE ALSO
+.BR New-AzureStaticWebApp (1),
+.BR Set-GitHubRepository (1),
+.BR az (1),
+.BR gh (1)
+.SH AUTHOR
+Noble Factor
+.SH COPYRIGHT
+Copyright \(co 2026 Noble Factor.
+.br
+Licensed under the Apache License, Version 2.0.

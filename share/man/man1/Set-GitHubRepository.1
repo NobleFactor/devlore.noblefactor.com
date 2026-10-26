@@ -1,0 +1,88 @@
+.\" SPDX-License-Identifier: Apache-2.0
+.\" Copyright (c) 2026 Noble Factor. All rights reserved.
+.TH SET-GITHUBREPOSITORY 1 "October 2026" "Noble Factor" "User Commands"
+.SH NAME
+Set-GitHubRepository \- set a site repository's secrets, branch protection ruleset, merge settings and default branch
+.SH SYNOPSIS
+.B Set-GitHubRepository
+.RB [ \-h | \-\-help ]
+.B \-\-repo
+.I owner/repo
+.RB [ \-\-default\-branch
+.IR branch ]
+.RB [ \-\-skip\-secrets ]
+.RB [ \-\-skip\-protection ]
+.SH DESCRIPTION
+.B Set-GitHubRepository
+configures a site's repository, in order:
+.IP 1. 3
+the secrets AZURE_STATIC_WEB_APPS_API_TOKEN, AZURE_CREDENTIALS and SITE_DEPLOY_TOKEN, each from the variable of
+its name, each one unset reported and skipped;
+.IP 2. 3
+the ruleset
+.IR "Branch Protection" ,
+created or updated in place, over the default branch, main and release/*: a pull request with one approval, stale
+reviews dismissed, linear history, no force push, and the repository's admins able to bypass only by merging a pull
+request;
+.IP 3. 3
+squash merges only, a merged branch deleted, auto-merge off;
+.IP 4. 3
+the default branch, when it differs.
+.PP
+It ends by printing what it set, and the repository's secrets by name.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Show this manual page and exit.
+.TP
+.BR \-r ", " \-\-repo " " \fIowner/repo\fR
+The repository. Required.
+.TP
+.BR \-b ", " \-\-default\-branch " " \fIbranch\fR
+The default branch. Default: develop.
+.TP
+.B \-\-skip\-secrets
+Set no secrets.
+.TP
+.B \-\-skip\-protection
+Leave the ruleset as it is.
+.SH ENVIRONMENT
+.TP
+.B AZURE_STATIC_WEB_APPS_API_TOKEN
+The Static Web App's deployment token.
+.TP
+.B AZURE_CREDENTIALS
+The service principal's credentials, as JSON.
+.TP
+.B SITE_DEPLOY_TOKEN
+The token that syncs content across repositories.
+.SH EXIT STATUS
+.TP
+.B 0
+Success \- the repository is configured.
+.TP
+.B 64
+Usage error \- a missing or invalid option.
+.TP
+.B 69
+A tool it needs is not on PATH.
+.TP
+.B 77
+Not logged in to GitHub, or the repository cannot be seen.
+.TP
+.B 72
+Critical file missing \- \fBDeclare-BashScript\fR is not on PATH; deploy the base layer, NobleFactor/noblefactor-engprod.
+.SH EXAMPLES
+.nf
+bin/Set-GitHubRepository --repo NobleFactor/devlore.noblefactor.com --default-branch develop
+.fi
+.SH SEE ALSO
+.BR New-SiteHosting (1),
+.BR New-AzureStaticWebApp (1),
+.BR gh (1)
+.SH AUTHOR
+Noble Factor
+.SH COPYRIGHT
+Copyright \(co 2026 Noble Factor.
+.br
+Licensed under the Apache License, Version 2.0.
