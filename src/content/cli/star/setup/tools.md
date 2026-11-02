@@ -5,8 +5,8 @@ description: "Show required development tools and installation status"
 tool: "star"
 command: "tools"
 parent: "star setup"
-generated: "2026-10-30T05:05:03Z"
-version: "fd217da"
+generated: "2026-11-02T22:36:08Z"
+version: "a9b53f7"
 ---
 
 # star setup tools
