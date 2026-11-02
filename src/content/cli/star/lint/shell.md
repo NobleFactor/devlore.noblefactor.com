@@ -5,8 +5,8 @@ description: "Run shellcheck and shfmt on shell scripts"
 tool: "star"
 command: "shell"
 parent: "star lint"
-generated: "2026-10-30T05:05:03Z"
-version: "fd217da"
+generated: "2026-11-02T22:36:08Z"
+version: "a9b53f7"
 ---
 
 # star lint shell
