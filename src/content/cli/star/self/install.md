@@ -5,8 +5,8 @@ description: "Install star and supporting files"
 tool: "star"
 command: "install"
 parent: "star self"
-generated: "2026-11-07T00:11:12Z"
-version: "be7042d"
+generated: "2026-11-09T00:52:10Z"
+version: "1ae1da7"
 ---
 
 # star self install
