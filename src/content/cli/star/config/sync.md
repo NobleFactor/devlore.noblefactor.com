@@ -5,8 +5,8 @@ description: "Sync tool configs (.golangci.yaml, etc.) from star.yaml"
 tool: "star"
 command: "sync"
 parent: "star config"
-generated: "2026-11-07T00:11:12Z"
-version: "be7042d"
+generated: "2026-11-09T00:52:10Z"
+version: "1ae1da7"
 ---
 
 # star config sync

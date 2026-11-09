@@ -5,8 +5,8 @@ description: "Generate index.yaml for knowledge domains"
 tool: "star"
 command: "index"
 parent: "star devlore knowledge"
-generated: "2026-11-07T00:11:12Z"
-version: "be7042d"
+generated: "2026-11-09T00:52:10Z"
+version: "1ae1da7"
 ---
 
 # star devlore knowledge index
