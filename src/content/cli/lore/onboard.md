@@ -5,8 +5,8 @@ description: "Parse wiki or script and generate packages-manifest.yaml and confi
 tool: "lore"
 command: "onboard"
 parent: "lore"
-generated: "2026-11-09T00:52:10Z"
-version: "1ae1da7"
+generated: "2026-11-11T16:03:45Z"
+version: "dbc249e"
 ---
 
 # lore onboard
