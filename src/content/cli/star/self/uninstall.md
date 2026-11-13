@@ -5,8 +5,8 @@ description: "Remove star and supporting files"
 tool: "star"
 command: "uninstall"
 parent: "star self"
-generated: "2026-11-11T16:03:45Z"
-version: "dbc249e"
+generated: "2026-11-13T06:56:38Z"
+version: "52bf868"
 ---
 
 # star self uninstall
