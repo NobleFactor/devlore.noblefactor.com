@@ -5,8 +5,8 @@ description: "Enforce Go style guidelines"
 tool: "star"
 command: "go-style"
 parent: "star lint"
-generated: "2026-11-13T06:56:38Z"
-version: "52bf868"
+generated: "2026-11-13T21:24:38Z"
+version: "9bda47c"
 ---
 
 # star lint go-style
