@@ -5,8 +5,8 @@ description: "The store's workflows: each a definition and the execution traces 
 tool: "star"
 command: "workflow"
 parent: "star"
-generated: "2026-11-16T17:53:25Z"
-version: "382f4ea"
+generated: "2026-11-17T02:22:07Z"
+version: "29cdb44"
 ---
 
 # star workflow
