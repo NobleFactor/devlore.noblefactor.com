@@ -5,8 +5,8 @@ description: "Verify the publisher signatures of workflow definitions and execut
 tool: "star"
 command: "verify"
 parent: "star workflow"
-generated: "2026-11-17T04:17:40Z"
-version: "0c7e151"
+generated: "2026-11-22T22:26:51Z"
+version: "7291e77"
 ---
 
 # star workflow verify
