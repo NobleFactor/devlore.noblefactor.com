@@ -5,8 +5,8 @@ description: "The tribal knowledge package deployer"
 tool: "lore"
 command: "lore"
 parent: ""
-generated: "2026-11-17T04:17:40Z"
-version: "0c7e151"
+generated: "2026-11-22T22:26:51Z"
+version: "7291e77"
 ---
 
 # lore
