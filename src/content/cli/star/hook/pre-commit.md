@@ -5,8 +5,8 @@ description: "Run pre-commit checks (called by git pre-commit hook)"
 tool: "star"
 command: "pre-commit"
 parent: "star hook"
-generated: "2026-11-22T23:00:35Z"
-version: "93699cb"
+generated: "2026-11-24T20:24:05Z"
+version: "4ce85ac"
 ---
 
 # star hook pre-commit
