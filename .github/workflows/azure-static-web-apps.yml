@@ -181,6 +181,44 @@ jobs:
             --hostname ${{ steps.env.outputs.hostname }} \
             --no-wait || true
 
+      # The steps a job that deploys a static site to Azure ends with (noblefactor-engprod#613). When the job fails, or
+      # its Azure sign-in does, the azure/login step with the id azure-login, which a job may carry on past, as the
+      # site's deploy does, they check the site's Azure credentials at once: a bad one raises its alert, naming the
+      # workflow and its run; ones that check fine raise nothing, the failure being the job's own or a moment's. The
+      # App's secrets are for setting a duplicate alert's Resolution. The check is fetched into a folder of its own,
+      # leaving the job's working tree as it is. The job's own token needs issues: write and contents: read. They run
+      # only where the run can read the repository's secrets: never for Dependabot, on any event, and never on a pull
+      # request from a fork, whose runs get none, so that such a failure raises no false alert. They are
+      # noblefactor-engprod's workflow-templates/credentials-check.azure-failure-steps.yml, as landed by
+      # NobleFactor/noblefactor-engprod#613's plan § 5.15.
+      - uses: actions/checkout@v4
+        if: >-
+          (failure() || steps.azure-login.outcome == 'failure') && github.actor != 'dependabot[bot]'
+          && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        with:
+          sparse-checkout: .github/credentials-check
+          path: .credentials-check
+      - name: Report a failure the Azure credentials may have caused
+        if: >-
+          (failure() || steps.azure-login.outcome == 'failure') && github.actor != 'dependabot[bot]'
+          && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        env:
+          CHECKS: azure
+          AZURE_STATIC_SITE: ${{ vars.AZURE_STATIC_SITE }}
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          AZURE_CREDENTIALS_EXPIRES: ${{ vars.AZURE_CREDENTIALS_EXPIRES }}
+          AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          MODE: report
+          KIND: organization
+          ACCOUNT: ${{ github.repository_owner }}
+          REPOSITORY: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          APP_ID: ${{ secrets.NOBLEFACTOR_AUTOMATION_APP_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.NOBLEFACTOR_AUTOMATION_APP_PRIVATE_KEY }}
+          WORKFLOW: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: bash .credentials-check/.github/credentials-check/credentials-check.sh || true
+
   close_pull_request:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
@@ -191,6 +229,44 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           action: "close"
+
+      # The steps a job that deploys a static site to Azure ends with (noblefactor-engprod#613). When the job fails, or
+      # its Azure sign-in does, the azure/login step with the id azure-login, which a job may carry on past, as the
+      # site's deploy does, they check the site's Azure credentials at once: a bad one raises its alert, naming the
+      # workflow and its run; ones that check fine raise nothing, the failure being the job's own or a moment's. The
+      # App's secrets are for setting a duplicate alert's Resolution. The check is fetched into a folder of its own,
+      # leaving the job's working tree as it is. The job's own token needs issues: write and contents: read. They run
+      # only where the run can read the repository's secrets: never for Dependabot, on any event, and never on a pull
+      # request from a fork, whose runs get none, so that such a failure raises no false alert. They are
+      # noblefactor-engprod's workflow-templates/credentials-check.azure-failure-steps.yml, as landed by
+      # NobleFactor/noblefactor-engprod#613's plan § 5.15.
+      - uses: actions/checkout@v4
+        if: >-
+          (failure() || steps.azure-login.outcome == 'failure') && github.actor != 'dependabot[bot]'
+          && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        with:
+          sparse-checkout: .github/credentials-check
+          path: .credentials-check
+      - name: Report a failure the Azure credentials may have caused
+        if: >-
+          (failure() || steps.azure-login.outcome == 'failure') && github.actor != 'dependabot[bot]'
+          && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        env:
+          CHECKS: azure
+          AZURE_STATIC_SITE: ${{ vars.AZURE_STATIC_SITE }}
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          AZURE_CREDENTIALS_EXPIRES: ${{ vars.AZURE_CREDENTIALS_EXPIRES }}
+          AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          MODE: report
+          KIND: organization
+          ACCOUNT: ${{ github.repository_owner }}
+          REPOSITORY: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          APP_ID: ${{ secrets.NOBLEFACTOR_AUTOMATION_APP_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.NOBLEFACTOR_AUTOMATION_APP_PRIVATE_KEY }}
+          WORKFLOW: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: bash .credentials-check/.github/credentials-check/credentials-check.sh || true
 
   quality-gate:
     if: github.event_name == 'pull_request' && github.event.action != 'closed'
